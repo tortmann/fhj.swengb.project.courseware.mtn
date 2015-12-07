@@ -1,6 +1,6 @@
 #SWENGB Project 
-##Courseware - Team MTN 
-##Thomas Ortmann/ Nina Spalek / Maximillian Wageneder
+###Courseware - Team MTN 
+###Thomas Ortmann/ Nina Spalek / Maximillian Wageneder
 
 
 ###Goal: 
