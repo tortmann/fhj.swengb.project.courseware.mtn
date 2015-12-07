@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label alignment="CENTER" prefHeight="71.0" prefWidth="600.0" text="Courseware &#10;Database Application" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </top>
+   <right>
+      <ScrollBar orientation="VERTICAL" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;&#10;&#10;&#10;To navigate please click on the buttons on the left&#10;&#10;Admin&#10;- gain access to various administrative functionalities&#10;- create new Teacher/Student objects&#10;&#10;Teacher&#10;- enter/change dates for lectures and exams&#10;- view all paticipants for an exam&#10;- enter/change marks for exams&#10;&#10;Student&#10;- view your timetable&#10;- register for exams&#10;- register for lectures&#10;- change your personal data&#10;&#10;&#10;&#10;" wrappingWidth="277.13671875" BorderPane.alignment="CENTER" />
+   </center>
+   <left>
+      <GridPane alignment="CENTER" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="207.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="162.0" text="Admin">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="139.0" text="Teacher" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="137.0" text="Student" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="75.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+   </left>
+</BorderPane>
