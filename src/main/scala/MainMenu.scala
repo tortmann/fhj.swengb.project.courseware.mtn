@@ -1,5 +1,7 @@
+import java.net.URL
+import java.util.ResourceBundle
 import javafx.application.Application
-import javafx.fxml.FXMLLoader
+import javafx.fxml.{Initializable, FXMLLoader}
 import javafx.scene.{Scene, Parent}
 import javafx.stage.Stage
 
@@ -40,4 +42,9 @@ class MainMenuApp extends javafx.application.Application {
       case NonFatal(e) => e.printStackTrace()
     }
 
+}
+class MainMenuAppController extends Initializable {
+
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+  }
 }
