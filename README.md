@@ -3,12 +3,12 @@
 ##Thomas Ortmann/ Nina Spalek / Maximillian Wageneder
 
 
-##Goal: 
+###Goal: 
 Scala Database Application<br>
-##Database:
+###Database:
 SQL
 
-##Functionalities:<br>
+###Functionalities:<br>
 
 •	Selecting between different types of users<br><br>
 Students<br>
