@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <TableView prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="125.0" text="First Name" />
+            <TableColumn prefWidth="125.0" text="Last Name" />
+            <TableColumn prefWidth="125.0" text="Address" />
+            <TableColumn prefWidth="125.0" text="Address" />
+        </columns>
+      </TableView>
+   </left>
+   <right>
+      <Separator orientation="VERTICAL" prefHeight="360.0" prefWidth="41.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="58.0" prefWidth="520.0" BorderPane.alignment="CENTER">
+        <buttons>
+          <Button mnemonicParsing="false" text="CREATE" />
+            <Button mnemonicParsing="false" text="DELETE" />
+            <Button alignment="CENTER" mnemonicParsing="false" text="EDIT" />
+            <MenuButton mnemonicParsing="false" text="SHOW">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Students" />
+                <MenuItem mnemonicParsing="false" text="Teachers" />
+                  <MenuItem mnemonicParsing="false" text="Lectures" />
+                  <MenuItem mnemonicParsing="false" text="Exams" />
+              </items>
+            </MenuButton>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Back to Main" />
+        </buttons>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </ButtonBar>
+   </bottom>
+   <top>
+      <Label prefHeight="49.0" prefWidth="63.0" text="Admin" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>
