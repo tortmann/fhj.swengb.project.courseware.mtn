@@ -3,19 +3,18 @@
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SubMenuAdminAppController">
    <left>
-      <TableView prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableView" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="125.0" text="First Name" />
-            <TableColumn prefWidth="125.0" text="Last Name" />
-            <TableColumn prefWidth="125.0" text="Address" />
-            <TableColumn prefWidth="125.0" text="Address" />
+          <TableColumn fx:id="columnId" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="columnFirstName" prefWidth="125.0" text="First Name" />
+            <TableColumn fx:id="columnLastName" prefWidth="125.0" text="Last Name" />
+            <TableColumn fx:id="columnAddress" prefWidth="125.0" text="Address" />
+            <TableColumn fx:id="columnPhone" prefWidth="125.0" text="Phone number" />
         </columns>
       </TableView>
    </left>
