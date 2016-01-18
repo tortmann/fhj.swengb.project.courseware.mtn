@@ -15,7 +15,7 @@ import java.sql.{Connection, DriverManager, ResultSet, Statement}
 
 
 lazy val maybeConnection: Try[Connection] =
-  Try(DriverManager.getConnection("jdbc:sqlite::memory:"))
+  Try(DriverManager.getConnection("jdbc:microsoft:sqlserver://10.25.2.143", "wagm", "wagenede14"))
 
 object Courseware {
 
