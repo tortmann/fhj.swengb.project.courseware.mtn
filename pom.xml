@@ -10,7 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>fhj.swengb.homework</groupId>
+    <groupId>fhj.swengb.project</groupId>
     <artifactId>courseware</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>fhj.swengb.project.courseware.mtn</name>
