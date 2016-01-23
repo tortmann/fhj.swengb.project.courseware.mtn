@@ -1,21 +1,34 @@
 import java.sql.{ResultSet, Connection}
+import java.text.SimpleDateFormat
 
-/**
-  * Created by ninas on 23.01.2016.
-  */
+
+
 object CommissionalExam extends Db.DbEntity[CommissionalExam] {
   def toDb(c: Connection)(ce: CommissionalExam) : Int = ???
+
   def fromDb(rs: ResultSet): List[CommissionalExam] = ???
+
   def dropTableSql: String = ???
+
   def createTableSql: String = ???
+
   def insertSql: String = ???
+
   def queryAll(con: Connection): ResultSet = ???
 }
 
-case class CommissionalExam() extends Db.DbEntity[CommissionalExam] {
+
+
+case class CommissionalExam(id:Int, pers1:String, pers2:String, pers3:String, lecture:String, from:SimpleDateFormat,
+                            to:SimpleDateFormat, details:String,mark:Int, student:String) extends Db.DbEntity[CommissionalExam] {
+
   def toDb(c: Connection)(ce: CommissionalExam) : Int = ???
+
   def fromDb(rs: ResultSet): List[CommissionalExam] = ???
+
   def dropTableSql: String = ???
+
   def createTableSql: String = ???
+
   def insertSql: String = ???
 }
