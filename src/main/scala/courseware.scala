@@ -13,9 +13,11 @@ import java.sql.{Connection, DriverManager, ResultSet, Statement}
  * con = DriverManager.getConnection("jdbc:microsoft:sqlserver://localhost:1433", "userName", "password");
  */
 
-
-lazy val maybeConnection: Try[Connection] =
+/*
+ val maybeConnection: Try[Connection] =
   Try(DriverManager.getConnection("jdbc:microsoft:sqlserver://10.25.2.143", "wagm", "wagenede14"))
+
+
 
 object Courseware {
 
@@ -31,3 +33,4 @@ object Courseware {
 */
 
 }
+*/
