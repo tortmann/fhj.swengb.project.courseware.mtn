@@ -79,15 +79,15 @@ object DbTool {
     val password = "wagenede14"
 
     // Connection --> NULL setzen
-    var connection:Connection = null
+    var con:Connection = null
 
     try {
       // connection connecten
       Class.forName(driver)
-      connection = DriverManager.getConnection(url, username, password)
+      con = DriverManager.getConnection(url, username, password)
 
       // "SQL Statement"
-      val statement = connection.createStatement()
+      val statement = con.createStatement()
       val resultSet = statement.executeQuery("SELECT firstname, lastname FROM dbo.student")
       while ( resultSet.next() ) {
         val firstname = resultSet.getString("firstname")
@@ -97,7 +97,7 @@ object DbTool {
     } catch {
       case e => e.printStackTrace
     }
-    connection.close()
+    con.close()
   }
 
 

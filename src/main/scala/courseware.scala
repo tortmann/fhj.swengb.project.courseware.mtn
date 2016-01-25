@@ -1,9 +1,3 @@
-/**
- * Created by Thomas on 06.12.2015.
- * looki looki by Max on 06.12.2015
- */
-
-
 import scala.util.Try
 import java.sql.{Connection, DriverManager, ResultSet, Statement}
 
