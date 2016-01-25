@@ -16,7 +16,7 @@ object Lecture extends Db.DbEntity[Lecture] {
 
   def fromDb(rs: ResultSet): List[Lecture] = {
     val lb : ListBuffer[Lecture] = new ListBuffer[Lecture]()
-    while (rs.next()) lb.append(Lecture(rs.getString("lecture_event_id"), rs.getString("fullname"), rs.getFloat("ects"),
+    while (rs.next()) lb.append(Lecture(rs.getString("lecture_id"), rs.getString("fullname"), rs.getFloat("ects"),
                                         rs.getString("teacher"), rs.getString("description")))
     lb.toList
   }
