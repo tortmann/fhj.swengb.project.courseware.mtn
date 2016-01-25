@@ -12,16 +12,6 @@ object Db {
     */
   trait DbEntity[T] {
     /**
-      * Recreates the table this entity is stored in
-      *
-      * @param stmt
-      * @return
-      */
-    def reTable(stmt: Statement): Int = {
-      stmt.executeUpdate(dropTableSql)
-      stmt.executeUpdate(createTableSql)
-    }
-    /**
       * Saves given type to the database.
       *
       * @param c
@@ -46,16 +36,6 @@ object Db {
     def query(con: Connection)(query: String): ResultSet = {
       con.createStatement().executeQuery(query)
     }
-    /**
-      * Sql code necessary to execute a drop table on the backing sql table
-      *
-      * @return
-      */
-    def dropTableSql: String
-    /**
-      * sql code for creating the entity backing table
-      */
-    def createTableSql: String
     /**
       * sql code for inserting an entity.
       */
