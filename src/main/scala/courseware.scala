@@ -73,6 +73,10 @@ object Courseware {
       println(t)
     }
 
+    for (t <- Lecture.fromDb(Lecture.queryAll(connection))) {
+      println(t)
+    }
+
   }
 
 }
