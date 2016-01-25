@@ -41,10 +41,39 @@ class MainMenuApp extends javafx.application.Application {
     } catch {
       case NonFatal(e) => e.printStackTrace()
     }
-
 }
 class MainMenuAppController extends Initializable {
 
-  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {}
+
+  val cssMain = "/css/MainMenu.css"
+  val fxmlDbEntryMask = "/fxml/DbEntryMask.fxml"
+  val fxmlSubMenuStudent = "/fxml/SubMenuStudent.fxml"
+  val fxmlSubMenuTeacher = "/fxml/SubMenuTeacher.fxml"
+
+  val loadCreateStudent = new FXMLLoader(getClass.getResource(fxmlDbEntryMask))
+  val loadSubMenuStudent = new FXMLLoader(getClass.getResource(fxmlSubMenuStudent))
+  val loadSubMenuTeacher = new FXMLLoader(getClass.getResource(fxmlSubMenuTeacher))
+
+
+  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
+    try {
+      val stage = new Stage
+      stage.setTitle("DbEntryMask")
+      fxmlLoader.load[Parent]()
+      val scene = new Scene(fxmlLoader.getRoot[Parent])
+      stage.setScene(scene)
+      stage.getScene.getStylesheets.add(css)
+      stage.show()
+    } catch {
+      case NonFatal(e) => e.printStackTrace()
+    }
   }
+
+  def exit(): Unit = sys.exit()
+
+  def subMenuStudent(): Unit = {openWindow(loadSubMenuStudent, cssMain)}
+  def subMenuTeacher(): Unit = {openWindow(loadSubMenuTeacher, cssMain)}
+
 }
+

@@ -67,12 +67,12 @@ object Db {
     Try(DriverManager.getConnection("jdbc:sqlite::memory:"))
 }
 
-
+/**
 object DbTool {
 
   def main(args: Array[String]) = ???
 }
-
+*/
 
 
 
