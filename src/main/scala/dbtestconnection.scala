@@ -4,6 +4,7 @@
 
 package jdbc
 
+
 import java.sql.DriverManager
 import java.sql.Connection
 
@@ -14,13 +15,7 @@ object dbtestconnection {
   def main(args: Array[String]) {
     // parameters for the connection
     val driver = "com.microsoft.jdbc.sqlserver.SQLServerDriver"
-    //val driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
-
-
-    // val url = "jdbc:microsoft:sqlserver://10.25.2.143:1433;DatabaseName=daent_g1"
-    val url="jdbc:microsoft:sqlserver://10.25.2.143:1433;databaseName=daent_gr1;"
-    //val url = "jdbc:msql://10.25.2.143:1114/daent_gr1"
-
+    val url="jdbc:microsoft:sqlserver://10.25.2.143:1433;databaseName=daent_g1;"
     val username = "wagm"
     val password = "wagenede14"
 
@@ -31,12 +26,8 @@ object dbtestconnection {
 
     try {
       // connection connecten
-      Class.forName(driver);
+      Class.forName(driver)
       connection = DriverManager.getConnection(url, username, password)
-
-       //connection = DriverManager.getConnection("jdbc:sqlserver://10.25.2.143:1433;" +
-       //  "databaseName=daent_g1;user=wagm;password=wagenede14");
-
 
 
       // "SQL Statement"
@@ -52,5 +43,6 @@ object dbtestconnection {
     }
     connection.close()
   }
+
 
 }

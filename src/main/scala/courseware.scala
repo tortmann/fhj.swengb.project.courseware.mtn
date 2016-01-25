@@ -3,7 +3,6 @@
  * looki looki by Max on 06.12.2015
  */
 
-import fhj.swengb.Db
 
 import scala.util.Try
 import java.sql.{Connection, DriverManager, ResultSet, Statement}
