@@ -21,15 +21,16 @@ object Lecture extends Db.DbEntity[Lecture] {
     lb.toList
   }
 
-  def insertSql: String = "insert into dbo.lecture (lecture_id, date_start, date_end, description, lecture, group, classroom)" +
-                          "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+  def insertSql: String = "insert into dbo.lecture (lecture_id, fullname, ects, teacher, description)" +
+                          "VALUES (?, ?, ?, ?, ?)"
 
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.lecture")
 }
 
 
 
-case class Lecture(id:String, fullname:String, ects:Float, teacher:String, description:String) extends Db.DbEntity[Lecture] {
+case class Lecture(id:String, fullname:String, ects:Float, teacher:String,
+                   description:String) extends Db.DbEntity[Lecture] {
 
   def toDb(c: Connection)(l: Lecture) : Int = 0
 
