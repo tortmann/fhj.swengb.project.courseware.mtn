@@ -14,9 +14,6 @@
          </font>
       </Label>
    </top>
-   <right>
-      <ScrollBar orientation="VERTICAL" BorderPane.alignment="CENTER" />
-   </right>
    <center>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;&#10;To navigate please click on the buttons on the left&#10;&#10;Create&#10;- add new Teacher objects to the database&#10;&#10;Edit&#10;- edit an already existing Teacher object&#10;&#10;Show all&#10;- Creates a Table View for all Teacher objects&#10;&#10;" wrappingWidth="277.13671875" BorderPane.alignment="CENTER" />
    </center>
@@ -36,12 +33,12 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#subMenuTeacher" prefHeight="30.0" prefWidth="139.0" text="Edit" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="139.0" text="Edit" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#subMenuStudent" prefHeight="44.0" prefWidth="137.0" text="Show all" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="137.0" text="Show all" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -55,4 +52,21 @@
          </opaqueInsets>
       </GridPane>
    </left>
+   <bottom>
+      <GridPane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="80.0" text="Exit" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Separator prefWidth="200.0" />
+            <Separator prefWidth="200.0" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+   </bottom>
 </BorderPane>
