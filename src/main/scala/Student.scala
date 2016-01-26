@@ -30,7 +30,7 @@ object Student extends Db.DbEntity[Student] {
     lb.toList
   }
 
-  def insertSql: String = "insert into dbo.student (teacher_id, title, firstname, lastname, birthdate, gender, " +
+  def insertSql: String = "insert into dbo.student (student_id, title, firstname, lastname, birthdate, gender, " +
                           "address, zip_code, phone, e_mail, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
   def deleteSql(con: Connection)(prop: String): ResultSet = query(con)("delete from dbo.student where student_id = " + prop)

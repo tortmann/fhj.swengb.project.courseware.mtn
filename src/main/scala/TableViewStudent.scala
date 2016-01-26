@@ -1,5 +1,4 @@
 import javafx.application.Application
-import javafx.fxml.{Initializable, FXMLLoader}
 import javafx.stage.Stage
 import java.net.URL
 import java.util.ResourceBundle
@@ -11,6 +10,7 @@ import javafx.scene.control.{TableColumn, TableView}
 import javafx.scene.{Parent, Scene}
 import javafx.util.Callback
 import scala.collection.JavaConversions
+
 import scala.util.control.NonFatal
 
 object TableViewStudent {
