@@ -122,7 +122,9 @@ object Courseware {
     Assessment.toDb(connection)(a)
 */
 
-    Teacher.deleteSql(connection)("LE-00001")
+
+
+    Teacher.deleteSql(connection, "LE-00011")
     connection.close()
   }
 

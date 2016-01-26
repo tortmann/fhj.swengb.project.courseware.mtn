@@ -90,7 +90,7 @@ object MutableLectureEvent {
   }
 }
 
-object JfxUtils {
+object JfxUtilsle {
 
   type TCDF[S, T] = TableColumn.CellDataFeatures[S, T]
 
@@ -122,7 +122,7 @@ object DataSourceLectureEvent {
 
 class TableViewLectureEventAppController extends Initializable {
 
-  import JfxUtils._
+  import JfxUtilsle._
 
   type LectureEventTC[T] = TableColumn[MutableLectureEvent, T]
 
