@@ -20,7 +20,7 @@
           <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#subMenuTeacher" prefHeight="30.0" prefWidth="139.0" text="Teacher">
+            <Button mnemonicParsing="false" onAction="#subMenuTeacher" prefHeight="30.0" prefWidth="139.0" text="Lecture Event">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

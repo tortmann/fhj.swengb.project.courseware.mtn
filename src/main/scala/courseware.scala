@@ -118,8 +118,6 @@ object Courseware {
       println(t)}
 
 
-    val a = Assessment(id:Int, atype:String, duration:Int, lecture:String, description:String)
-
   }
 
 }
