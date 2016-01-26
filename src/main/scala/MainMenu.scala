@@ -68,4 +68,4 @@ class MainMenuAppController extends Initializable {
   def subMenuTeacher(): Unit = {openWindow(loadTeacher, cssMain)}
 
 }
-
+//test
