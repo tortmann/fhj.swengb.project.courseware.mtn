@@ -1,5 +1,6 @@
 import javafx.application.Application
 import javafx.fxml.{Initializable, FXMLLoader}
+import javafx.scene.layout.BorderPane
 import javafx.stage.Stage
 import java.net.URL
 import java.util.ResourceBundle
@@ -142,6 +143,7 @@ class TableViewStudentAppController extends Initializable {
 
   type StudentTC[T] = TableColumn[MutableStudent, T]
 
+  @FXML var window:BorderPane = _
   @FXML var tableView: TableView[MutableStudent] = _
 
   @FXML var columnId: StudentTC[String] = _
@@ -181,9 +183,11 @@ class TableViewStudentAppController extends Initializable {
   }
   val cssMain = "/css/MainMenu.css"
   val fxmlCreateStudent = "/fxml/CreateStudent.fxml"
+  val fxmlEditStudent = "/fxml/EditStudent.fxml"
 
 
   val loadCreateStudent = new FXMLLoader(getClass.getResource(fxmlCreateStudent))
+  val loadEditStudent = new FXMLLoader(getClass.getResource(fxmlEditStudent))
 
 
   def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
@@ -200,7 +204,8 @@ class TableViewStudentAppController extends Initializable {
     }
   }
 
-  //def exit(): Unit = window.getScene.getWindow.hide()
+  def Exit(): Unit = window.getScene.getWindow.hide()
   def Create(): Unit = {openWindow(loadCreateStudent, cssMain)}
+  def Edit(): Unit = {openWindow(loadEditStudent, cssMain )}
 
 }
