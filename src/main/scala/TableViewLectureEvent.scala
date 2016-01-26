@@ -1,5 +1,6 @@
 import javafx.application.Application
 import javafx.fxml.{Initializable, FXMLLoader}
+import javafx.scene.layout.BorderPane
 import javafx.stage.Stage
 import java.net.URL
 import java.util.ResourceBundle
@@ -126,6 +127,7 @@ class TableViewLectureEventAppController extends Initializable {
 
   type LectureEventTC[T] = TableColumn[MutableLectureEvent, T]
 
+  @FXML var window:BorderPane = _
   @FXML var tableView: TableView[MutableLectureEvent] = _
 
   @FXML var columnId: LectureEventTC[String] = _
@@ -155,5 +157,30 @@ class TableViewLectureEventAppController extends Initializable {
     initTableViewColumn[String](columnClassroom, _.classroomProperty)
 
   }
+  val cssMain = "/css/MainMenu.css"
+  val fxmlCreateLectureEvent = "/fxml/CreateLectureEvent.fxml"
+  val fxmlEditLectureEvent = "/fxml/EditLectureEvent.fxml"
 
+
+  val loadCreateStudent = new FXMLLoader(getClass.getResource(fxmlCreateLectureEvent))
+  val loadEditStudent = new FXMLLoader(getClass.getResource(fxmlEditLectureEvent))
+
+
+  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
+    try {
+      val stage = new Stage
+      stage.setTitle("Lecture Event")
+      fxmlLoader.load[Parent]()
+      val scene = new Scene(fxmlLoader.getRoot[Parent])
+      stage.setScene(scene)
+      stage.getScene.getStylesheets.add(css)
+      stage.show()
+    } catch {
+      case NonFatal(e) => e.printStackTrace()
+    }
+  }
+
+  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Create(): Unit = {openWindow(loadCreateStudent, cssMain)}
+  def Edit(): Unit = {openWindow(loadEditStudent, cssMain )}
 }
