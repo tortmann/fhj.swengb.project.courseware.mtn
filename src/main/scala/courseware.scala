@@ -124,7 +124,7 @@ object Courseware {
 
 
     val date = new java.sql.Date(1985,1,1)
-    val t:Teacher = new Teacher("LE-00011", "", "Klemens", "Konopasek", date, "m", "Knoppers Strasse 1", "8010", "", "", "internal")
+    val t = new Teacher("LE-00011", "", "Klemens", "Konopasek", date, "m", "Knoppers Strasse 1", "8010", "", "", "internal")
 
     Teacher.delFromDb(connection)(t)
     connection.close()
