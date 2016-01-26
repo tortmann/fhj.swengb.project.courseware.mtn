@@ -38,7 +38,7 @@ object Teacher extends Db.DbEntity[Teacher] {
   def insertSql: String = "insert into dbo.teacher (teacher_id, title, firstname, lastname, birthdate, gender," +
                           "address, zip_code, phone, e_mail, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
-  def deleteSql: String = ("delete from dbo.teacher where teacher_id = '?'")
+  def deleteSql(con: Connection, prop: String): ResultSet = query(con)("delete from dbo.teacher where teacher_id = '" + prop + "'")
 
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.teacher")
 }

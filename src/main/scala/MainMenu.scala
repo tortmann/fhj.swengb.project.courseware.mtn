@@ -7,9 +7,6 @@ import javafx.stage.Stage
 
 import scala.util.control.NonFatal
 
-/**
-  * Created by Thomas on 07.12.2015.
-  */
 object MainMenu {
   def main(args: Array[String]) {
     Application.launch(classOf[MainMenuApp], args: _*)
@@ -47,33 +44,26 @@ class MainMenuAppController extends Initializable {
   override def initialize(location: URL, resources: ResourceBundle): Unit = {}
 
   val cssMain = "/css/MainMenu.css"
-  val fxmlDbEntryMask = "/fxml/DbEntryMask.fxml"
-  val fxmlSubMenuStudent = "/fxml/SubMenuStudent.fxml"
-  val fxmlSubMenuTeacher = "/fxml/SubMenuLectureEvent.fxml"
+  val fxmlStudent = "/fxml/TableViewStudent.fxml"
+  val fxmlLectureEvent = "/fxml/TableViewLectureEvent.fxml"
 
-  val loadCreateStudent = new FXMLLoader(getClass.getResource(fxmlDbEntryMask))
-  val loadSubMenuStudent = new FXMLLoader(getClass.getResource(fxmlSubMenuStudent))
-  val loadSubMenuTeacher = new FXMLLoader(getClass.getResource(fxmlSubMenuTeacher))
-
+  val loadStudent = new FXMLLoader(getClass.getResource(fxmlStudent))
+  val loadTeacher = new FXMLLoader(getClass.getResource(fxmlLectureEvent))
 
   def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
-    try {
-      val stage = new Stage
-      stage.setTitle("DbEntryMask")
-      fxmlLoader.load[Parent]()
-      val scene = new Scene(fxmlLoader.getRoot[Parent])
-      stage.setScene(scene)
+
+      val stage = new Stage()
+      stage.setTitle("Courseware")
+      loadStudent.load[Parent]()
       stage.getScene.getStylesheets.add(css)
+      stage.setScene(new Scene(loadStudent.getRoot[Parent]))
       stage.show()
-    } catch {
-      case NonFatal(e) => e.printStackTrace()
-    }
+
   }
 
   def exit(): Unit = sys.exit()
-
-  def subMenuStudent(): Unit = {openWindow(loadSubMenuStudent, cssMain)}
-  def subMenuTeacher(): Unit = {openWindow(loadSubMenuTeacher, cssMain)}
+  def subMenuStudent(): Unit = {openWindow(loadStudent, cssMain)}
+  def subMenuTeacher(): Unit = {openWindow(loadTeacher, cssMain)}
 
 }
 

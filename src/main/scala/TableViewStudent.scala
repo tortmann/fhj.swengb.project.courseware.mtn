@@ -1,8 +1,10 @@
 import javafx.application.Application
+import javafx.fxml.{Initializable, FXMLLoader}
+import javafx.scene.layout.BorderPane
 import javafx.stage.Stage
 import java.net.URL
 import java.util.ResourceBundle
-import javafx.beans.property.{SimpleDoubleProperty, SimpleIntegerProperty, SimpleStringProperty}
+import javafx.beans.property.{SimpleIntegerProperty, SimpleStringProperty}
 import javafx.beans.value.ObservableValue
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml._
@@ -10,7 +12,6 @@ import javafx.scene.control.{TableColumn, TableView}
 import javafx.scene.{Parent, Scene}
 import javafx.util.Callback
 import scala.collection.JavaConversions
-
 import scala.util.control.NonFatal
 
 object TableViewStudent {
@@ -142,6 +143,7 @@ class TableViewStudentAppController extends Initializable {
 
   type StudentTC[T] = TableColumn[MutableStudent, T]
 
+  @FXML var window:BorderPane = _
   @FXML var tableView: TableView[MutableStudent] = _
 
   @FXML var columnId: StudentTC[String] = _
@@ -179,6 +181,31 @@ class TableViewStudentAppController extends Initializable {
     initTableViewColumn[String](columnGroup, _.groupProperty)
     initTableViewColumn[Int](columnStatus, _.statusProperty)
   }
+  val cssMain = "/css/MainMenu.css"
+  val fxmlCreateStudent = "/fxml/CreateStudent.fxml"
+  val fxmlEditStudent = "/fxml/EditStudent.fxml"
 
+
+  val loadCreateStudent = new FXMLLoader(getClass.getResource(fxmlCreateStudent))
+  val loadEditStudent = new FXMLLoader(getClass.getResource(fxmlEditStudent))
+
+
+  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
+    try {
+      val stage = new Stage
+      stage.setTitle("Courseware")
+      fxmlLoader.load[Parent]()
+      val scene = new Scene(fxmlLoader.getRoot[Parent])
+      stage.setScene(scene)
+      stage.getScene.getStylesheets.add(css)
+      stage.show()
+    } catch {
+      case NonFatal(e) => e.printStackTrace()
+    }
+  }
+
+  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Create(): Unit = {openWindow(loadCreateStudent, cssMain)}
+  def Edit(): Unit = {openWindow(loadEditStudent, cssMain )}
 
 }

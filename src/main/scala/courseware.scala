@@ -1,7 +1,5 @@
-import java.text.{DateFormat, SimpleDateFormat}
-
 import scala.util.Try
-import java.sql._
+import java.sql.{Connection, DriverManager, ResultSet, Statement}
 
 
 
