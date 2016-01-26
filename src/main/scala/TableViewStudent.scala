@@ -11,7 +11,6 @@ import javafx.scene.control.{TableColumn, TableView}
 import javafx.scene.{Parent, Scene}
 import javafx.util.Callback
 import scala.collection.JavaConversions
-import scala.util.Random
 import scala.util.control.NonFatal
 
 object TableViewStudent {
