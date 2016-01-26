@@ -49,7 +49,7 @@ class MainMenuAppController extends Initializable {
   val cssMain = "/css/MainMenu.css"
   val fxmlDbEntryMask = "/fxml/DbEntryMask.fxml"
   val fxmlSubMenuStudent = "/fxml/SubMenuStudent.fxml"
-  val fxmlSubMenuTeacher = "/fxml/SubMenuTeacher.fxml"
+  val fxmlSubMenuTeacher = "/fxml/SubMenuLectureEvent.fxml"
 
   val loadCreateStudent = new FXMLLoader(getClass.getResource(fxmlDbEntryMask))
   val loadSubMenuStudent = new FXMLLoader(getClass.getResource(fxmlSubMenuStudent))
