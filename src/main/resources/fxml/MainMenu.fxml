@@ -60,7 +60,7 @@
             <RowConstraints maxHeight="90.0" minHeight="2.0" prefHeight="70.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#subMenuTeacher" prefHeight="71.0" prefWidth="227.0" styleClass="menu-button" text="Lecture Event">
+            <Button mnemonicParsing="false" onAction="#subMenuLectureEvent" prefHeight="71.0" prefWidth="227.0" styleClass="menu-button" text="Lecture Event">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -85,7 +85,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#subMenuStudent" prefHeight="80.0" prefWidth="284.0" styleClass="menu-button" text="Teacher" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="284.0" styleClass="menu-button" text="Teacher" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

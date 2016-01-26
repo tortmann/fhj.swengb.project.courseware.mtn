@@ -162,8 +162,8 @@ class TableViewLectureEventAppController extends Initializable {
   val fxmlEditLectureEvent = "/fxml/EditLectureEvent.fxml"
 
 
-  val loadCreateStudent = new FXMLLoader(getClass.getResource(fxmlCreateLectureEvent))
-  val loadEditStudent = new FXMLLoader(getClass.getResource(fxmlEditLectureEvent))
+  val loadCreateLectureEvent = new FXMLLoader(getClass.getResource(fxmlCreateLectureEvent))
+  val loadEditLectureEvent = new FXMLLoader(getClass.getResource(fxmlEditLectureEvent))
 
 
   def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
@@ -181,6 +181,6 @@ class TableViewLectureEventAppController extends Initializable {
   }
 
   def Exit(): Unit = window.getScene.getWindow.hide()
-  def Create(): Unit = {openWindow(loadCreateStudent, cssMain)}
-  def Edit(): Unit = {openWindow(loadEditStudent, cssMain )}
+  def Create(): Unit = {openWindow(loadCreateLectureEvent, cssMain)}
+  def Edit(): Unit = {openWindow(loadEditLectureEvent, cssMain )}
 }

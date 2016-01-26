@@ -48,7 +48,7 @@ class MainMenuAppController extends Initializable {
   val fxmlLectureEvent = "/fxml/TableViewLectureEvent.fxml"
 
   val loadStudent = new FXMLLoader(getClass.getResource(fxmlStudent))
-  val loadTeacher = new FXMLLoader(getClass.getResource(fxmlLectureEvent))
+  val loadLectureEvent = new FXMLLoader(getClass.getResource(fxmlLectureEvent))
 
   def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
     try {
@@ -66,7 +66,7 @@ class MainMenuAppController extends Initializable {
 
   def exit(): Unit = sys.exit()
   def subMenuStudent(): Unit = {openWindow(loadStudent, cssMain)}
-  def subMenuTeacher(): Unit = {openWindow(loadTeacher, cssMain)}
+  def subMenuLectureEvent(): Unit = {openWindow(loadLectureEvent, cssMain)}
 
 }
 
