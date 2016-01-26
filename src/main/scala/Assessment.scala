@@ -6,11 +6,10 @@ import scala.collection.mutable.ListBuffer
 object Assessment extends Db.DbEntity[Assessment] {
   def toDb(c: Connection)(a: Assessment) : Int = {
     val pstmt = c.prepareStatement(insertSql)
-    pstmt.setInt(1, a.id)
-    pstmt.setString(2, a.atype)
-    pstmt.setInt(3, a.duration)
-    pstmt.setString(4, a.lecture)
-    pstmt.setString(5, a.description)
+    pstmt.setString(1, a.atype)
+    pstmt.setInt(2, a.duration)
+    pstmt.setString(3, a.lecture)
+    pstmt.setString(4, a.description)
     pstmt.executeUpdate()
   }
 
@@ -21,8 +20,8 @@ object Assessment extends Db.DbEntity[Assessment] {
     lb.toList
   }
 
-  def insertSql: String = "insert into dbo.assessment (assessment_id, type, duration, lecture, description) " +
-                          "VALUES (?, ?, ?, ?, ?)"
+  def insertSql: String = "insert into dbo.assessment (type, duration, lecture, description) " +
+                          "VALUES (?, ?, ?, ?)"
 
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.assessment")
 }

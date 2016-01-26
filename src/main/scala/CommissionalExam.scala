@@ -6,16 +6,15 @@ import scala.collection.mutable.ListBuffer
 object CommissionalExam extends Db.DbEntity[CommissionalExam] {
   def toDb(c: Connection)(ce: CommissionalExam) : Int = {
     val pstmt = c.prepareStatement(insertSql)
-    pstmt.setInt(1, ce.id)
-    pstmt.setString(2, ce.pers1)
-    pstmt.setString(3, ce.pers2)
-    pstmt.setString(4, ce.pers3)
-    pstmt.setString(5, ce.lecture)
-    pstmt.setDate(6, ce.from)
-    pstmt.setDate(7, ce.to)
-    pstmt.setString(8, ce.details)
-    pstmt.setInt(9, ce.mark)
-    pstmt.setString(10, ce.student)
+    pstmt.setString(1, ce.pers1)
+    pstmt.setString(2, ce.pers2)
+    pstmt.setString(3, ce.pers3)
+    pstmt.setString(4, ce.lecture)
+    pstmt.setDate(5, ce.from)
+    pstmt.setDate(6, ce.to)
+    pstmt.setString(7, ce.details)
+    pstmt.setInt(8, ce.mark)
+    pstmt.setString(9, ce.student)
     pstmt.executeUpdate()
   }
 
@@ -29,9 +28,9 @@ object CommissionalExam extends Db.DbEntity[CommissionalExam] {
     lb.toList
   }
 
-  def insertSql: String = "insert into dbo.commissional_exam (comm_exam_id, comm_pers1, comm_pers2, comm_pers3, " +
+  def insertSql: String = "insert into dbo.commissional_exam (comm_pers1, comm_pers2, comm_pers3, " +
                           "lecture, date_Start, date_end, details, mark, student) " +
-                          "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                          "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.commissional_exam")
 }
