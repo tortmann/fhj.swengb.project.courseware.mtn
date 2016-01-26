@@ -40,5 +40,7 @@ case class LectureEvent(id:String, from:Date, to:Date, description:String, lectu
 
   def fromDb(rs: ResultSet): List[LectureEvent] = List()
 
+  def delFromDb(c: Connection)(le: LectureEvent) : Int = 0
+
   def insertSql: String = ""
 }
