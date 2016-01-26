@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="1311.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewStudentAppController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewStudentAppController">
    <right>
       <Separator orientation="VERTICAL" prefHeight="321.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
    </right>
@@ -20,31 +20,38 @@
    <bottom>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Separator prefWidth="200.0" />
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-500.0">
+              <buttons>
+                <Button mnemonicParsing="false" onAction="#Create" text="Create" />
+                  <Button mnemonicParsing="false" onAction="#exit" text="Edit" />
+                  <Button mnemonicParsing="false" text="Delete" />
+                  <Button mnemonicParsing="false" text="Report" />
+              </buttons>
+            </ButtonBar>
          </children>
       </GridPane>
    </bottom>
    <center>
-      <TableView fx:id="tableView" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableView" prefHeight="360.0" prefWidth="1008.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="ID" />
-          <TableColumn fx:id="columnTitle" prefWidth="68.0" text="Title" />
-            <TableColumn fx:id="columnFirstName" prefWidth="123.0" text="First Name" />
-            <TableColumn fx:id="columnLastName" prefWidth="119.0" text="Last Name" />
-            <TableColumn fx:id="columnBirthdate" prefWidth="121.0" text="Birthdate" />
-            <TableColumn fx:id="columnGender" prefWidth="55.0" text="Gender" />
-            <TableColumn fx:id="columnAddress" prefWidth="201.0" text="Address" />
-            <TableColumn fx:id="columnZipcode" prefWidth="68.0" text="ZIP CODE" />
-            <TableColumn fx:id="columnPhone" prefWidth="122.0" text="phone" />
-            <TableColumn fx:id="columnEmail" prefWidth="105.0" text="Email" />
-            <TableColumn fx:id="columnGroup" prefWidth="73.0" text="Group" />
-            <TableColumn fx:id="columnStatus" prefWidth="136.0" text="Status" />
+          <TableColumn fx:id="columnFirstName" prefWidth="68.0" text="Title" />
+            <TableColumn fx:id="columnLastName" prefWidth="123.0" text="First Name" />
+            <TableColumn fx:id="columnAddress" prefWidth="119.0" text="Last Name" />
+            <TableColumn fx:id="columnPhone" prefWidth="121.0" text="Birthdate" />
+            <TableColumn fx:id="columnPhone1" prefWidth="55.0" text="Gender" />
+            <TableColumn fx:id="columnPhone11" prefWidth="201.0" text="Address" />
+            <TableColumn fx:id="columnPhone111" prefWidth="68.0" text="ZIP code" />
+            <TableColumn fx:id="columnPhone1111" prefWidth="122.0" text="Phone" />
+            <TableColumn fx:id="columnPhone11111" prefWidth="105.0" text="Email" />
+            <TableColumn fx:id="columnPhone111111" prefWidth="73.0" text="Group" />
+            <TableColumn fx:id="columnPhone1111111" prefWidth="136.0" text="Status" />
         </columns>
       </TableView>
    </center>

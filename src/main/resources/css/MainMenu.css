@@ -1,3 +1,15 @@
+
+.root{
+    -fx-background-color: #EEE9E9;
+
+}
+.menu-button{
+    -fx-border-radius: 15px;
+     -fx-text-fill: #000;
+     -fx-font-size: 12pt;
+     -fx-border-width: 1px;
+}
+
 #gray{
     -fx-background-color: #D3D3D3;
     -fx-border-color: black;

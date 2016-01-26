@@ -47,18 +47,16 @@ class MainMenuAppController extends Initializable {
   override def initialize(location: URL, resources: ResourceBundle): Unit = {}
 
   val cssMain = "/css/MainMenu.css"
-  val fxmlDbEntryMask = "/fxml/DbEntryMask.fxml"
-  val fxmlSubMenuStudent = "/fxml/SubMenuStudent.fxml"
-  val fxmlSubMenuTeacher = "/fxml/SubMenuLectureEvent.fxml"
+  val fxmlStudent = "/fxml/TableViewStudent.fxml"
+  val fxmlLectureEvent = "/fxml/TableViewLectureEvent.fxml"
 
-  val loadCreateStudent = new FXMLLoader(getClass.getResource(fxmlDbEntryMask))
-  val loadSubMenuStudent = new FXMLLoader(getClass.getResource(fxmlSubMenuStudent))
-  val loadSubMenuTeacher = new FXMLLoader(getClass.getResource(fxmlSubMenuTeacher))
+  val loadStudent = new FXMLLoader(getClass.getResource(fxmlStudent))
+  val loadTeacher = new FXMLLoader(getClass.getResource(fxmlLectureEvent))
 
   def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
     try {
       val stage = new Stage
-      stage.setTitle("DbEntryMask")
+      stage.setTitle("Courseware")
       fxmlLoader.load[Parent]()
       val scene = new Scene(fxmlLoader.getRoot[Parent])
       stage.setScene(scene)
@@ -70,9 +68,8 @@ class MainMenuAppController extends Initializable {
   }
 
   def exit(): Unit = sys.exit()
-
-  def subMenuStudent(): Unit = {openWindow(loadSubMenuStudent, cssMain)}
-  def subMenuTeacher(): Unit = {openWindow(loadSubMenuTeacher, cssMain)}
+  def subMenuStudent(): Unit = {openWindow(loadStudent, cssMain)}
+  def subMenuTeacher(): Unit = {openWindow(loadTeacher, cssMain)}
 
 }
 
