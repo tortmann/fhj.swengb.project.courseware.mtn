@@ -144,7 +144,7 @@ class TableViewStudentAppController extends Initializable {
 
   type StudentTC[T] = TableColumn[MutableStudent, T]
 
-  @FXML var root:BorderPane = _
+  @FXML var window:BorderPane = _
   @FXML var tableView: TableView[MutableStudent] = _
 
   @FXML var columnId: StudentTC[String] = _
@@ -203,7 +203,7 @@ class TableViewStudentAppController extends Initializable {
     }
   }
 
-  def exit(): Unit = root.getScene.getWindow.hide()
+  def exit(): Unit = window.getScene.getWindow.hide()
   def Create(): Unit = {openWindow(loadCreateStudent, cssMain)}
 
 
