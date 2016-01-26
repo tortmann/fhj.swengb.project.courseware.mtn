@@ -21,6 +21,21 @@ object Student extends Db.DbEntity[Student] {
     pstmt.executeUpdate()
   }
 
+  def toSP(c: Connection)(s: Student) : Int = {
+    val pstmt = c.prepareStatement(insertSql)
+    pstmt.setString(1, s.id)
+    pstmt.setString(3, s.firstname)
+    pstmt.setString(4, s.lastname)
+    pstmt.setDate(5, s.birthdate)
+    pstmt.setString(6, s.gender)
+    pstmt.setString(7, s.address)
+    pstmt.setString(8, s.zip)
+    pstmt.setString(11, s.group)
+    pstmt.setInt(12, s.status)
+    pstmt.executeUpdate()
+  }
+
+
   def fromDb(rs: ResultSet): List[Student] = {
     val lb : ListBuffer[Student] = new ListBuffer[Student]()
     while (rs.next()) lb.append(Student(rs.getString("student_id"), rs.getString("title"), rs.getString("firstname"),
@@ -34,6 +49,8 @@ object Student extends Db.DbEntity[Student] {
                           "address, zip_code, phone, e_mail, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.student")
+
+  def createStudent: String = ("exec dbo.sp_student ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?")
 }
 
 
