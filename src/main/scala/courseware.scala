@@ -112,9 +112,14 @@ object Courseware {
 
     /*val l = new Lecture("MAXMAX","Maximilian is der coolste", 5.0,"LE-00001","")
     Lecture.toDb(connection)(l)
-*/
+    */
+
     for (t <- Lecture.fromDb(Lecture.queryAll(connection))) {
       println(t)}
+
+
+    val a = Assessment(id:Int, atype:String, duration:Int, lecture:String, description:String)
+
   }
 
 }
