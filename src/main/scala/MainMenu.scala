@@ -7,9 +7,6 @@ import javafx.stage.Stage
 
 import scala.util.control.NonFatal
 
-/**
-  * Created by Thomas on 07.12.2015.
-  */
 object MainMenu {
   def main(args: Array[String]) {
     Application.launch(classOf[MainMenuApp], args: _*)
