@@ -33,6 +33,8 @@ object Student extends Db.DbEntity[Student] {
   def insertSql: String = "insert into dbo.student (teacher_id, title, firstname, lastname, birthdate, gender, " +
                           "address, zip_code, phone, e_mail, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
+  def deleteSql(con: Connection)(prop: String): ResultSet = query(con)("delete from dbo.student where student_id = " + prop)
+
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.student")
 }
 
@@ -45,6 +47,8 @@ case class Student(id:String, title:String, firstname:String, lastname:String, b
   def toDb(c: Connection)(s: Student) : Int = 0
 
   def fromDb(rs: ResultSet): List[Student] = List()
+
+  def delFromDb(c: Connection)(s: Student) : Int = 0
 
   def insertSql: String = ""
 }

@@ -26,6 +26,8 @@ object LectureEvent extends Db.DbEntity[LectureEvent] {
   def insertSql: String = "insert into dbo.lecture_event (lecture_event_id, date_start, date_end, description, " +
                           "lecture, group_nr, classroom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 
+  def deleteSql(con: Connection)(prop: String): ResultSet = query(con)("delete from dbo.lecture_event where lecture_event_id = " + prop)
+
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.lecture_event")
 }
 

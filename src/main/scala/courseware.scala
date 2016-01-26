@@ -79,9 +79,8 @@ object Courseware {
     Class.forName(driver)
     connection = DriverManager.getConnection(url, username, password)
 
-
-    /*
-    QUERY ALL TABLES
+ /**
+    //QUERY ALL TABLES
       for (t <- Assessment.fromDb(Assessment.queryAll(connection))) {
         println(t)
       }
@@ -109,21 +108,21 @@ object Courseware {
       for (t <- Teacher.fromDb(Teacher.queryAll(connection))) {
         println(t)
       }
-    */
 
     for (t <- Lecture.fromDb(Lecture.queryAll(connection))) {
       println(t)}
 
-    /*val l = new Lecture("MAXMAX","Maximilian is der coolste", 5.0,"LE-00001","")
+    val l = new Lecture("MAXMAX","Maximilian is der coolste", 5.0,"LE-00001","")
     Lecture.toDb(connection)(l)
-    */
 
     for (t <- Lecture.fromDb(Lecture.queryAll(connection))) {
       println(t)}
-
 
     val a = Assessment("Prüfung", 120, "SWENGB", "")
     Assessment.toDb(connection)(a)
+*/
+
+    Teacher.deleteSql(connection)("LE-00001")
 
   }
 
