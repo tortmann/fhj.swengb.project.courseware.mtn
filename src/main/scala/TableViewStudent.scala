@@ -107,7 +107,7 @@ object MutableStudent {
   }
 }
 
-object JfxUtils {
+object JfxUtilsStudent {
 
   type TCDF[S, T] = TableColumn.CellDataFeatures[S, T]
 
@@ -138,7 +138,7 @@ object DataSourceStudent {
 
 class TableViewStudentAppController extends Initializable {
 
-  import JfxUtils._
+  import JfxUtilsStudent._
 
   type StudentTC[T] = TableColumn[MutableStudent, T]
 
