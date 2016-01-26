@@ -36,5 +36,7 @@ case class Lecture(id:String, fullname:String, ects:Double, teacher:String,
 
   def fromDb(rs: ResultSet): List[Lecture] = List()
 
+  def fromDb(rs: ResultSet): List[Lecture] = 0
+
   def insertSql: String = ""
 }

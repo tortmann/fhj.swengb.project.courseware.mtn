@@ -32,6 +32,8 @@ object Teacher extends Db.DbEntity[Teacher] {
   def insertSql: String = "insert into dbo.teacher (teacher_id, title, firstname, lastname, birthdate, gender," +
                           "address, zip_code, phone, e_mail, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
+  def deleteSql(con: Connection)(prop: String): ResultSet = query(con)("delete from dbo.teacher where teacher_id = " + prop)
+
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.teacher")
 }
 
@@ -43,6 +45,8 @@ case class Teacher(id:String, title:String, firstname:String, lastname:String, b
   def toDb(c: Connection)(t: Teacher) : Int = 0
 
   def fromDb(rs: ResultSet): List[Teacher] = List()
+
+  def delFromDb(c: Connection)(t: Teacher) : Int = 0
 
   def insertSql: String = ""
 }
