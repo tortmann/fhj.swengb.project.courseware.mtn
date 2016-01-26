@@ -1,52 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SubMenuAdminAppController">
-   <left>
-      <TableView fx:id="tableView" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="columnId" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="columnFirstName" prefWidth="125.0" text="First Name" />
-            <TableColumn fx:id="columnLastName" prefWidth="125.0" text="Last Name" />
-            <TableColumn fx:id="columnAddress" prefWidth="125.0" text="Address" />
-            <TableColumn fx:id="columnPhone" prefWidth="125.0" text="Phone number" />
-        </columns>
-      </TableView>
-   </left>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="1311.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewStudentAppController">
    <right>
-      <Separator orientation="VERTICAL" prefHeight="360.0" prefWidth="41.0" BorderPane.alignment="CENTER" />
+      <Separator orientation="VERTICAL" prefHeight="321.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
    </right>
-   <bottom>
-      <ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="58.0" prefWidth="520.0" BorderPane.alignment="CENTER">
-        <buttons>
-          <Button mnemonicParsing="false" text="CREATE" />
-            <Button mnemonicParsing="false" text="DELETE" />
-            <Button alignment="CENTER" mnemonicParsing="false" text="EDIT" />
-            <MenuButton mnemonicParsing="false" text="SHOW">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Students" />
-                <MenuItem mnemonicParsing="false" text="Teachers" />
-                  <MenuItem mnemonicParsing="false" text="Lectures" />
-                  <MenuItem mnemonicParsing="false" text="Exams" />
-              </items>
-            </MenuButton>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Back to Main" />
-        </buttons>
-         <padding>
-            <Insets right="20.0" />
-         </padding>
-      </ButtonBar>
-   </bottom>
    <top>
-      <Label prefHeight="49.0" prefWidth="63.0" text="Admin" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="106.0" text="Student" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </top>
+   <bottom>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Separator prefWidth="200.0" />
+         </children>
+      </GridPane>
+   </bottom>
+   <center>
+      <TableView fx:id="tableView" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="ID" />
+          <TableColumn fx:id="columnFirstName" prefWidth="68.0" text="Title" />
+            <TableColumn fx:id="columnLastName" prefWidth="123.0" text="First Name" />
+            <TableColumn fx:id="columnAddress" prefWidth="119.0" text="Last Name" />
+            <TableColumn fx:id="columnPhone" prefWidth="121.0" text="Birthdate" />
+            <TableColumn fx:id="columnPhone1" prefWidth="55.0" text="Gender" />
+            <TableColumn fx:id="columnPhone11" prefWidth="201.0" text="Address" />
+            <TableColumn fx:id="columnPhone111" prefWidth="68.0" text="zip_code" />
+            <TableColumn fx:id="columnPhone1111" prefWidth="122.0" text="phone" />
+            <TableColumn fx:id="columnPhone11111" prefWidth="105.0" text="Email" />
+            <TableColumn fx:id="columnPhone111111" prefWidth="73.0" text="Gruppe" />
+            <TableColumn fx:id="columnPhone1111111" prefWidth="136.0" text="Status" />
+        </columns>
+      </TableView>
+   </center>
 </BorderPane>
