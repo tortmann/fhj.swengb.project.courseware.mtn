@@ -131,9 +131,10 @@ object JfxUtils {
 
 }
 
-object DataSource {
-
-  var data = Student.fromDb(Student.queryAll(Db.Con))
+object DataSourceStudent {
+  val con = Db.Con
+  var data = Student.fromDb(Student.queryAll(con))
+  con.close()
 
 }
 
@@ -159,7 +160,7 @@ class TableViewStudentAppController extends Initializable {
   @FXML var columnGroup: StudentTC[String] = _
   @FXML var columnStatus: StudentTC[Int] = _
 
-  val mutableStudents = mkObservableList(DataSource.data.map(MutableStudent(_)))
+  val mutableStudents = mkObservableList(DataSourceStudent.data.map(MutableStudent(_)))
 
   def initTableViewColumn[T]: (StudentTC[T], (MutableStudent) => Any) => Unit =
     initTableViewColumnCellValueFactory[MutableStudent, T]
