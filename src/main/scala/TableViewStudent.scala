@@ -1,141 +1,184 @@
-  import javafx.application.Application
-  import javafx.fxml.{Initializable, FXMLLoader}
-  import javafx.stage.Stage
-  import java.net.URL
-  import java.util.ResourceBundle
-  import javafx.beans.property.{SimpleDoubleProperty, SimpleIntegerProperty, SimpleStringProperty}
-  import javafx.beans.value.ObservableValue
-  import javafx.collections.{FXCollections, ObservableList}
-  import javafx.fxml._
-  import javafx.scene.control.{TableColumn, TableView}
-  import javafx.scene.{Parent, Scene}
-  import javafx.util.Callback
-  import scala.collection.JavaConversions
-  import scala.util.Random
-  import scala.util.control.NonFatal
+import javafx.application.Application
+import javafx.fxml.{Initializable, FXMLLoader}
+import javafx.stage.Stage
+import java.net.URL
+import java.util.ResourceBundle
+import javafx.beans.property.{SimpleDoubleProperty, SimpleIntegerProperty, SimpleStringProperty}
+import javafx.beans.value.ObservableValue
+import javafx.collections.{FXCollections, ObservableList}
+import javafx.fxml._
+import javafx.scene.control.{TableColumn, TableView}
+import javafx.scene.{Parent, Scene}
+import javafx.util.Callback
+import scala.collection.JavaConversions
+import scala.util.Random
+import scala.util.control.NonFatal
 
-  object TableViewStudent {
-    def main(args: Array[String]) {
-      Application.launch(classOf[TableViewStudentApp], args: _*)
-    }
-
+object TableViewStudent {
+  def main(args: Array[String]) {
+    Application.launch(classOf[TableViewStudentApp], args: _*)
   }
-  class TableViewStudentApp extends javafx.application.Application {
 
-    val fxmlMain = "/fxml/TableViewStudent.fxml"
-    val cssMain = "/css/MainMenu.css"
+}
+class TableViewStudentApp extends javafx.application.Application {
 
-    val loader = new FXMLLoader(getClass.getResource(fxmlMain))
+  val fxmlMain = "/fxml/TableViewStudent.fxml"
+  val cssMain = "/css/MainMenu.css"
 
-    def setSkin(stage: Stage, fxml: String, css: String): Boolean = {
-      val scene = new Scene(loader.load[Parent]())
+  val loader = new FXMLLoader(getClass.getResource(fxmlMain))
+
+  def setSkin(stage: Stage, fxml: String, css: String): Boolean = {
+    val scene = new Scene(loader.load[Parent]())
+    stage.setScene(scene)
+    stage.getScene.getStylesheets.clear()
+    stage.getScene.getStylesheets.add(css)
+  }
+
+  override def start(stage: Stage): Unit =
+    try {
+      stage.setTitle("Student Database")
+      loader.load[Parent]() // side effect
+      val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
-      stage.getScene.getStylesheets.clear()
-      stage.getScene.getStylesheets.add(css)
+      stage.getScene.getStylesheets.add(cssMain)
+      stage.show()
+    } catch {
+      case NonFatal(e) => e.printStackTrace()
     }
 
-    override def start(stage: Stage): Unit =
-      try {
-        stage.setTitle("Student Database")
-        loader.load[Parent]() // side effect
-        val scene = new Scene(loader.getRoot[Parent])
-        stage.setScene(scene)
-        stage.getScene.getStylesheets.add(cssMain)
-        stage.show()
-      } catch {
-        case NonFatal(e) => e.printStackTrace()
-      }
+}
 
+class MutableStudent {
+
+  val idProperty: SimpleStringProperty = new SimpleStringProperty()
+  val titleProperty: SimpleStringProperty = new SimpleStringProperty()
+  val firstnameProperty: SimpleStringProperty = new SimpleStringProperty()
+  val lastnameProperty: SimpleStringProperty = new SimpleStringProperty()
+  val birthdateProperty: SimpleStringProperty = new SimpleStringProperty()
+  val genderProperty: SimpleStringProperty = new SimpleStringProperty()
+  val addressProperty: SimpleStringProperty = new SimpleStringProperty()
+  val zipProperty: SimpleStringProperty = new SimpleStringProperty()
+  val phoneProperty: SimpleStringProperty = new SimpleStringProperty()
+  val emailProperty: SimpleStringProperty = new SimpleStringProperty()
+  val groupProperty: SimpleStringProperty = new SimpleStringProperty()
+  val statusProperty: SimpleIntegerProperty = new SimpleIntegerProperty()
+
+  def setId(id: String) = idProperty.set(id)
+
+  def setTitle(title: String) = titleProperty.set(title)
+
+  def setFirstname(firstname: String) = firstnameProperty.set(firstname)
+
+  def setLastname(lastname: String) = lastnameProperty.set(lastname)
+
+  def setBirthdate(birthdate: String) = birthdateProperty.set(birthdate)
+
+  def setGender(gender: String) = genderProperty.set(gender)
+
+  def setAddress(address: String) = addressProperty.set(address)
+
+  def setZip(zip: String) = zipProperty.set(zip)
+
+  def setPhone(phone: String) = phoneProperty.set(phone)
+
+  def setEmail(email: String) = emailProperty.set(email)
+
+  def setGroup(group: String) = groupProperty.set(group)
+
+  def setStatus(status: Int) = statusProperty.set(status)
+}
+
+object MutableStudent {
+
+  def apply(s: Student): MutableStudent = {
+    val ms = new MutableStudent
+    ms.setId(s.id)
+    ms.setTitle(s.title)
+    ms.setFirstname(s.firstname)
+    ms.setLastname(s.lastname)
+    ms.setBirthdate(s.birthdate.toString)
+    ms.setGender(s.gender)
+    ms.setAddress(s.address)
+    ms.setZip(s.zip)
+    ms.setPhone(s.phone)
+    ms.setEmail(s.email)
+    ms.setGroup(s.group)
+    ms.setStatus(s.status)
+    ms
+  }
+}
+
+object JfxUtils {
+
+  type TCDF[S, T] = TableColumn.CellDataFeatures[S, T]
+
+  import JavaConversions._
+
+  def mkObservableList[T](collection: Iterable[T]): ObservableList[T] = {
+    FXCollections.observableList(new java.util.ArrayList[T](collection))
   }
 
-  case class Article(id: Int, name: String, price: Double)
-
-  class MutableArticle {
-
-    val idProperty: SimpleIntegerProperty = new SimpleIntegerProperty()
-    val nameProperty: SimpleStringProperty = new SimpleStringProperty()
-    val priceProperty: SimpleDoubleProperty = new SimpleDoubleProperty()
-
-    def setId(id: Int) = idProperty.set(id)
-
-    def setName(name: String) = nameProperty.set(name)
-
-    def setPrice(price: Double) = priceProperty.set(price)
+  private def mkCellValueFactory[S, T](fn: TCDF[S, T] => ObservableValue[T]): Callback[TCDF[S, T], ObservableValue[T]] = {
+    new Callback[TCDF[S, T], ObservableValue[T]] {
+      def call(cdf: TCDF[S, T]): ObservableValue[T] = fn(cdf)
+    }
   }
 
-  object MutableArticle {
-
-    def apply(a: Article): MutableArticle = {
-      val ma = new MutableArticle
-      ma.setId(a.id)
-      ma.setName(a.name)
-      ma.setPrice(a.price)
-      ma
-    }
-
+  def initTableViewColumnCellValueFactory[S, T](tc: TableColumn[S, T], f: S => Any): Unit = {
+    tc.setCellValueFactory(mkCellValueFactory(cdf => f(cdf.getValue).asInstanceOf[ObservableValue[T]]))
   }
 
-  object JfxUtils {
+}
 
-    type TCDF[S, T] = TableColumn.CellDataFeatures[S, T]
+object DataSource {
 
-    import JavaConversions._
+  var data = Student.fromDb(Student.queryAll(Db.Con))
 
-    def mkObservableList[T](collection: Iterable[T]): ObservableList[T] = {
-      FXCollections.observableList(new java.util.ArrayList[T](collection))
-    }
+}
 
-    private def mkCellValueFactory[S, T](fn: TCDF[S, T] => ObservableValue[T]): Callback[TCDF[S, T], ObservableValue[T]] = {
-      new Callback[TCDF[S, T], ObservableValue[T]] {
-        def call(cdf: TCDF[S, T]): ObservableValue[T] = fn(cdf)
-      }
-    }
+class TableViewStudentAppController extends Initializable {
 
-    def initTableViewColumnCellValueFactory[S, T](tc: TableColumn[S, T], f: S => Any): Unit = {
-      tc.setCellValueFactory(mkCellValueFactory(cdf => f(cdf.getValue).asInstanceOf[ObservableValue[T]]))
-    }
+  import JfxUtils._
 
+  type StudentTC[T] = TableColumn[MutableStudent, T]
+
+  @FXML var tableView: TableView[MutableStudent] = _
+
+  @FXML var columnId: StudentTC[String] = _
+  @FXML var columnTitle: StudentTC[String] = _
+  @FXML var columnFirstName: StudentTC[String] = _
+  @FXML var columnLastName: StudentTC[String] = _
+  @FXML var columnBirthdate: StudentTC[String] = _
+  @FXML var columnGender: StudentTC[String] = _
+  @FXML var columnAddress: StudentTC[String] = _
+  @FXML var columnZipcode: StudentTC[String] = _
+  @FXML var columnPhone: StudentTC[String] = _
+  @FXML var columnEmail: StudentTC[String] = _
+  @FXML var columnGroup: StudentTC[String] = _
+  @FXML var columnStatus: StudentTC[Int] = _
+
+  val mutableStudents = mkObservableList(DataSource.data.map(MutableStudent(_)))
+
+  def initTableViewColumn[T]: (StudentTC[T], (MutableStudent) => Any) => Unit =
+    initTableViewColumnCellValueFactory[MutableStudent, T]
+
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+
+    tableView.setItems(mutableStudents)
+
+    initTableViewColumn[String](columnId, _.idProperty)
+    initTableViewColumn[String](columnTitle, _.titleProperty)
+    initTableViewColumn[String](columnFirstName, _.firstnameProperty)
+    initTableViewColumn[String](columnLastName, _.lastnameProperty)
+    initTableViewColumn[String](columnBirthdate, _.birthdateProperty)
+    initTableViewColumn[String](columnGender, _.genderProperty)
+    initTableViewColumn[String](columnAddress, _.addressProperty)
+    initTableViewColumn[String](columnZipcode, _.zipProperty)
+    initTableViewColumn[String](columnPhone, _.phoneProperty)
+    initTableViewColumn[String](columnEmail, _.emailProperty)
+    initTableViewColumn[String](columnGroup, _.groupProperty)
+    initTableViewColumn[Int](columnStatus, _.statusProperty)
   }
-
-  object DataSource {
-
-    val data =
-      (1 to 100) map {
-        case i => Article(i, s"dummy entry", Random.nextDouble() * i)
-      }
-
-  }
-
-  class TableViewStudentAppController extends Initializable {
-
-    import JfxUtils._
-
-    type ArticleTC[T] = TableColumn[MutableArticle, T]
-
-    @FXML var tableView: TableView[MutableArticle] = _
-
-    @FXML var columnId: ArticleTC[Int] = _
-    @FXML var columnFirstName: ArticleTC[String] = _
-    @FXML var columnLastName: ArticleTC[String] = _
-    @FXML var columnAddress: ArticleTC[String] = _
-    @FXML var columnPhone: ArticleTC[String] = _
-
-    val mutableArticles = mkObservableList(DataSource.data.map(MutableArticle(_)))
-
-    def initTableViewColumn[T]: (ArticleTC[T], (MutableArticle) => Any) => Unit =
-      initTableViewColumnCellValueFactory[MutableArticle, T]
-
-    override def initialize(location: URL, resources: ResourceBundle): Unit = {
-
-      tableView.setItems(mutableArticles)
-
-      initTableViewColumn[Int](columnId, _.idProperty)
-      initTableViewColumn[String](columnFirstName, _.nameProperty)
-      initTableViewColumn[String](columnLastName, _.nameProperty)
-      initTableViewColumn[String](columnAddress, _.nameProperty)
-      initTableViewColumn[String](columnPhone, _.nameProperty)
-
-    }
 
 
 }
