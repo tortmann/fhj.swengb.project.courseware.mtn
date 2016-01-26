@@ -55,7 +55,8 @@ class MainMenuAppController extends Initializable {
       val stage = new Stage
       stage.setTitle("Courseware")
       fxmlLoader.load[Parent]()
-      stage.setScene(new Scene(fxmlLoader.getRoot[Parent]))
+      val scene = new Scene(fxmlLoader.getRoot[Parent])
+      stage.setScene(scene)
       stage.getScene.getStylesheets.add(css)
       stage.show()
     } catch {
@@ -68,4 +69,4 @@ class MainMenuAppController extends Initializable {
   def subMenuTeacher(): Unit = {openWindow(loadTeacher, cssMain)}
 
 }
-//test
+
