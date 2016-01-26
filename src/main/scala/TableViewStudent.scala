@@ -193,7 +193,7 @@ class TableViewStudentAppController extends Initializable {
   def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
     try {
       val stage = new Stage
-      stage.setTitle("Courseware")
+      stage.setTitle("Student")
       fxmlLoader.load[Parent]()
       val scene = new Scene(fxmlLoader.getRoot[Parent])
       stage.setScene(scene)
