@@ -51,14 +51,16 @@ class MainMenuAppController extends Initializable {
   val loadTeacher = new FXMLLoader(getClass.getResource(fxmlLectureEvent))
 
   def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
-
-      val stage = new Stage()
+    try {
+      val stage = new Stage
       stage.setTitle("Courseware")
-      loadStudent.load[Parent]()
+      fxmlLoader.load[Parent]()
+      stage.setScene(new Scene(fxmlLoader.getRoot[Parent]))
       stage.getScene.getStylesheets.add(css)
-      stage.setScene(new Scene(loadStudent.getRoot[Parent]))
       stage.show()
-
+    } catch {
+      case NonFatal(e) => e.printStackTrace()
+    }
   }
 
   def exit(): Unit = sys.exit()
