@@ -202,7 +202,7 @@ class TableViewStudentAppController extends Initializable {
     }
   }
 
-  def exit(): Unit = window.getScene.getWindow.hide()
+  //def exit(): Unit = window.getScene.getWindow.hide()
   def Create(): Unit = {openWindow(loadCreateStudent, cssMain)}
 
 
