@@ -120,17 +120,14 @@ object Courseware {
 
     val a = Assessment("Prüfung", 120, "SWENGB", "")
     Assessment.toDb(connection)(a)
-*/
-
-
-    //val date = new java.sql.Date(1985,1,1)
-    //val t = new Teacher("LE-00011", "", "Klemens", "Konopasek", date, "m", "Knoppers Strasse 1", "8010", "", "", "internal")
-
 
 
 
     Teacher.delFromDb(connection)("LE-00011")
     connection.close()
+
+   */
+
   }
 
 }
