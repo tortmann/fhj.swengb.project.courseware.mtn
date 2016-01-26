@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1284.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewStudentAppController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewStudentAppController">
    <right>
       <Separator orientation="VERTICAL" prefHeight="321.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
    </right>
@@ -19,13 +20,20 @@
    <bottom>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Separator prefWidth="200.0" />
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-500.0">
+              <buttons>
+                <Button mnemonicParsing="false" onAction="#Create" text="Create" />
+                  <Button mnemonicParsing="false" onAction="#exit" text="Edit" />
+                  <Button mnemonicParsing="false" text="Delete" />
+                  <Button mnemonicParsing="false" text="Report" />
+              </buttons>
+            </ButtonBar>
          </children>
       </GridPane>
    </bottom>
