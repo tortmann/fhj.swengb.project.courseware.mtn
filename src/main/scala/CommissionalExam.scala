@@ -20,7 +20,7 @@ object CommissionalExam extends Db.DbEntity[CommissionalExam] {
 
   def fromDb(rs: ResultSet): List[CommissionalExam] = {
     val lb : ListBuffer[CommissionalExam] = new ListBuffer[CommissionalExam]()
-    while (rs.next()) lb.append(CommissionalExam(rs.getInt("comm_exam_id"), rs.getString("comm_pers1"),
+    while (rs.next()) lb.append(CommissionalExam(rs.getString("comm_pers1"),
                                                  rs.getString("comm_pers2"), rs.getString("comm_pers3"),
                                                  rs.getString("lecture"), rs.getDate("date_start"),
                                                  rs.getDate("date_end"), rs.getString("details"), rs.getInt("mark"),
@@ -37,7 +37,7 @@ object CommissionalExam extends Db.DbEntity[CommissionalExam] {
 
 
 
-case class CommissionalExam(id:Int, pers1:String, pers2:String, pers3:String, lecture:String, from:Date, to:Date,
+case class CommissionalExam(pers1:String, pers2:String, pers3:String, lecture:String, from:Date, to:Date,
                             details:String, mark:Int, student:String) extends Db.DbEntity[CommissionalExam] {
 
   def toDb(c: Connection)(ce: CommissionalExam) : Int = 0

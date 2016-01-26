@@ -15,7 +15,7 @@ object Assessment extends Db.DbEntity[Assessment] {
 
   def fromDb(rs: ResultSet): List[Assessment] = {
     val lb : ListBuffer[Assessment] = new ListBuffer[Assessment]()
-    while (rs.next()) lb.append(Assessment(rs.getInt("assessment_id"), rs.getString("type"), rs.getInt("duration"),
+    while (rs.next()) lb.append(Assessment(rs.getString("type"), rs.getInt("duration"),
                                            rs.getString("lecture"), rs.getString("description")))
     lb.toList
   }
@@ -28,7 +28,7 @@ object Assessment extends Db.DbEntity[Assessment] {
 
 
 
-case class Assessment(id:Int, atype:String, duration:Int, lecture:String, description:String) extends Db.DbEntity[Assessment] {
+case class Assessment(atype:String, duration:Int, lecture:String, description:String) extends Db.DbEntity[Assessment] {
 
   def toDb(c: Connection)(a: Assessment) : Int = 0
 
