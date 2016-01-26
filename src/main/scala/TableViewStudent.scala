@@ -144,7 +144,6 @@ class TableViewStudentAppController extends Initializable {
 
   type StudentTC[T] = TableColumn[MutableStudent, T]
 
-  @FXML var window:BorderPane = _
   @FXML var tableView: TableView[MutableStudent] = _
 
   @FXML var columnId: StudentTC[String] = _
