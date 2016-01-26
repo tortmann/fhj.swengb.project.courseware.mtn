@@ -120,11 +120,14 @@ object Courseware {
 
     val a = Assessment("Prüfung", 120, "SWENGB", "")
     Assessment.toDb(connection)(a)
-*/
+
 
 
     Teacher.delFromDb(connection)("LE-00011")
     connection.close()
+
+   */
+
   }
 
 }

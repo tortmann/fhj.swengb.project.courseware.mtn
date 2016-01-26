@@ -22,6 +22,7 @@ object Teacher extends Db.DbEntity[Teacher] {
 
   def delFromDb(c: Connection)(prop: String) : Int = {
     val pstmt = c.prepareStatement(deleteSql + prop + "'")
+
     pstmt.executeUpdate()
   }
 
