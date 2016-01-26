@@ -55,7 +55,6 @@ class MainMenuAppController extends Initializable {
   val loadSubMenuStudent = new FXMLLoader(getClass.getResource(fxmlSubMenuStudent))
   val loadSubMenuTeacher = new FXMLLoader(getClass.getResource(fxmlSubMenuTeacher))
 
-
   def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
     try {
       val stage = new Stage
