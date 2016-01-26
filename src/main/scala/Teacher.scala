@@ -20,6 +20,12 @@ object Teacher extends Db.DbEntity[Teacher] {
     pstmt.executeUpdate()
   }
 
+  def delFromDb(c: Connection)(t: Teacher) : Int = {
+    val pstmt = c.prepareStatement(deleteSql)
+    pstmt.setString(1, t.id)
+    pstmt.executeUpdate()
+  }
+
   def fromDb(rs: ResultSet): List[Teacher] = {
     val lb : ListBuffer[Teacher] = new ListBuffer[Teacher]()
     while (rs.next()) lb.append(Teacher(rs.getString("teacher_id"), rs.getString("title"), rs.getString("firstname"),
@@ -32,7 +38,7 @@ object Teacher extends Db.DbEntity[Teacher] {
   def insertSql: String = "insert into dbo.teacher (teacher_id, title, firstname, lastname, birthdate, gender," +
                           "address, zip_code, phone, e_mail, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
-  def deleteSql(con: Connection)(prop: String): ResultSet = query(con)("delete from dbo.teacher where teacher_id = " + prop)
+  def deleteSql: String = ("delete from dbo.teacher where teacher_id = '?'")
 
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.teacher")
 }

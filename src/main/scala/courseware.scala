@@ -1,5 +1,7 @@
+import java.text.{DateFormat, SimpleDateFormat}
+
 import scala.util.Try
-import java.sql.{Connection, DriverManager, ResultSet, Statement}
+import java.sql._
 
 
 
@@ -122,7 +124,11 @@ object Courseware {
     Assessment.toDb(connection)(a)
 */
 
-    Teacher.deleteSql(connection)("LE-00001")
+
+    val date = new java.sql.Date(1985,1,1)
+    val t:Teacher = new Teacher("LE-00011", "", "Klemens", "Konopasek", date, "m", "Knoppers Strasse 1", "8010", "", "", "internal")
+
+    Teacher.delFromDb(connection)(t)
     connection.close()
   }
 
