@@ -48,7 +48,9 @@
 
   }
 
-  case class Article(id: Int, name: String, price: Double)
+  case class Student(id:String, title:String, firstname:String, lastname:String, birthdate:Date, gender:String,
+                     address:String, zip:String, phone:String, email:String, group:String,
+                     status:Int)
 
   class MutableArticle {
 
@@ -65,7 +67,7 @@
 
   object MutableArticle {
 
-    def apply(a: Article): MutableArticle = {
+    def apply(a: Student): MutableArticle = {
       val ma = new MutableArticle
       ma.setId(a.id)
       ma.setName(a.name)

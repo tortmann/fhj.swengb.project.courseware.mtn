@@ -114,11 +114,15 @@ object Courseware {
     Lecture.toDb(connection)(l)
     */
 
-    for (t <- Lecture.fromDb(Lecture.queryAll(connection))) {
+    for (t <- Assessment.fromDb(Assessment.queryAll(connection))) {
       println(t)}
 
 
-    val a = Assessment(id:Int, atype:String, duration:Int, lecture:String, description:String)
+    val a = Assessment("Prüfung",120,"SWENGB","")
+    Assessment.toDb(connection)(a)
+
+    for (t <- Assessment.fromDb(Assessment.queryAll(connection))) {
+      println(t)}
 
   }
 
