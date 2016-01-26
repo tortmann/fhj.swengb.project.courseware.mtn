@@ -48,31 +48,64 @@
 
   }
 
-  case class Article(id: Int, name: String, price: Double)
+  class MutableStudent {
 
-  class MutableArticle {
+    val idProperty: SimpleStringProperty = new SimpleStringProperty()
+    val titleProperty: SimpleStringProperty = new SimpleStringProperty()
+    val firstnameProperty: SimpleStringProperty = new SimpleStringProperty()
+    val lastnameProperty: SimpleStringProperty = new SimpleStringProperty()
+    val birthdateProperty: SimpleStringProperty = new SimpleStringProperty()
+    val genderProperty: SimpleStringProperty = new SimpleStringProperty()
+    val addressProperty: SimpleStringProperty = new SimpleStringProperty()
+    val zipProperty: SimpleStringProperty = new SimpleStringProperty()
+    val phoneProperty: SimpleStringProperty = new SimpleStringProperty()
+    val emailProperty: SimpleStringProperty = new SimpleStringProperty()
+    val groupProperty: SimpleStringProperty = new SimpleStringProperty()
+    val statusProperty: SimpleIntegerProperty = new SimpleIntegerProperty()
 
-    val idProperty: SimpleIntegerProperty = new SimpleIntegerProperty()
-    val nameProperty: SimpleStringProperty = new SimpleStringProperty()
-    val priceProperty: SimpleDoubleProperty = new SimpleDoubleProperty()
+    def setId(id: String) = idProperty.set(id)
 
-    def setId(id: Int) = idProperty.set(id)
+    def setTitle(title: String) = titleProperty.set(title)
 
-    def setName(name: String) = nameProperty.set(name)
+    def setFirstname(firstname: String) = firstnameProperty.set(firstname)
 
-    def setPrice(price: Double) = priceProperty.set(price)
+    def setLastname(lastname: String) = lastnameProperty.set(lastname)
+
+    def setBirthdate(birthdate: String) = birthdateProperty.set(birthdate)
+
+    def setGender(gender: String) = genderProperty.set(gender)
+
+    def setAddress(address: String) = addressProperty.set(address)
+
+    def setZip(zip: String) = zipProperty.set(zip)
+
+    def setPhone(phone: String) = phoneProperty.set(phone)
+
+    def setEmail(email: String) = emailProperty.set(email)
+
+    def setGroup(group: String) = groupProperty.set(group)
+
+    def setStatus(status: Int) = statusProperty.set(status)
   }
 
-  object MutableArticle {
+  object MutableStudent {
 
-    def apply(a: Article): MutableArticle = {
-      val ma = new MutableArticle
-      ma.setId(a.id)
-      ma.setName(a.name)
-      ma.setPrice(a.price)
-      ma
+    def apply(s: Student): MutableStudent = {
+      val ms = new MutableStudent
+      ms.setId(s.id)
+      ms.setTitle(s.title)
+      ms.setFirstname(s.firstname)
+      ms.setLastname(s.lastname)
+      ms.setBirthdate(s.birthdate.toString)
+      ms.setGender(s.gender)
+      ms.setAddress(s.address)
+      ms.setZip(s.zip)
+      ms.setPhone(s.phone)
+      ms.setEmail(s.email)
+      ms.setGroup(s.group)
+      ms.setStatus(s.status)
+      ms
     }
-
   }
 
   object JfxUtils {
@@ -99,10 +132,7 @@
 
   object DataSource {
 
-    val data =
-      (1 to 100) map {
-        case i => Article(i, s"dummy entry", Random.nextDouble() * i)
-      }
+    var data = Student.fromDb(Student.queryAll(Db.Con))
 
   }
 
@@ -110,31 +140,44 @@
 
     import JfxUtils._
 
-    type ArticleTC[T] = TableColumn[MutableArticle, T]
+    type StudentTC[T] = TableColumn[MutableStudent, T]
 
-    @FXML var tableView: TableView[MutableArticle] = _
+    @FXML var tableView: TableView[MutableStudent] = _
 
-    @FXML var columnId: ArticleTC[Int] = _
-    @FXML var columnFirstName: ArticleTC[String] = _
-    @FXML var columnLastName: ArticleTC[String] = _
-    @FXML var columnAddress: ArticleTC[String] = _
-    @FXML var columnPhone: ArticleTC[String] = _
+    @FXML var columnId: StudentTC[String] = _
+    @FXML var columnTitle: StudentTC[String] = _
+    @FXML var columnFirstName: StudentTC[String] = _
+    @FXML var columnLastName: StudentTC[String] = _
+    @FXML var columnBirthdate: StudentTC[String] = _
+    @FXML var columnGender: StudentTC[String] = _
+    @FXML var columnAddress: StudentTC[String] = _
+    @FXML var columnZipcode: StudentTC[String] = _
+    @FXML var columnPhone: StudentTC[String] = _
+    @FXML var columnEmail: StudentTC[String] = _
+    @FXML var columnGroup: StudentTC[String] = _
+    @FXML var columnStatus: StudentTC[Int] = _
 
-    val mutableArticles = mkObservableList(DataSource.data.map(MutableArticle(_)))
+    val mutableStudents = mkObservableList(DataSource.data.map(MutableStudent(_)))
 
-    def initTableViewColumn[T]: (ArticleTC[T], (MutableArticle) => Any) => Unit =
-      initTableViewColumnCellValueFactory[MutableArticle, T]
+    def initTableViewColumn[T]: (StudentTC[T], (MutableStudent) => Any) => Unit =
+      initTableViewColumnCellValueFactory[MutableStudent, T]
 
     override def initialize(location: URL, resources: ResourceBundle): Unit = {
 
-      tableView.setItems(mutableArticles)
+      tableView.setItems(mutableStudents)
 
-      initTableViewColumn[Int](columnId, _.idProperty)
-      initTableViewColumn[String](columnFirstName, _.nameProperty)
-      initTableViewColumn[String](columnLastName, _.nameProperty)
-      initTableViewColumn[String](columnAddress, _.nameProperty)
-      initTableViewColumn[String](columnPhone, _.nameProperty)
-
+      initTableViewColumn[String](columnId, _.idProperty)
+      initTableViewColumn[String](columnTitle, _.titleProperty)
+      initTableViewColumn[String](columnFirstName, _.firstnameProperty)
+      initTableViewColumn[String](columnLastName, _.lastnameProperty)
+      initTableViewColumn[String](columnBirthdate, _.birthdateProperty)
+      initTableViewColumn[String](columnGender, _.genderProperty)
+      initTableViewColumn[String](columnAddress, _.addressProperty)
+      initTableViewColumn[String](columnZipcode, _.zipProperty)
+      initTableViewColumn[String](columnPhone, _.phoneProperty)
+      initTableViewColumn[String](columnEmail, _.emailProperty)
+      initTableViewColumn[String](columnGroup, _.groupProperty)
+      initTableViewColumn[Int](columnStatus, _.statusProperty)
     }
 
 

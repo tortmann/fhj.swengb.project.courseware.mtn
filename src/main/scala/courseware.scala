@@ -40,7 +40,22 @@ object Db {
      * sql code for inserting an entity.
      */
     def insertSql: String
+  }
 
+  def Con: Connection = {
+      val driver = "com.microsoft.jdbc.sqlserver.SQLServerDriver"
+      val url = "jdbc:microsoft:sqlserver://10.25.2.143:1433;databaseName=daent_g1;"
+      val username = "wagm"
+      val password = "wagenede14"
+
+
+
+      // Connection --> NULL setzen
+      var connection: Connection = null
+
+      Class.forName(driver)
+      connection = DriverManager.getConnection(url, username, password)
+      connection
   }
 }
 
@@ -118,7 +133,8 @@ object Courseware {
       println(t)}
 
 
-    val a = Assessment(id:Int, atype:String, duration:Int, lecture:String, description:String)
+    val a = Assessment("Prüfung", 120, "SWENGB", "")
+    Assessment.toDb(connection)(a)
 
   }
 
