@@ -38,21 +38,21 @@
       </GridPane>
    </bottom>
    <center>
-      <TableView fx:id="tableView" prefHeight="360.0" prefWidth="1008.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="ID" />
-          <TableColumn fx:id="columnFirstName" prefWidth="68.0" text="Title" />
-            <TableColumn fx:id="columnLastName" prefWidth="123.0" text="First Name" />
-            <TableColumn fx:id="columnAddress" prefWidth="119.0" text="Last Name" />
-            <TableColumn fx:id="columnPhone" prefWidth="121.0" text="Birthdate" />
-            <TableColumn fx:id="columnPhone1" prefWidth="55.0" text="Gender" />
-            <TableColumn fx:id="columnPhone11" prefWidth="201.0" text="Address" />
-            <TableColumn fx:id="columnPhone111" prefWidth="68.0" text="ZIP code" />
-            <TableColumn fx:id="columnPhone1111" prefWidth="122.0" text="Phone" />
-            <TableColumn fx:id="columnPhone11111" prefWidth="105.0" text="Email" />
-            <TableColumn fx:id="columnPhone111111" prefWidth="73.0" text="Group" />
-            <TableColumn fx:id="columnPhone1111111" prefWidth="136.0" text="Status" />
-        </columns>
-      </TableView>
+       <TableView fx:id="tableView" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
+           <columns>
+               <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="ID" />
+               <TableColumn fx:id="columnTitle" prefWidth="68.0" text="Title" />
+               <TableColumn fx:id="columnFirstName" prefWidth="123.0" text="First Name" />
+               <TableColumn fx:id="columnLastName" prefWidth="119.0" text="Last Name" />
+               <TableColumn fx:id="columnBirthdate" prefWidth="121.0" text="Birthdate" />
+               <TableColumn fx:id="columnGender" prefWidth="55.0" text="Gender" />
+               <TableColumn fx:id="columnAddress" prefWidth="201.0" text="Address" />
+               <TableColumn fx:id="columnZipcode" prefWidth="68.0" text="ZIP CODE" />
+               <TableColumn fx:id="columnPhone" prefWidth="122.0" text="phone" />
+               <TableColumn fx:id="columnEmail" prefWidth="105.0" text="Email" />
+               <TableColumn fx:id="columnGroup" prefWidth="73.0" text="Group" />
+               <TableColumn fx:id="columnStatus" prefWidth="136.0" text="Status" />
+           </columns>
+       </TableView>
    </center>
 </BorderPane>

@@ -1,10 +1,9 @@
 import javafx.application.Application
 import javafx.fxml.{Initializable, FXMLLoader}
-import javafx.scene.layout.BorderPane
 import javafx.stage.Stage
 import java.net.URL
 import java.util.ResourceBundle
-import javafx.beans.property.{SimpleDoubleProperty, SimpleIntegerProperty, SimpleStringProperty}
+import javafx.beans.property.{SimpleIntegerProperty, SimpleStringProperty}
 import javafx.beans.value.ObservableValue
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml._
@@ -12,7 +11,6 @@ import javafx.scene.control.{TableColumn, TableView}
 import javafx.scene.{Parent, Scene}
 import javafx.util.Callback
 import scala.collection.JavaConversions
-import scala.util.Random
 import scala.util.control.NonFatal
 
 object TableViewStudent {
@@ -109,7 +107,7 @@ object MutableStudent {
   }
 }
 
-object JfxUtilsStudent {
+object JfxUtils {
 
   type TCDF[S, T] = TableColumn.CellDataFeatures[S, T]
 
@@ -140,7 +138,7 @@ object DataSourceStudent {
 
 class TableViewStudentAppController extends Initializable {
 
-  import JfxUtilsStudent._
+  import JfxUtils._
 
   type StudentTC[T] = TableColumn[MutableStudent, T]
 
@@ -204,6 +202,5 @@ class TableViewStudentAppController extends Initializable {
 
   //def exit(): Unit = window.getScene.getWindow.hide()
   def Create(): Unit = {openWindow(loadCreateStudent, cssMain)}
-
 
 }
