@@ -41,12 +41,12 @@
        <TableView fx:id="tableView" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
            <columns>
                <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="ID" />
-               <TableColumn fx:id="columnTitle" prefWidth="97.0" text="From" />
-               <TableColumn fx:id="columnFirstName" prefWidth="94.0" text="To" />
-               <TableColumn fx:id="columnLastName" prefWidth="119.0" text="Description" />
-               <TableColumn fx:id="columnBirthdate" prefWidth="121.0" text="Lecture" />
-               <TableColumn fx:id="columnGender" prefWidth="96.0" text="Group" />
-               <TableColumn fx:id="columnAddress" prefWidth="160.0" text="Classroom" />
+               <TableColumn fx:id="columnFrom" prefWidth="97.0" text="From" />
+               <TableColumn fx:id="columnTo" prefWidth="94.0" text="To" />
+               <TableColumn fx:id="columnDescription" prefWidth="119.0" text="Description" />
+               <TableColumn fx:id="columnLecture" prefWidth="121.0" text="Lecture" />
+               <TableColumn fx:id="columnGroup" prefWidth="96.0" text="Group" />
+               <TableColumn fx:id="columnClassroom" prefWidth="160.0" text="Classroom" />
            </columns>
        </TableView>
    </center>
