@@ -29,16 +29,16 @@ object Teacher extends Db.DbEntity[Teacher] {
     lb.toList
   }
 
-  def insertSql: String = "insert into dbo.teacher (teacher_id, title, firstname, lastname, birthdate, gender, address, zip_code, phone, e_mail, type)" +
-                          "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+  def insertSql: String = "insert into dbo.teacher (teacher_id, title, firstname, lastname, birthdate, gender," +
+                          "address, zip_code, phone, e_mail, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.teacher")
 }
 
 
 
-case class Teacher(id:String, title:String, firstname:String, lastname:String, birthdate:Date, gender:String, address:String,
-                   zip:String, phone:String, email:String, ttype:String) extends Db.DbEntity[Teacher] {
+case class Teacher(id:String, title:String, firstname:String, lastname:String, birthdate:Date, gender:String,
+                   address:String, zip:String, phone:String, email:String, ttype:String) extends Db.DbEntity[Teacher] {
 
   def toDb(c: Connection)(t: Teacher) : Int = 0
 

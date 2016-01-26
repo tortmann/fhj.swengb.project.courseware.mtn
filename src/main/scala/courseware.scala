@@ -65,7 +65,35 @@ object Courseware {
     connection = DriverManager.getConnection(url, username, password)
 
 
-    for (t <- Teacher.fromDb(Teacher.queryAll(connection))) {
+  /*
+
+  QUERY ALL TABLES
+
+    for (t <- Assessment.fromDb(Assessment.queryAll(connection))) {
+      println(t)
+    }
+
+    for (t <- AssessmentDate.fromDb(AssessmentDate.queryAll(connection))) {
+      println(t)
+    }
+
+    for (t <- AssessmentLogin.fromDb(AssessmentLogin.queryAll(connection))) {
+      println(t)
+    }
+
+    for (t <- Classroom.fromDb(Classroom.queryAll(connection))) {
+      println(t)
+    }
+
+    for (t <- CommissionalExam.fromDb(CommissionalExam.queryAll(connection))) {
+      println(t)
+    }
+
+    for (t <- Lecture.fromDb(Lecture.queryAll(connection))) {
+      println(t)
+    }
+
+    for (t <- LectureEvent.fromDb(LectureEvent.queryAll(connection))) {
       println(t)
     }
 
@@ -73,9 +101,24 @@ object Courseware {
       println(t)
     }
 
-    for (t <- Lecture.fromDb(Lecture.queryAll(connection))) {
+    for (t <- Teacher.fromDb(Teacher.queryAll(connection))) {
       println(t)
     }
+
+  */
+
+    for (t <- Lecture.fromDb(Lecture.queryAll(connection))) {
+      println(t)}
+
+    /*val l = new Lecture("MAXMAX","Maximilian is der coolste", 5.0,"LE-00001","")
+    Lecture.toDb(connection)(l)
+    */
+
+    for (t <- Lecture.fromDb(Lecture.queryAll(connection))) {
+      println(t)}
+
+
+    val a = Assessment(id:Int, atype:String, duration:Int, lecture:String, description:String)
 
   }
 
