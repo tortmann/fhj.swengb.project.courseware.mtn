@@ -126,9 +126,11 @@ object JfxUtils {
 
 }
 
-object DataSource {
+object DataSourceTeacher {
 
-  var data = Teacher.fromDb(Teacher.queryAll(Db.Con))
+  val con = Db.Con
+  var data = Teacher.fromDb(Teacher.queryAll(con))
+  con.close()
 
 }
 
@@ -152,7 +154,7 @@ class TableViewTeacherAppController extends Initializable {
   @FXML var columnEmail: TeacherTC[String] = _
   @FXML var columnTtype: TeacherTC[String] = _
 
-  val mutableTeachers = mkObservableList(DataSource.data.map(MutableTeacher(_)))
+  val mutableTeachers = mkObservableList(DataSourceTeacher.data.map(MutableTeacher(_)))
 
   def initTableViewColumn[T]: (TeacherTC[T], (MutableTeacher) => Any) => Unit =
     initTableViewColumnCellValueFactory[MutableTeacher, T]

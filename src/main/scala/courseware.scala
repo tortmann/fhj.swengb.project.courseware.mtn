@@ -123,7 +123,7 @@ object Courseware {
 */
 
     Teacher.deleteSql(connection)("LE-00001")
-
+    connection.close()
   }
 
 }

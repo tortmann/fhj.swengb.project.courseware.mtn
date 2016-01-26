@@ -112,9 +112,11 @@ object JfxUtils {
 
 }
 
-object DataSource {
+object DataSourceLectureEvent {
 
-  var data = LectureEvent.fromDb(LectureEvent.queryAll(Db.Con))
+  val con = Db.Con
+  var data = LectureEvent.fromDb(LectureEvent.queryAll(con))
+  con.close()
 
 }
 
@@ -135,7 +137,7 @@ class TableViewLectureEventAppController extends Initializable {
   @FXML var columnClassroom: LectureEventTC[String] = _
 
 
-  val mutableLectureEvents = mkObservableList(DataSource.data.map(MutableLectureEvent(_)))
+  val mutableLectureEvents = mkObservableList(DataSourceLectureEvent.data.map(MutableLectureEvent(_)))
 
   def initTableViewColumn[T]: (LectureEventTC[T], (MutableLectureEvent) => Any) => Unit =
     initTableViewColumnCellValueFactory[MutableLectureEvent, T]
