@@ -29,7 +29,7 @@
             <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-500.0">
               <buttons>
                 <Button mnemonicParsing="false" onAction="#Create" text="Create" />
-                  <Button mnemonicParsing="false" onAction="#exit" text="Edit" />
+                  <Button mnemonicParsing="false" text="Edit" />
                   <Button mnemonicParsing="false" text="Delete" />
                   <Button mnemonicParsing="false" text="Report" />
               </buttons>
