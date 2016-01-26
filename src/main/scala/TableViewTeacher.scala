@@ -13,15 +13,16 @@ import javafx.util.Callback
 import scala.collection.JavaConversions
 import scala.util.control.NonFatal
 
-object TableViewStudent {
+object TableViewTeacher {
   def main(args: Array[String]) {
-    Application.launch(classOf[TableViewStudentApp], args: _*)
+    Application.launch(classOf[TableViewLectureEventApp], args: _*)
   }
 
 }
-class TableViewStudentApp extends javafx.application.Application {
 
-  val fxmlMain = "/fxml/TableViewStudent.fxml"
+class TableViewTeacherApp extends javafx.application.Application {
+
+  val fxmlMain = "/fxml/TableViewTeacher.fxml"
   val cssMain = "/css/MainMenu.css"
 
   val loader = new FXMLLoader(getClass.getResource(fxmlMain))
@@ -35,7 +36,7 @@ class TableViewStudentApp extends javafx.application.Application {
 
   override def start(stage: Stage): Unit =
     try {
-      stage.setTitle("Student Database")
+      stage.setTitle("Teacher Database")
       loader.load[Parent]() // side effect
       val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
@@ -47,7 +48,7 @@ class TableViewStudentApp extends javafx.application.Application {
 
 }
 
-class MutableStudent {
+class MutableTeacher {
 
   val idProperty: SimpleStringProperty = new SimpleStringProperty()
   val titleProperty: SimpleStringProperty = new SimpleStringProperty()
@@ -59,8 +60,7 @@ class MutableStudent {
   val zipProperty: SimpleStringProperty = new SimpleStringProperty()
   val phoneProperty: SimpleStringProperty = new SimpleStringProperty()
   val emailProperty: SimpleStringProperty = new SimpleStringProperty()
-  val groupProperty: SimpleStringProperty = new SimpleStringProperty()
-  val statusProperty: SimpleIntegerProperty = new SimpleIntegerProperty()
+  val ttypeProperty: SimpleStringProperty = new SimpleStringProperty()
 
   def setId(id: String) = idProperty.set(id)
 
@@ -82,28 +82,25 @@ class MutableStudent {
 
   def setEmail(email: String) = emailProperty.set(email)
 
-  def setGroup(group: String) = groupProperty.set(group)
-
-  def setStatus(status: Int) = statusProperty.set(status)
+  def setTtype(ttype: String) = ttypeProperty.set(ttype)
 }
 
-object MutableStudent {
+object MutableTeacher {
 
-  def apply(s: Student): MutableStudent = {
-    val ms = new MutableStudent
-    ms.setId(s.id)
-    ms.setTitle(s.title)
-    ms.setFirstname(s.firstname)
-    ms.setLastname(s.lastname)
-    ms.setBirthdate(s.birthdate.toString)
-    ms.setGender(s.gender)
-    ms.setAddress(s.address)
-    ms.setZip(s.zip)
-    ms.setPhone(s.phone)
-    ms.setEmail(s.email)
-    ms.setGroup(s.group)
-    ms.setStatus(s.status)
-    ms
+  def apply(t: Teacher): MutableTeacher = {
+    val mt = new MutableTeacher
+    mt.setId(t.id)
+    mt.setTitle(t.title)
+    mt.setFirstname(t.firstname)
+    mt.setLastname(t.lastname)
+    mt.setBirthdate(t.birthdate.toString)
+    mt.setGender(t.gender)
+    mt.setAddress(t.address)
+    mt.setZip(t.zip)
+    mt.setPhone(t.phone)
+    mt.setEmail(t.email)
+    mt.setTtype(t.ttype)
+    mt
   }
 }
 
@@ -131,39 +128,38 @@ object JfxUtils {
 
 object DataSource {
 
-  var data = Student.fromDb(Student.queryAll(Db.Con))
+  var data = Teacher.fromDb(Teacher.queryAll(Db.Con))
 
 }
 
-class TableViewStudentAppController extends Initializable {
+class TableViewTeacherAppController extends Initializable {
 
   import JfxUtils._
 
-  type StudentTC[T] = TableColumn[MutableStudent, T]
+  type TeacherTC[T] = TableColumn[MutableTeacher, T]
 
-  @FXML var tableView: TableView[MutableStudent] = _
+  @FXML var tableView: TableView[MutableTeacher] = _
 
-  @FXML var columnId: StudentTC[String] = _
-  @FXML var columnTitle: StudentTC[String] = _
-  @FXML var columnFirstName: StudentTC[String] = _
-  @FXML var columnLastName: StudentTC[String] = _
-  @FXML var columnBirthdate: StudentTC[String] = _
-  @FXML var columnGender: StudentTC[String] = _
-  @FXML var columnAddress: StudentTC[String] = _
-  @FXML var columnZipcode: StudentTC[String] = _
-  @FXML var columnPhone: StudentTC[String] = _
-  @FXML var columnEmail: StudentTC[String] = _
-  @FXML var columnGroup: StudentTC[String] = _
-  @FXML var columnStatus: StudentTC[Int] = _
+  @FXML var columnId: TeacherTC[String] = _
+  @FXML var columnTitle: TeacherTC[String] = _
+  @FXML var columnFirstName: TeacherTC[String] = _
+  @FXML var columnLastName: TeacherTC[String] = _
+  @FXML var columnBirthdate: TeacherTC[String] = _
+  @FXML var columnGender: TeacherTC[String] = _
+  @FXML var columnAddress: TeacherTC[String] = _
+  @FXML var columnZipcode: TeacherTC[String] = _
+  @FXML var columnPhone: TeacherTC[String] = _
+  @FXML var columnEmail: TeacherTC[String] = _
+  @FXML var columnTtype: TeacherTC[String] = _
 
-  val mutableStudents = mkObservableList(DataSource.data.map(MutableStudent(_)))
+  val mutableTeachers = mkObservableList(DataSource.data.map(MutableTeacher(_)))
 
-  def initTableViewColumn[T]: (StudentTC[T], (MutableStudent) => Any) => Unit =
-    initTableViewColumnCellValueFactory[MutableStudent, T]
+  def initTableViewColumn[T]: (TeacherTC[T], (MutableTeacher) => Any) => Unit =
+    initTableViewColumnCellValueFactory[MutableTeacher, T]
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
 
-    tableView.setItems(mutableStudents)
+    tableView.setItems(mutableTeachers)
 
     initTableViewColumn[String](columnId, _.idProperty)
     initTableViewColumn[String](columnTitle, _.titleProperty)
@@ -175,9 +171,7 @@ class TableViewStudentAppController extends Initializable {
     initTableViewColumn[String](columnZipcode, _.zipProperty)
     initTableViewColumn[String](columnPhone, _.phoneProperty)
     initTableViewColumn[String](columnEmail, _.emailProperty)
-    initTableViewColumn[String](columnGroup, _.groupProperty)
-    initTableViewColumn[Int](columnStatus, _.statusProperty)
+    initTableViewColumn[String](columnTtype, _.ttypeProperty)
   }
-
 
 }
