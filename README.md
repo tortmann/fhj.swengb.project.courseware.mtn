@@ -39,6 +39,7 @@ ___
 ____
 
 •	At the first three Tables you are able to CREATE, EDIT, DELETE the DB-Entries <br>
+•	Further you can create Reports (for Example an Attandance List of Students, ...) <br>
 •	At the last two Tables you are only able to READ the DB-Entries <br>
 
 ____
@@ -59,6 +60,16 @@ ___
 
 ![Update](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_U_Lecture_Event.png "Update")
 <br> The same for the UPDATE Window 
+
+____
+
+![CommExam](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_CommExam.png "CommExam")
+<br> At the Table Commissional Exam you are allowed to READ the Content, but you can't do anything! 
+
+____
+
+![Report](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_Report.png "Report")
+<br> Here you can see an Example Report of Teachers in the Database 
 
 ____
 
