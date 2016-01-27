@@ -94,7 +94,7 @@ object MutableLectureEvent {
   }
 }
 
-object JfxUtilsle {
+object JfxUtilsLectureEvent {
 
   type TCDF[S, T] = TableColumn.CellDataFeatures[S, T]
 
@@ -120,11 +120,13 @@ object DataSourceLectureEvent {
     val con = Db.Con
     var data = LectureEvent.fromDb(LectureEvent.queryAll(con))
     con.close()
+
+    var lectureevent = new MutableLectureEvent
 }
 
 class TableViewLectureEventAppController extends Initializable {
 
-  import JfxUtilsle._
+  import JfxUtilsLectureEvent._
 
   type LectureEventTC[T] = TableColumn[MutableLectureEvent, T]
 
@@ -185,7 +187,10 @@ class TableViewLectureEventAppController extends Initializable {
 
   def Exit(): Unit = window.getScene.getWindow.hide()
   def Create(): Unit = {openWindow(loadCreateLectureEvent, cssMain)}
-  def Edit(): Unit = {openWindow(loadEditLectureEvent, cssMain )}
+  def Edit(): Unit = {
+    DataSourceLectureEvent.lectureevent = tableView.getSelectionModel().getSelectedItem()
+    openWindow(loadEditLectureEvent, cssMain )
+  }
 
 
   def ButtonClicked(): Unit = {
@@ -206,9 +211,6 @@ class TableViewLectureEventAppController extends Initializable {
     }
   }
 }
-
-
-//ladi
 
 
 
@@ -254,7 +256,7 @@ class CreateLectureEventAppController extends Initializable {
       openWindow(loadLectureEvent, cssMain)
     }
     catch {
-      case e: Exception => errorLabel.setText("Lecture Event could not be created!")
+      case e: Exception => errorLabel.setText("Could not be created!")
     }
   }
 
@@ -274,6 +276,58 @@ class CreateLectureEventAppController extends Initializable {
       stage.show()
     } catch {
       case NonFatal(e) => e.printStackTrace()
+    }
+  }
+}
+
+
+
+
+
+
+
+
+class EditLectureEventAppController extends Initializable {
+
+  @FXML var window:BorderPane = _
+
+  @FXML var id:TextField = _
+  @FXML var from:TextField = _
+  @FXML var to:TextField = _
+  @FXML var description:TextField = _
+  @FXML var lecture:TextField = _
+  @FXML var group:TextField = _
+  @FXML var classroom:TextField = _
+  @FXML var errorLabel:Label = _
+
+  val lectureevent: MutableLectureEvent = DataSourceLectureEvent.lectureevent
+
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+
+    id.setText(lectureevent.idProperty.get())
+    from.setText(lectureevent.fromProperty.get())
+    to.setText(lectureevent.toProperty.get())
+    description.setText(lectureevent.descriptionProperty.get())
+    lecture.setText(lectureevent.lectureProperty.get())
+    group.setText(lectureevent.groupProperty.get())
+    classroom.setText(lectureevent.classroomProperty.get())
+  }
+
+  def Exit(): Unit = window.getScene.getWindow.hide()
+
+  def ButtonEdited(): Unit = {
+    try {
+      val con = Db.Con
+
+      val le = LectureEvent(id.getText(), from.getText(), to.getText(), description.getText(), lecture.getText(),
+                            group.getText(), classroom.getText())
+
+      LectureEvent.editFromDb(con)(le, lectureevent.idProperty.get())
+      con.close()
+      window.getScene.getWindow.hide()
+    }
+    catch {
+      case e: Exception => errorLabel.setText("Could not be edited!")
     }
   }
 }
