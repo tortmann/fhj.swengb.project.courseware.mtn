@@ -22,28 +22,30 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 
 ![MainMenu](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_MainMenu.jpg "MainMenu")
 
-----
+====
 
 •	At the first three Tables you are able to CREATE, EDIT, DELETE the DB-Entries <br>
 •	At the last two Tables you are only able to READ the DB-Entries <br>
 
-----
+====
 
 ![CRUD](https://github.com/NSpalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_CRUD_Lecture_Event.png "CRUD")
 <br> Here you can see the Overview (READ) of one specific Table <br>
 
-----
+====
 ![Create](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_C_Lecture_Event.png "Create")
 <br> Here you can see the Create Window 
 
-----
+====
 
 ![Read_Update](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_RU_Lecture_Event.png "Read_Update")
 <br> To Edit a Lecture Event you click on it and then on the Edit Button and then there appears the following Window! 
 
-----
+====
 
 ![Update](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_U_Lecture_Event.png "Update")
 <br> The same for the UPDATE Window 
 
-====
+----
+test
+===
