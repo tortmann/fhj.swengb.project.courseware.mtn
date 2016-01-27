@@ -27,10 +27,11 @@ object Teacher extends Db.DbEntity[Teacher] {
 
 
   def editFromDb(c: Connection)(t: Teacher, id:String) : Int = {
-    val sql = "update dbo.teacher set teacher_id = '" + t.id + "' set title = '" + t.title + "' set firstname = '" + t.firstname +
-              "' set lastname = '" + t.lastname + "' set birthdate = '" + t.birthdate + "' set gender = '"  + t.gender +
-              "' set address = '" + t.address + "' set zip_code = '" + t.zip + "' set phone = '" + t.phone +
-              "' set e_mail = '" + t.email + "' set type = '" + t.ttype + "'" + "where teacher_id = '" + id +  "'"
+    val sql = "update dbo.teacher set teacher_id = '" + t.id + "' , title = '" + t.title + "' , firstname = '" + t.firstname +
+              "' , lastname = '" + t.lastname + "' , birthdate = '" + t.birthdate + "' , gender = '"  + t.gender +
+              "' , address = '" + t.address + "' , zip_code = '" + t.zip + "' , phone = '" + t.phone +
+              "' , e_mail = '" + t.email + "' , type = '" + t.ttype + "' where teacher_id = '" + id +  "'"
+
     val pstmt = c.prepareStatement(sql)
     /*
     pstmt.setString(1, t.id)
@@ -63,11 +64,11 @@ object Teacher extends Db.DbEntity[Teacher] {
 
   def deleteSql: String = "delete from dbo.teacher where teacher_id = '"
 
-  def updateSql: String =
+  /*def updateSql: String =
     "update dbo.teacher " +
     "set teacher_id = '?' set title = '?' set firstname = '?' set lastname = '?' set birthdate = '?' set gender = '?' set address = '?' " +
     "set zip_code = '?' set phone = '?' set e_mail = '?' set type = '?'" +
-    "where teacher_id = '?'"
+    "where teacher_id = '?'"*/
 
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.teacher")
 }

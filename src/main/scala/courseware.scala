@@ -133,6 +133,11 @@ object Courseware {
 
    */
 
+    for (t <- Student.fromDb(Student.queryReport(connection))) {
+      println(t)
+
+
+
   }
 
 }
