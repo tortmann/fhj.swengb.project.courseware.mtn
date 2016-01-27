@@ -1,3 +1,4 @@
+import java.beans.EventHandler
 import javafx.application.Application
 import javafx.fxml.{Initializable, FXMLLoader}
 import javafx.scene.layout.BorderPane
@@ -11,6 +12,8 @@ import javafx.fxml._
 import javafx.scene.control.{TableColumn, TableView}
 import javafx.scene.{Parent, Scene}
 import javafx.util.Callback
+import javafx.scene.input.MouseEvent
+
 import scala.collection.JavaConversions
 import scala.util.control.NonFatal
 
@@ -183,4 +186,24 @@ class TableViewLectureEventAppController extends Initializable {
   def Exit(): Unit = window.getScene.getWindow.hide()
   def Create(): Unit = {openWindow(loadCreateLectureEvent, cssMain)}
   def Edit(): Unit = {openWindow(loadEditLectureEvent, cssMain )}
+
+
+  def ButtonClicked(): Unit = {
+    val le: MutableLectureEvent = tableView.getSelectionModel().getSelectedItem();
+    val con = Db.Con
+
+    try {
+      if(le != null) {
+        LectureEvent.delFromDb(con)(le.idProperty.get())
+        con.close()
+        mutableLectureEvents.remove(le)
+        tableView.refresh()
+      }
+    }
+    catch {
+      case e: Exception =>
+    }
+  }
+
+
 }

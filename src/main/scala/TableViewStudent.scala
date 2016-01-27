@@ -208,4 +208,21 @@ class TableViewStudentAppController extends Initializable {
   def Create(): Unit = {openWindow(loadCreateStudent, cssMain)}
   def Edit(): Unit = {openWindow(loadEditStudent, cssMain )}
 
+  def ButtonClicked(): Unit = {
+    val s: MutableStudent = tableView.getSelectionModel().getSelectedItem();
+    val con = Db.Con
+
+    try {
+      if(s != null) {
+        Student.delFromDb(con)(s.idProperty.get())
+        con.close()
+        mutableStudents.remove(s)
+        tableView.refresh()
+      }
+    }
+    catch {
+      case e: Exception =>
+    }
+
+  }
 }
