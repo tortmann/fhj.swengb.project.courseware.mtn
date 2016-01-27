@@ -337,6 +337,9 @@ class EditTeacherAppController extends Initializable {
     val fxml = "/fxml/TableViewTeacher.fxml"
     val cssMain = "/css/MainMenu.css"
     tvta.redir(stage, fxml, cssMain)
+
+    val test = new TableViewTeacherAppController
+    test.initTableViewColumn
   }
 
   def ButtonEdited(): Unit = {
