@@ -4,6 +4,11 @@
 
                                          Thomas Ortmann | Nina Spalek | Maximilian Wageneder
 
+
+###_Introduction:_
+This Project was developed during our Bachelor Degree Programme "Informationsmanagement" @FH Joanneum Graz.
+Our Trainers were DI (FH) Johann Blauensteiner & Dipl.-Ing. Robert Ladstätter
+
 ###Goal: 
 Scala Database Application to display our Bachelor Degree Programme <br>
 ###Database:
@@ -14,6 +19,7 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 
 
 ==========================
+
 ###ER-Model:
 ![ER](https://github.com/NSpalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/ER_Model_Courseware.png "ER-Diagram")
 
@@ -56,6 +62,8 @@ ___
 
 ____
 
+##Workload
+
 ToDO | Workload
 ------------ | -------------
 Scala Hardcoding | 60h
@@ -66,4 +74,4 @@ Waiting for Response of IMASQL | 2h
  | --------
 TOTAL | 87h
 
-87h * 80€ = **7.569€**
+## 87h * 80€ = **7.569€**
