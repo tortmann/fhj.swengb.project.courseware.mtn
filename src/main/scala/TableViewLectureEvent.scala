@@ -21,35 +21,32 @@ object TableViewLectureEvent {
   def main(args: Array[String]) {
     Application.launch(classOf[TableViewLectureEventApp], args: _*)
   }
-
 }
 
 class TableViewLectureEventApp extends javafx.application.Application {
 
-  val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
-      val cssMain = "/css/MainMenu.css"
+  override def start(stage: Stage): Unit = {
 
-      val loader = new FXMLLoader(getClass.getResource(fxmlMain))
+    val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
+    val cssMain = "/css/MainMenu.css"
+    redir(stage, fxmlMain, cssMain)
+  }
 
-      def setSkin(stage: Stage, fxml: String, css: String): Boolean = {
-        val scene = new Scene(loader.load[Parent]())
-        stage.setScene(scene)
-        stage.getScene.getStylesheets.clear()
-        stage.getScene.getStylesheets.add(css)
-      }
+  def redir(stage:Stage, fxml: String, css:String): Unit = {
+    try {
+      stage.setTitle("Classroom")
+      var loader = new FXMLLoader(getClass.getResource(fxml))
+      loader.setRoot(null)
+      loader.load[Parent]()
 
-      override def start(stage: Stage): Unit =
-      try {
-        stage.setTitle("LectureEvent Database")
-        loader.load[Parent]() // side effect
-        val scene = new Scene(loader.getRoot[Parent])
-        stage.setScene(scene)
-        stage.getScene.getStylesheets.add(cssMain)
-        stage.show()
+      val scene = new Scene(loader.getRoot[Parent])
+      stage.setScene(scene)
+      stage.getScene.getStylesheets.add(css)
+      stage.show()
     } catch {
       case NonFatal(e) => e.printStackTrace()
     }
-
+  }
 }
 
 
@@ -134,7 +131,6 @@ class TableViewLectureEventAppController extends Initializable {
   @FXML var tableView: TableView[MutableLectureEvent] = _
   @FXML var errorLabel: Label = _
 
-
   @FXML var columnId: LectureEventTC[String] = _
   @FXML var columnFrom: LectureEventTC[String] = _
   @FXML var columnTo: LectureEventTC[String] = _
@@ -166,17 +162,13 @@ class TableViewLectureEventAppController extends Initializable {
   val fxmlCreateLectureEvent = "/fxml/CreateLectureEvent.fxml"
   val fxmlEditLectureEvent = "/fxml/EditLectureEvent.fxml"
 
-
-  val loadCreateLectureEvent = new FXMLLoader(getClass.getResource(fxmlCreateLectureEvent))
-  val loadEditLectureEvent = new FXMLLoader(getClass.getResource(fxmlEditLectureEvent))
-
-
-  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
+  def openWindow(fxml: String, css:String):Unit = {
     try {
       val stage = new Stage
-      stage.setTitle("Lecture Event")
-      fxmlLoader.load[Parent]()
-      val scene = new Scene(fxmlLoader.getRoot[Parent])
+      stage.setTitle("Courseware")
+      var loader = new FXMLLoader(getClass.getResource(fxml))
+      loader.load[Parent]()
+      val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
       stage.getScene.getStylesheets.add(css)
       stage.show()
@@ -185,11 +177,19 @@ class TableViewLectureEventAppController extends Initializable {
     }
   }
 
-  def Exit(): Unit = window.getScene.getWindow.hide()
-  def Create(): Unit = {openWindow(loadCreateLectureEvent, cssMain)}
+  def Exit(): Unit = {
+    window.getScene.getWindow.hide()
+    val tm = new MainMenuApp
+    val stage = new Stage
+    val fxml = "/fxml/MainMenu.fxml"
+    val cssMain = "/css/MainMenu.css"
+    tm.redir(stage, fxml, cssMain)
+  }
+
+  def Create(): Unit = {openWindow(fxmlCreateLectureEvent, cssMain)}
   def Edit(): Unit = {
     DataSourceLectureEvent.lectureevent = tableView.getSelectionModel().getSelectedItem()
-    openWindow(loadEditLectureEvent, cssMain )
+    openWindow(fxmlEditLectureEvent, cssMain )
   }
 
 
@@ -241,7 +241,14 @@ class CreateLectureEventAppController extends Initializable {
 
   }
 
-  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Exit(): Unit = {
+    window.getScene.getWindow.hide()
+    val tvlea = new TableViewLectureEventApp
+    val stage = new Stage
+    val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
+    val cssMain = "/css/MainMenu.css"
+    tvlea.redir(stage, fxmlMain, cssMain)
+  }
 
   def ButtonCreated(): Unit = {
     val con = Db.Con
@@ -253,29 +260,15 @@ class CreateLectureEventAppController extends Initializable {
       con.close()
       window.getScene.getWindow.hide()
 
-      openWindow(loadLectureEvent, cssMain)
+      val tvlea = new TableViewLectureEventApp
+      val stage = new Stage
+      val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
+      val cssMain = "/css/MainMenu.css"
+      tvlea.redir(stage, fxmlMain, cssMain)
+
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be created!")
-    }
-  }
-
-
-  val fxmlLectureEvent = "/fxml/TableViewLectureEvent.fxml"
-  val cssMain = "/css/MainMenu.css"
-  val loadLectureEvent = new FXMLLoader(getClass.getResource(fxmlLectureEvent))
-
-  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
-    try {
-      val stage = new Stage
-      stage.setTitle("Lecture Event")
-      fxmlLoader.load[Parent]()
-      val scene = new Scene(fxmlLoader.getRoot[Parent])
-      stage.setScene(scene)
-      stage.getScene.getStylesheets.add(css)
-      stage.show()
-    } catch {
-      case NonFatal(e) => e.printStackTrace()
     }
   }
 }
@@ -313,7 +306,14 @@ class EditLectureEventAppController extends Initializable {
     classroom.setText(lectureevent.classroomProperty.get())
   }
 
-  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Exit(): Unit = {
+    window.getScene.getWindow.hide()
+    val tvlea = new TableViewLectureEventApp
+    val stage = new Stage
+    val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
+    val cssMain = "/css/MainMenu.css"
+    tvlea.redir(stage, fxmlMain, cssMain)
+  }
 
   def ButtonEdited(): Unit = {
     try {
@@ -325,6 +325,12 @@ class EditLectureEventAppController extends Initializable {
       LectureEvent.editFromDb(con)(le, lectureevent.idProperty.get())
       con.close()
       window.getScene.getWindow.hide()
+
+      val tvlea = new TableViewLectureEventApp
+      val stage = new Stage
+      val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
+      val cssMain = "/css/MainMenu.css"
+      tvlea.redir(stage, fxmlMain, cssMain)
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be edited!")

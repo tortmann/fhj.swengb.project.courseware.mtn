@@ -25,30 +25,28 @@ object TableViewClassroom {
 
 class TableViewClassroomApp extends javafx.application.Application {
 
-  val fxmlMain = "/fxml/TableViewClassroom.fxml"
-  val cssMain = "/css/MainMenu.css"
+  override def start(stage: Stage): Unit = {
 
-  val loader = new FXMLLoader(getClass.getResource(fxmlMain))
-
-  def setSkin(stage: Stage, fxml: String, css: String): Boolean = {
-    val scene = new Scene(loader.load[Parent]())
-    stage.setScene(scene)
-    stage.getScene.getStylesheets.clear()
-    stage.getScene.getStylesheets.add(css)
+    val fxmlMain = "/fxml/TableViewClassroom.fxml"
+    val cssMain = "/css/MainMenu.css"
+    redir(stage, fxmlMain, cssMain)
   }
 
-  override def start(stage: Stage): Unit =
+  def redir(stage:Stage, fxml: String, css:String): Unit = {
     try {
-      stage.setTitle("Classroom Database")
-      loader.load[Parent]() // side effect
+      stage.setTitle("Classroom")
+      var loader = new FXMLLoader(getClass.getResource(fxml))
+      loader.setRoot(null)
+      loader.load[Parent]()
+
       val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
-      stage.getScene.getStylesheets.add(cssMain)
+      stage.getScene.getStylesheets.add(css)
       stage.show()
     } catch {
       case NonFatal(e) => e.printStackTrace()
     }
-
+  }
 }
 
 
@@ -144,10 +142,10 @@ class TableViewClassroomAppController extends Initializable {
 
   def Exit(): Unit = {
     window.getScene.getWindow.hide()
-    val tm = new TestMainApp
+    val tm = new MainMenuApp
     val stage = new Stage
     val fxml = "/fxml/MainMenu.fxml"
     val cssMain = "/css/MainMenu.css"
-    tm.test(stage, fxml, cssMain)
+    tm.redir(stage, fxml, cssMain)
   }
 }

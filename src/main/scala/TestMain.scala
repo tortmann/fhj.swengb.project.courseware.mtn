@@ -23,10 +23,10 @@ class TestMainApp extends javafx.application.Application {
     val fxml = "/fxml/MainMenu.fxml"
     val cssMain = "/css/MainMenu.css"
 
-    test(stage, fxml, cssMain)
+    redir(stage, fxml, cssMain)
   }
 
-  def test(stage:Stage, fxml: String, css:String): Unit = {
+  def redir(stage:Stage, fxml: String, css:String): Unit = {
       try {
         stage.setTitle("Courseware")
         var loader = new FXMLLoader(getClass.getResource(fxml))

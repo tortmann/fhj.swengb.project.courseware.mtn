@@ -208,7 +208,14 @@ class TableViewTeacherAppController extends Initializable {
   val fxmlEditTeacher = "/fxml/EditTeacher.fxml"
 
 
-  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Exit(): Unit = {
+    window.getScene.getWindow.hide()
+    val tvta = new TableViewTeacherApp
+    val stage = new Stage
+    val fxml = "/fxml/MainMenu.fxml.fxml"
+    val cssMain = "/css/MainMenu.css"
+    tvta.test(stage, fxml, cssMain)
+  }
   def Create(): Unit = {openWindow(fxmlCreateTeacher, cssMain)}
 
   def Edit(): Unit = {
@@ -266,7 +273,14 @@ class CreateTeacherAppController extends Initializable {
 
   }
 
-  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Exit(): Unit = {
+    window.getScene.getWindow.hide()
+    val tvta = new TableViewTeacherApp
+    val stage = new Stage
+    val fxml = "/fxml/TableViewTeacher.fxml"
+    val cssMain = "/css/MainMenu.css"
+    tvta.test(stage, fxml, cssMain)
+  }
 
   def ButtonCreated(): Unit = {
 
@@ -279,6 +293,12 @@ class CreateTeacherAppController extends Initializable {
       Teacher.toDb(con)(t)
       con.close()
       window.getScene.getWindow.hide()
+
+      val tvta = new TableViewTeacherApp
+      val stage = new Stage
+      val fxml = "/fxml/TableViewTeacher.fxml"
+      val cssMain = "/css/MainMenu.css"
+      tvta.test(stage, fxml, cssMain)
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be created!")
@@ -325,7 +345,15 @@ class EditTeacherAppController extends Initializable {
     ttype.setText(teacher.ttypeProperty.get())
   }
 
-  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Exit(): Unit = {
+    window.getScene.getWindow.hide()
+
+    val tvta = new TableViewTeacherApp
+    val stage = new Stage
+    val fxml = "/fxml/TableViewTeacher.fxml"
+    val cssMain = "/css/MainMenu.css"
+    tvta.test(stage, fxml, cssMain)
+  }
 
   def ButtonEdited(): Unit = {
     try {
