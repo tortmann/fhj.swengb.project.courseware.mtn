@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewLectureEventAppController">
+<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewClassroomAppController">
    <right>
       <Separator orientation="VERTICAL" prefHeight="315.0" prefWidth="19.0" BorderPane.alignment="CENTER" />
    </right>
@@ -42,8 +42,8 @@
        <TableView fx:id="tableView" prefHeight="321.0" prefWidth="700.0" BorderPane.alignment="CENTER">
            <columns>
                <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="ID" />
-               <TableColumn fx:id="columnFrom" prefWidth="97.0" text="Size" />
-               <TableColumn fx:id="columnTo" prefWidth="94.0" text="Type" />
+               <TableColumn fx:id="columnSize" prefWidth="97.0" text="Size" />
+               <TableColumn fx:id="columnCtype" prefWidth="94.0" text="Type" />
                <TableColumn fx:id="columnDescription" prefWidth="119.0" text="Description" />
            </columns>
        </TableView>

@@ -9,7 +9,7 @@ import javafx.beans.property.{SimpleDoubleProperty, SimpleIntegerProperty, Simpl
 import javafx.beans.value.ObservableValue
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml._
-import javafx.scene.control.{TableColumn, TableView}
+import javafx.scene.control.{Label, TableColumn, TableView}
 import javafx.scene.{Parent, Scene}
 import javafx.util.Callback
 import javafx.scene.input.MouseEvent
@@ -117,11 +117,9 @@ object JfxUtilsle {
 }
 
 object DataSourceLectureEvent {
-
-  val con = Db.Con
-  var data = LectureEvent.fromDb(LectureEvent.queryAll(con))
-  con.close()
-
+    val con = Db.Con
+    var data = LectureEvent.fromDb(LectureEvent.queryAll(con))
+    con.close()
 }
 
 class TableViewLectureEventAppController extends Initializable {
@@ -132,6 +130,8 @@ class TableViewLectureEventAppController extends Initializable {
 
   @FXML var window:BorderPane = _
   @FXML var tableView: TableView[MutableLectureEvent] = _
+  @FXML var errorLabel: Label = _
+
 
   @FXML var columnId: LectureEventTC[String] = _
   @FXML var columnFrom: LectureEventTC[String] = _
@@ -194,6 +194,7 @@ class TableViewLectureEventAppController extends Initializable {
 
     try {
       if(le != null) {
+        errorLabel.setText("")
         LectureEvent.delFromDb(con)(le.idProperty.get())
         con.close()
         mutableLectureEvents.remove(le)
@@ -201,7 +202,7 @@ class TableViewLectureEventAppController extends Initializable {
       }
     }
     catch {
-      case e: Exception =>
+      case e: Exception => errorLabel.setText("Not deleted due to primary key constraint!")
     }
   }
 
