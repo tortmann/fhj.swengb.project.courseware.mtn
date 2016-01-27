@@ -10,10 +10,10 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 ###Functionalities: <br>
 
 •	From the Main Menu -- select between following Tables: <br>
-1. Lecture Event
-2. Student
-3. Teachter
-4. Commissional Exams
+1. Lecture Event<br>
+2. Student<br>
+3. Teachter<br>
+4. Commissional Exams<br>
 5. Classroom <br>
 
 ![MainMenu](https://github.com/mwageneder/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/1.jpg "MainMenu")
