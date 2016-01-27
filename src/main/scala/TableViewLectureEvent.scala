@@ -208,7 +208,7 @@ class TableViewLectureEventAppController extends Initializable {
 }
 
 
-
+//ladi
 
 
 
@@ -232,7 +232,7 @@ class CreateLectureEventAppController extends Initializable {
   @FXML var lecture:TextField = _
   @FXML var group:TextField = _
   @FXML var classroom:TextField = _
-  @FXML var errorlabel:Label = _
+  @FXML var errorLabel:Label = _
 
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
@@ -253,9 +253,9 @@ class CreateLectureEventAppController extends Initializable {
 
       openWindow(loadLectureEvent, cssMain)
     }
-    /*catch {
+    catch {
       case e: Exception => errorLabel.setText("Lecture Event could not be created!")
-    }*/
+    }
   }
 
 

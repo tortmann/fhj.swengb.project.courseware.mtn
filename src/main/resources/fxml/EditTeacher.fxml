@@ -68,6 +68,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Separator prefWidth="200.0" />
@@ -76,12 +77,17 @@
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
             </Button>
-            <Separator prefWidth="200.0" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="74.0" text="Exit" translateX="-100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" onAction="#Exit">
+            <Separator prefWidth="200.0" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#Exit" prefHeight="35.0" prefWidth="74.0" text="Exit" translateX="-100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
             </Button>
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="210.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
    </bottom>
