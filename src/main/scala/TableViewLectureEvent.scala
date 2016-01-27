@@ -179,11 +179,11 @@ class TableViewLectureEventAppController extends Initializable {
 
   def Exit(): Unit = {
     window.getScene.getWindow.hide()
-    val tm = new MainMenuApp
+    val mm = new MainMenuApp
     val stage = new Stage
     val fxml = "/fxml/MainMenu.fxml"
     val cssMain = "/css/MainMenu.css"
-    tm.redir(stage, fxml, cssMain)
+    mm.redir(stage, fxml, cssMain)
   }
 
   def Create(): Unit = {openWindow(fxmlCreateLectureEvent, cssMain)}
@@ -258,14 +258,7 @@ class CreateLectureEventAppController extends Initializable {
 
       LectureEvent.toDb(con)(le)
       con.close()
-      window.getScene.getWindow.hide()
-
-      val tvlea = new TableViewLectureEventApp
-      val stage = new Stage
-      val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
-      val cssMain = "/css/MainMenu.css"
-      tvlea.redir(stage, fxmlMain, cssMain)
-
+      Exit()
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be created!")
@@ -317,23 +310,19 @@ class EditLectureEventAppController extends Initializable {
 
   def ButtonEdited(): Unit = {
     try {
-      val con = Db.Con
+      if (lectureevent != null) {
+        val con = Db.Con
 
-      val le = LectureEvent(id.getText(), from.getText(), to.getText(), description.getText(), lecture.getText(),
-                            group.getText(), classroom.getText())
+        val le = LectureEvent(id.getText(), from.getText(), to.getText(), description.getText(), lecture.getText(),
+          group.getText(), classroom.getText())
 
-      LectureEvent.editFromDb(con)(le, lectureevent.idProperty.get())
-      con.close()
-      window.getScene.getWindow.hide()
-
-      val tvlea = new TableViewLectureEventApp
-      val stage = new Stage
-      val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
-      val cssMain = "/css/MainMenu.css"
-      tvlea.redir(stage, fxmlMain, cssMain)
+        LectureEvent.editFromDb(con)(le, lectureevent.idProperty.get())
+        con.close()
+        Exit()
+      }
     }
-    catch {
-      case e: Exception => errorLabel.setText("Could not be edited!")
+     catch {
+        case e: Exception => errorLabel.setText("Could not be edited!")
     }
   }
 }

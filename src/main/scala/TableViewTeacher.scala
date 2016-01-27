@@ -28,13 +28,12 @@ class TableViewTeacherApp extends javafx.application.Application {
 
     val fxml = "/fxml/TableViewTeacher.fxml"
     val cssMain = "/css/MainMenu.css"
-
-    test(stage, fxml, cssMain)
+    redir(stage, fxml, cssMain)
   }
 
-  def test(stage:Stage, fxml: String, css:String): Unit = {
+  def redir(stage:Stage, fxml: String, css:String): Unit = {
     try {
-      stage.setTitle("Teacher")
+      stage.setTitle("Classroom")
       var loader = new FXMLLoader(getClass.getResource(fxml))
       loader.setRoot(null)
       loader.load[Parent]()
@@ -47,7 +46,6 @@ class TableViewTeacherApp extends javafx.application.Application {
       case NonFatal(e) => e.printStackTrace()
     }
   }
-
 }
 
 
@@ -135,13 +133,7 @@ object DataSourceTeacher {
   var data = Teacher.fromDb(Teacher.queryAll(con))
   con.close()
 
-
   var teacher = new MutableTeacher
-
-  def setTeacher(t: MutableTeacher) = {
-    teacher = t
-  }
-
 }
 
 class TableViewTeacherAppController extends Initializable {
@@ -191,7 +183,7 @@ class TableViewTeacherAppController extends Initializable {
   def openWindow(fxml: String, css:String):Unit = {
     try {
       val stage = new Stage
-      stage.setTitle("Teacher")
+      stage.setTitle("Courseware")
       var loader = new FXMLLoader(getClass.getResource(fxml))
       loader.load[Parent]()
       val scene = new Scene(loader.getRoot[Parent])
@@ -207,24 +199,23 @@ class TableViewTeacherAppController extends Initializable {
   val fxmlCreateTeacher = "/fxml/CreateTeacher.fxml"
   val fxmlEditTeacher = "/fxml/EditTeacher.fxml"
 
-
   def Exit(): Unit = {
     window.getScene.getWindow.hide()
-    val tvta = new TableViewTeacherApp
+    val mm = new MainMenuApp
     val stage = new Stage
     val fxml = "/fxml/MainMenu.fxml.fxml"
     val cssMain = "/css/MainMenu.css"
-    tvta.test(stage, fxml, cssMain)
+    mm.redir(stage, fxml, cssMain)
   }
   def Create(): Unit = {openWindow(fxmlCreateTeacher, cssMain)}
 
   def Edit(): Unit = {
-    DataSourceTeacher.setTeacher(tableView.getSelectionModel().getSelectedItem())
+    DataSourceTeacher.teacher = tableView.getSelectionModel().getSelectedItem()
     openWindow(fxmlEditTeacher, cssMain)
   }
 
   def ButtonClicked(): Unit = {
-    val t: MutableTeacher = tableView.getSelectionModel().getSelectedItem();
+    val t: MutableTeacher = tableView.getSelectionModel().getSelectedItem()
     val con = Db.Con
 
     try {
@@ -279,7 +270,7 @@ class CreateTeacherAppController extends Initializable {
     val stage = new Stage
     val fxml = "/fxml/TableViewTeacher.fxml"
     val cssMain = "/css/MainMenu.css"
-    tvta.test(stage, fxml, cssMain)
+    tvta.redir(stage, fxml, cssMain)
   }
 
   def ButtonCreated(): Unit = {
@@ -292,13 +283,7 @@ class CreateTeacherAppController extends Initializable {
 
       Teacher.toDb(con)(t)
       con.close()
-      window.getScene.getWindow.hide()
-
-      val tvta = new TableViewTeacherApp
-      val stage = new Stage
-      val fxml = "/fxml/TableViewTeacher.fxml"
-      val cssMain = "/css/MainMenu.css"
-      tvta.test(stage, fxml, cssMain)
+      Exit()
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be created!")
@@ -347,16 +332,16 @@ class EditTeacherAppController extends Initializable {
 
   def Exit(): Unit = {
     window.getScene.getWindow.hide()
-
     val tvta = new TableViewTeacherApp
     val stage = new Stage
     val fxml = "/fxml/TableViewTeacher.fxml"
     val cssMain = "/css/MainMenu.css"
-    tvta.test(stage, fxml, cssMain)
+    tvta.redir(stage, fxml, cssMain)
   }
 
   def ButtonEdited(): Unit = {
     try {
+    if(teacher != null) {
       val con = Db.Con
 
       val t = Teacher(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
@@ -364,18 +349,11 @@ class EditTeacherAppController extends Initializable {
 
       Teacher.editFromDb(con)(t, teacher.idProperty.get())
       con.close()
-      window.getScene.getWindow.hide()
-
-      val tvta = new TableViewTeacherApp
-      val stage = new Stage
-      val fxml = "/fxml/TableViewTeacher.fxml"
-      val cssMain = "/css/MainMenu.css"
-      tvta.test(stage, fxml, cssMain)
+      Exit()
+    }
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be edited!")
     }
   }
 }
-
-//

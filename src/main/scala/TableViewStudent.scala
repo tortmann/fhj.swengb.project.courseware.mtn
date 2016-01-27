@@ -22,30 +22,28 @@ object TableViewStudent {
 }
 class TableViewStudentApp extends javafx.application.Application {
 
-  val fxmlMain = "/fxml/TableViewStudent.fxml"
-  val cssMain = "/css/MainMenu.css"
+  override def start(stage: Stage): Unit = {
 
-  val loader = new FXMLLoader(getClass.getResource(fxmlMain))
-
-  def setSkin(stage: Stage, fxml: String, css: String): Boolean = {
-    val scene = new Scene(loader.load[Parent]())
-    stage.setScene(scene)
-    stage.getScene.getStylesheets.clear()
-    stage.getScene.getStylesheets.add(css)
+    val fxmlMain = "/fxml/TableViewStudent.fxml"
+    val cssMain = "/css/MainMenu.css"
+    redir(stage, fxmlMain, cssMain)
   }
 
-  override def start(stage: Stage): Unit =
+  def redir(stage:Stage, fxml: String, css:String): Unit = {
     try {
-      stage.setTitle("Student Database")
-      loader.load[Parent]() // side effect
+      stage.setTitle("Classroom")
+      var loader = new FXMLLoader(getClass.getResource(fxml))
+      loader.setRoot(null)
+      loader.load[Parent]()
+
       val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
-      stage.getScene.getStylesheets.add(cssMain)
+      stage.getScene.getStylesheets.add(css)
       stage.show()
     } catch {
       case NonFatal(e) => e.printStackTrace()
     }
-
+  }
 }
 
 class MutableStudent {
@@ -187,17 +185,13 @@ class TableViewStudentAppController extends Initializable {
   val fxmlCreateStudent = "/fxml/CreateStudent.fxml"
   val fxmlEditStudent = "/fxml/EditStudent.fxml"
 
-
-  val loadCreateStudent = new FXMLLoader(getClass.getResource(fxmlCreateStudent))
-  val loadEditStudent = new FXMLLoader(getClass.getResource(fxmlEditStudent))
-
-
-  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
+  def openWindow(fxml: String, css:String):Unit = {
     try {
       val stage = new Stage
-      stage.setTitle("Student")
-      fxmlLoader.load[Parent]()
-      val scene = new Scene(fxmlLoader.getRoot[Parent])
+      stage.setTitle("Courseware")
+      var loader = new FXMLLoader(getClass.getResource(fxml))
+      loader.load[Parent]()
+      val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
       stage.getScene.getStylesheets.add(css)
       stage.show()
@@ -206,11 +200,19 @@ class TableViewStudentAppController extends Initializable {
     }
   }
 
-  def Exit(): Unit = window.getScene.getWindow.hide()
-  def Create(): Unit = {openWindow(loadCreateStudent, cssMain)}
+  def Exit(): Unit = {
+    window.getScene.getWindow.hide()
+    val mm = new MainMenuApp
+    val stage = new Stage
+    val fxml = "/fxml/MainMenu.fxml"
+    val cssMain = "/css/MainMenu.css"
+    mm.redir(stage, fxml, cssMain)
+  }
+
+  def Create(): Unit = {openWindow(fxmlCreateStudent, cssMain)}
   def Edit(): Unit = {
     DataSourceStudent.student = tableView.getSelectionModel().getSelectedItem()
-    openWindow(loadEditStudent, cssMain )
+    openWindow(fxmlEditStudent, cssMain )
   }
 
   def ButtonClicked(): Unit = {
@@ -260,7 +262,14 @@ class CreateStudentAppController extends Initializable {
 
   }
 
-  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Exit(): Unit = {
+    window.getScene.getWindow.hide()
+    val tvsa = new TableViewStudentApp
+    val stage = new Stage
+    val fxmlMain = "/fxml/TableViewStudent.fxml"
+    val cssMain = "/css/MainMenu.css"
+    tvsa.redir(stage, fxmlMain, cssMain)
+  }
 
   def ButtonCreated(): Unit = {
     try {
@@ -273,6 +282,12 @@ class CreateStudentAppController extends Initializable {
       Student.toDb(con)(s)
       con.close()
       window.getScene.getWindow.hide()
+
+      val tvsa = new TableViewStudentApp
+      val stage = new Stage
+      val fxmlMain = "/fxml/TableViewStudent.fxml"
+      val cssMain = "/css/MainMenu.css"
+      tvsa.redir(stage, fxmlMain, cssMain)
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be created!")
@@ -333,18 +348,27 @@ class EditStudentAppController extends Initializable {
     status.setText(student.statusProperty.get().toString)
   }
 
-  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Exit(): Unit = {
+    window.getScene.getWindow.hide()
+    val tvlea = new TableViewLectureEventApp
+    val stage = new Stage
+    val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
+    val cssMain = "/css/MainMenu.css"
+    tvlea.redir(stage, fxmlMain, cssMain)
+  }
 
   def ButtonEdited(): Unit = {
     try {
-      val con = Db.Con
+      if (student != null) {
+        val con = Db.Con
 
-      val s = Student(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
-        address.getText(), zip.getText(), phone.getText(), email.getText(), group.getText(), status.getText().toInt)
+        val s = Student(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
+          address.getText(), zip.getText(), phone.getText(), email.getText(), group.getText(), status.getText().toInt)
 
-      Student.editFromDb(con)(s, student.idProperty.get())
-      con.close()
-      window.getScene.getWindow.hide()
+        Student.editFromDb(con)(s, student.idProperty.get())
+        con.close()
+        Exit()
+      }
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be edited!")
