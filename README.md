@@ -36,7 +36,7 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 
 ----
 
-![Read_Update](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_U_Lecture_Event.png "Read_Update")
+![Read_Update](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_RU_Lecture_Event.png "Read_Update")
 <br> To Edit a Lecture Event you click on it and then on the Edit Button and then there appears the following Window! 
 
 ----
