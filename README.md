@@ -16,15 +16,15 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 4. Commissional Exams<br>
 5. Classroom <br>
 
-![MainMenu](https://github.com/mwageneder/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_MainMenu.jpg "MainMenu")
+![MainMenu](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_MainMenu.jpg "MainMenu")
 <br>
 
 •	At the first three Tables you are able to CREATE, EDIT, DELETE the DB-Entries <br>
 •	At the last two Tables you are only able to READ the DB-Entries <br>
 
-![CRUD](https://github.com/mwageneder/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_CRUD_Lecture_Event.jpg "CRUD")
+![CRUD](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_CRUD_Lecture_Event.jpg "CRUD")
 
-![Create](https://github.com/mwageneder/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_C_Lecture_Event.jpg "Create")
+![Create](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_C_Lecture_Event.jpg "Create")
 
 ###
 
