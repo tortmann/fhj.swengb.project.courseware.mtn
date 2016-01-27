@@ -367,7 +367,12 @@ class EditStudentAppController extends Initializable {
 
         Student.editFromDb(con)(s, student.idProperty.get())
         con.close()
-        Exit()
+        window.getScene.getWindow.hide()
+        val tvlea = new TableViewLectureEventApp
+        val stage = new Stage
+        val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
+        val cssMain = "/css/MainMenu.css"
+        tvlea.redir(stage, fxmlMain, cssMain)
       }
     }
     catch {
