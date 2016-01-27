@@ -142,5 +142,8 @@ class TableViewClassroomAppController extends Initializable {
 
   }
 
-  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Exit(): Unit = {
+    window.getScene.getWindow.hide()
+    Application.launch(classOf[TestMainApp])
+  }
 }
