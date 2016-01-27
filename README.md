@@ -1,29 +1,33 @@
 #SWENGB Project 
 ###Courseware - Team MTN 
-###Thomas Ortmann/ Nina Spalek / Maximillian Wageneder
-
-test entry
+                        Thomas Ortmann/ Nina Spalek / Maximillian Wageneder
 
 
 ###Goal: 
-Scala Database Application<br>
+Scala Database Application to display our Bachelor Degree Programme <br>
 ###Database:
-SQL
+Connection to Microsoft SQL Server (imasql @FH Joanneum)
+###Functionalities: <br>
 
-###Functionalities:<br>
+•	From the Main Menu -- select between following Tables: <br>
+1. Lecture Event
+2. Student
+3. Teachter
+4. Commissional Exams
+5. Classroom <br>
 
-•	Selecting between different types of users<br><br>
-Students<br>
-Teachers<br>
-Admins<br>
+![MainMenu](https://github.com/mwageneder/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/1.png "MainMenu")
 
-•	Each user has a specific/logical set of operations that he can execute<br>
 
-**Basic SQL operations**<br><br>
-SELECT<br>
-UPDATE<br>
-INSERT<br>
-DELETE<br>
+
+
+
+
+•	At the first three Tables you are able to CREATE, EDIT, DELETE the DB-Entries <br>
+•	At the last two Tables you are only able to READ the DB-Entries <br>
+
+###
+
 
 Special predefined Queries/Reports with special functionality such as filtered overviews of timetables, marks upcoming events, exam results, etc. <br>
 

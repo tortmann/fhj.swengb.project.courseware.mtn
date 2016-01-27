@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="402.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="CreateTeacherAppController">
+<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateTeacherAppController">
   <bottom>
     <GridPane BorderPane.alignment="CENTER">
       <children>
@@ -88,7 +88,7 @@
     <ScrollBar orientation="VERTICAL" prefHeight="275.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
   </right>
   <top>
-    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="187.0" text="Create Teacher" textAlignment="CENTER" BorderPane.alignment="CENTER">
+    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="448.0" text="Create Teacher" textAlignment="CENTER" BorderPane.alignment="CENTER">
       <font>
         <Font size="24.0" />
       </font>

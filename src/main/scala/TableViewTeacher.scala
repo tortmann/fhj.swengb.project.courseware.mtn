@@ -158,7 +158,7 @@ class TableViewTeacherAppController extends Initializable {
   @FXML var columnEmail: TeacherTC[String] = _
   @FXML var columnTtype: TeacherTC[String] = _
 
-  val mutableTeachers = mkObservableList(DataSourceTeacher.data.map(MutableTeacher(_)))
+  var mutableTeachers = mkObservableList(DataSourceTeacher.data.map(MutableTeacher(_)))
 
   def initTableViewColumn[T]: (TeacherTC[T], (MutableTeacher) => Any) => Unit =
     initTableViewColumnCellValueFactory[MutableTeacher, T]
@@ -283,7 +283,12 @@ class CreateTeacherAppController extends Initializable {
 
       Teacher.toDb(con)(t)
       con.close()
-      Exit()
+      window.getScene.getWindow.hide()
+      val tvta = new TableViewTeacherApp
+      val stage = new Stage
+      val fxml = "/fxml/TableViewTeacher.fxml"
+      val cssMain = "/css/MainMenu.css"
+      tvta.redir(stage, fxml, cssMain)
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be created!")
@@ -349,7 +354,13 @@ class EditTeacherAppController extends Initializable {
 
       Teacher.editFromDb(con)(t, teacher.idProperty.get())
       con.close()
-      Exit()
+
+      window.getScene.getWindow.hide()
+      val tvta = new TableViewTeacherApp
+      val stage = new Stage
+      val fxml = "/fxml/TableViewTeacher.fxml"
+      val cssMain = "/css/MainMenu.css"
+      tvta.redir(stage, fxml, cssMain)
     }
     }
     catch {
