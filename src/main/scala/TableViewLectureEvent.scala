@@ -253,9 +253,9 @@ class CreateLectureEventAppController extends Initializable {
 
       openWindow(loadLectureEvent, cssMain)
     }
-    /*catch {
+    catch {
       case e: Exception => errorLabel.setText("Lecture Event could not be created!")
-    }*/
+    }
   }
 
 
