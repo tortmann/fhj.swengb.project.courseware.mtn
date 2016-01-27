@@ -231,6 +231,10 @@ class TableViewTeacherAppController extends Initializable {
       case e: Exception => errorLabel.setText("Not deleted due to primary key constraint!")
     }
   }
+
+  def ButtonReport(): Unit = {
+    println(mutableTeachers)
+  }
 }
 
 
