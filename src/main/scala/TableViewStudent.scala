@@ -296,7 +296,7 @@ class CreateStudentAppController extends Initializable {
 
 
 
-class EditStudetAppController extends Initializable {
+class EditStudentAppController extends Initializable {
 
   @FXML var window:BorderPane = _
 
