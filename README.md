@@ -10,13 +10,13 @@ Scala Database Application to display our Bachelor Degree Programme <br>
 Connection to Microsoft SQL Server (imasql @FH Joanneum)
   
 !! **NOTE** !! to get a Database Connectivity you have to install the Microsoft JDBC Driver 4.0 manually  
-               -- Maven Library doesn't contain Maicrosoft JDBC Driver 
+!! **NOTE** !! Maven Library doesn't contain Maicrosoft JDBC Driver 
 
 
 ###ER-Model:
 ![ER](https://github.com/NSpalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/ER_Model_Courseware.png "ER-Diagram")
 
-
+___
 
 ###Functionalities: <br>
 
@@ -57,5 +57,5 @@ ___
 
 ToDO | Workload
 ------------ | -------------
-GUI First Concept | 10h
-Content in the first column | Content in the second column
+GUI First Concept |    10h
+The Rest | 70h
