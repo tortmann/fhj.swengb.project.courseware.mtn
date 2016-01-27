@@ -26,6 +26,15 @@ object Student extends Db.DbEntity[Student] {
     pstmt.executeUpdate()
   }
 
+  def editFromDb(c: Connection)(s: Student, id:String) : Int = {
+    val sql = "update dbo.student set student_id = '" + s.id + "', title = '" + s.title + "', firstname = '" + s.firstname +
+      "', lastname = '" + s.lastname + "', birthdate = '" + s.birthdate + "', gender = '"  + s.gender +
+      "', address = '" + s.address + "', zip_code = '" + s.zip + "', phone = '" + s.phone +
+      "' , e_mail = '" + s.email + "' , group_nr = '" + s.group + "' , status = '" + s.status + "' where student_id = '" + id + "';"
+    val pstmt = c.prepareStatement(sql)
+    pstmt.executeUpdate()
+  }
+
   def fromDb(rs: ResultSet): List[Student] = {
     val lb : ListBuffer[Student] = new ListBuffer[Student]()
     while (rs.next()) lb.append(Student(rs.getString("student_id"), rs.getString("title"), rs.getString("firstname"),

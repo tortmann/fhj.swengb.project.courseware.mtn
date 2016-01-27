@@ -20,7 +20,7 @@
         </rowConstraints>
          <children>
             <Separator prefWidth="200.0" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exit" styleClass="exit-button" prefHeight="30.0" prefWidth="100.0" text="Exit" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exit" styleClass="mainexit-button" prefHeight="30.0" prefWidth="100.0" text="Exit" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -43,7 +43,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="611.0" text="Courseware" styleClass="root" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="611.0" text="Courseware" styleClass="title" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font></Label>
@@ -65,7 +65,7 @@
             <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#subMenuLectureEvent" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Lecture Event">
+            <Button mnemonicParsing="false" onAction="#subMenuLectureEvent" prefHeight="72.0" prefWidth="236.0" styleClass="mainmenu-button" text="Lecture Event">
                <font>
                   <Font size="14.0" />
                </font>
@@ -79,7 +79,7 @@
                   <Insets bottom="20.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#subMenuStudent" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Student" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#subMenuStudent" prefHeight="72.0" prefWidth="236.0" styleClass="mainmenu-button" text="Student" GridPane.rowIndex="1">
                <font>
                   <Font size="14.0" />
                </font>
@@ -90,7 +90,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#subMenuTeacher" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Teacher" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#subMenuTeacher" prefHeight="72.0" prefWidth="236.0" styleClass="mainmenu-button" text="Teacher" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
@@ -101,7 +101,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#subMenuCommissionalExam" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Commissional Exams" GridPane.rowIndex="3">
+            <Button mnemonicParsing="false" onAction="#subMenuCommissionalExam" prefHeight="72.0" prefWidth="236.0" styleClass="mainmenu-button" text="Commissional Exams" GridPane.rowIndex="3">
                <font>
                   <Font size="14.0" />
                </font>
@@ -115,7 +115,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#subMenuClassroom" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Classroom" GridPane.rowIndex="4">
+            <Button mnemonicParsing="false" onAction="#subMenuClassroom" prefHeight="72.0" prefWidth="236.0" styleClass="mainmenu-button" text="Classroom" GridPane.rowIndex="4">
                <font>
                   <Font size="14.0" />
                </font>

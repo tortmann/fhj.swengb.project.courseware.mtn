@@ -15,6 +15,14 @@ object LectureEvent extends Db.DbEntity[LectureEvent] {
     pstmt.executeUpdate()
   }
 
+  def editFromDb(c: Connection)(le: LectureEvent, id:String) : Int = {
+    val sql = "update dbo.lecture_event set lecture_event_id = '" + le.id + "', date_start = '" + le.from +
+      "', date_end = '" + le.to + "', description = '" + le.description + "', lecture = '" + le.lecture +
+      "', group_nr = '"  + le.group + "', classroom = '" + le.classroom + "' where lecture_event_id = '" + id + "';"
+    val pstmt = c.prepareStatement(sql)
+    pstmt.executeUpdate()
+  }
+
   def delFromDb(c: Connection)(prop: String) : Int = {
     val pstmt = c.prepareStatement(deleteSql + prop + "'")
     pstmt.executeUpdate()
