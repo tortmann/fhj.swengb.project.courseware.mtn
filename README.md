@@ -13,6 +13,7 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 !! **NOTE** !! Maven Library doesn't contain Maicrosoft JDBC Driver 
 
 
+==========================
 ###ER-Model:
 ![ER](https://github.com/NSpalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/ER_Model_Courseware.png "ER-Diagram")
 
