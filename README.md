@@ -57,5 +57,12 @@ ___
 
 ToDO | Workload
 ------------ | -------------
-GUI First Concept |    10h
-The Rest | 70h
+Scala Hardcoding | 60h
+GUI  |    20h
+Documentation | 3h
+Wasted Time with GIT | 2h
+Waiting for Response of IMASQL | 2h
+ | --------
+TOTAL | 87h
+
+87h * 80€ = **7.569€**
