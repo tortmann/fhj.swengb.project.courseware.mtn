@@ -86,7 +86,7 @@
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
             </Button>
-            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="220.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="257.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
