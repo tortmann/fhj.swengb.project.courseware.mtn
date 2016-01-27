@@ -1,5 +1,5 @@
-#SWENGB Project 
-###Courseware | Team MTN | _MaxThomasNina_
+#                                                       SWENGB Project 
+###Courseware | Team MTN 
                                        Thomas Ortmann | Nina Spalek | Maximillian Wageneder
 
 
@@ -14,7 +14,7 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 ###Functionalities: <br>
 
 •	From the Main Menu -- select between following Tables: <br>
-1. Lecture Event<br>
+    1. Lecture Event<br>
 2. Student<br>
 3. Teachter<br>
 4. Commissional Exams<br>
