@@ -14,6 +14,7 @@ import javafx.util.Callback
 import scala.collection.JavaConversions
 import scala.util.control.NonFatal
 
+
 object TableViewTeacher {
   def main(args: Array[String]) {
     Application.launch(classOf[TableViewTeacherApp], args: _*)
@@ -48,6 +49,7 @@ class TableViewTeacherApp extends javafx.application.Application {
     }
 
 }
+
 
 class MutableTeacher {
 
@@ -201,9 +203,18 @@ class TableViewTeacherAppController extends Initializable {
     }
   }
 
+  def returnTeacher(): MutableTeacher = {
+    val t =  tableView.getSelectionModel().getSelectedItem()
+  }
+
   def Exit(): Unit = window.getScene.getWindow.hide()
   def Create(): Unit = {openWindow(loadCreateTeacher, cssMain)}
-  def Edit(): Unit = {openWindow(loadEditTeacher, cssMain )}
+
+  var teacher = new MutableTeacher
+
+  def Edit(): Unit = {
+    openWindow(loadEditTeacher, cssMain )
+  }
 
   def ButtonClicked(): Unit = {
     val t: MutableTeacher = tableView.getSelectionModel().getSelectedItem();
@@ -223,11 +234,6 @@ class TableViewTeacherAppController extends Initializable {
     }
   }
 }
-
-
-
-
-
 
 
 
@@ -268,6 +274,62 @@ class CreateTeacherAppController extends Initializable {
                     address.getText(), zip.getText(), phone.getText(), email.getText(), ttype.getText())
 
     Teacher.toDb(con)(t)
+    con.close()
+    window.getScene.getWindow.hide()
+  }
+}
+
+
+
+
+
+
+class EditTeacherAppController extends Initializable {
+
+  import MutableTeacher._
+
+  @FXML var window:BorderPane = _
+
+  @FXML var id:TextField = _
+  @FXML var title:TextField = _
+  @FXML var firstname:TextField = _
+  @FXML var lastname:TextField = _
+  @FXML var birthdate:TextField = _
+  @FXML var gender:TextField = _
+  @FXML var address:TextField = _
+  @FXML var zip:TextField = _
+  @FXML var phone:TextField = _
+  @FXML var email:TextField = _
+  @FXML var ttype:TextField = _
+
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+
+  }
+
+  def Exit(): Unit = window.getScene.getWindow.hide()
+
+  def ButtonEdited(): Unit = {
+    val con = Db.Con
+
+    val tv = new TableViewTeacherAppController()
+    val teacher = tv.returnTeacher()
+
+    id.setText(teacher.idProperty.get())
+    title.setText(teacher.titleProperty.get())
+    firstname.setText(teacher.firstnameProperty.get())
+    lastname.setText(teacher.lastnameProperty.get())
+    birthdate.setText(teacher.birthdateProperty.get())
+    gender.setText(teacher.birthdateProperty.get())
+    address.setText(teacher.addressProperty.get())
+    zip.setText(teacher.zipProperty.get())
+    phone.setText(teacher.phoneProperty.get())
+    email.setText(teacher.emailProperty.get())
+    ttype.setText(teacher.ttypeProperty.get())
+
+    val t = Teacher(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
+                    address.getText(), zip.getText(), phone.getText(), email.getText(), ttype.getText())
+
+    Teacher.editFromDb(con)(t, teacher.idProperty.get())
     con.close()
     window.getScene.getWindow.hide()
   }
