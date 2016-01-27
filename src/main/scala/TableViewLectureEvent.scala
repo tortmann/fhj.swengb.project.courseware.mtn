@@ -232,7 +232,7 @@ class CreateLectureEventAppController extends Initializable {
   @FXML var lecture:TextField = _
   @FXML var group:TextField = _
   @FXML var classroom:TextField = _
-  @FXML var errorlabel:Label = _
+  @FXML var errorLabel:Label = _
 
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
