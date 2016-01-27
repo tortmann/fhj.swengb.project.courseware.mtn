@@ -1,3 +1,4 @@
+/*
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.application.Application
@@ -186,3 +187,4 @@ class TableViewLectureEventAppController extends Initializable {
 
 
 }
+*/

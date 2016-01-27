@@ -30,12 +30,12 @@
               <buttons>
                 <Button mnemonicParsing="false" onAction="#Create" text="Create" />
                   <Button mnemonicParsing="false" onAction="#Edit" text="Edit" />
-                  <Button mnemonicParsing="false" text="Delete" />
+                  <Button mnemonicParsing="false" text="Delete" onMouseClicked="#ButtonClicked" />
                   <Button mnemonicParsing="false" text="Report" />
                   <Button mnemonicParsing="false" onAction="#Exit" text="Exit" />
               </buttons>
             </ButtonBar>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="414.0" GridPane.rowIndex="1">
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="414.0" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

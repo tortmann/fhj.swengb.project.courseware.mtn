@@ -30,12 +30,12 @@
               <buttons>
                 <Button mnemonicParsing="false" onAction="#Create" text="Create" />
                   <Button mnemonicParsing="false" onAction="#Edit" text="Edit" />
-                  <Button mnemonicParsing="false" text="Delete" />
+                  <Button mnemonicParsing="false" text="Delete" onMouseClicked="#ButtonClicked"  />
                   <Button mnemonicParsing="false" text="Report" />
                   <Button mnemonicParsing="false" onAction="#Exit" text="Exit" />
               </buttons>
             </ButtonBar>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="414.0" translateX="5.0" GridPane.rowIndex="1">
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="414.0" translateX="5.0" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -54,9 +54,9 @@
                <TableColumn fx:id="columnGender" prefWidth="55.0" text="Gender" />
                <TableColumn fx:id="columnAddress" prefWidth="201.0" text="Address" />
                <TableColumn fx:id="columnZipcode" prefWidth="68.0" text="ZIP CODE" />
-               <TableColumn fx:id="columnPhone" prefWidth="122.0" text="phone" />
+               <TableColumn fx:id="columnPhone" prefWidth="122.0" text="Phone" />
                <TableColumn fx:id="columnEmail" prefWidth="105.0" text="Email" />
-               <TableColumn fx:id="columnGroup" prefWidth="73.0" text="Type" />
+               <TableColumn fx:id="columnTtype" prefWidth="73.0" text="Type" />
            </columns>
        </TableView>
    </center>
