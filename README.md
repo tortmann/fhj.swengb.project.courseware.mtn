@@ -1,6 +1,7 @@
 #SWENGB Project 
 ###Courseware | Team MTN 
                                     Thomas Ortmann | Nina Spalek | Maximillian Wageneder
+                                    @tortmann      | @Nspalek    | @mwageneder
 
 
 ###Goal: 
@@ -51,3 +52,10 @@ ___
 
 ![Update](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_U_Lecture_Event.png "Update")
 <br> The same for the UPDATE Window 
+
+
+
+ToDO | Workload
+------------ | -------------
+GUI First Concept | 10h
+Content in the first column | Content in the second column
