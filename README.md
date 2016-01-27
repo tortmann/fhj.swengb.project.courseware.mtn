@@ -2,7 +2,7 @@
 ###Courseware
 TEAM - [M](https://github.com/mwageneder "github.com/mwageneder")[T](https://github.com/tortmann "github.com/tortmann")[N](https://github.com/tortmann "github.com/nspalek")
 
-                                                Thomas Ortmann | Nina Spalek | Maximilian Wageneder
+                                         Thomas Ortmann | Nina Spalek | Maximilian Wageneder
 
 ###Goal: 
 Scala Database Application to display our Bachelor Degree Programme <br>
