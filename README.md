@@ -1,6 +1,6 @@
 #SWENGB Project 
 ###Courseware
-TEAM[M](https://github.com/mwageneder "github.com/mwageneder")[T](https://github.com/tortmann "github.com/tortmann")[N](https://github.com/tortmann "github.com/nspalek")
+TEAM - [M](https://github.com/mwageneder "github.com/mwageneder")[T](https://github.com/tortmann "github.com/tortmann")[N](https://github.com/tortmann "github.com/nspalek")
 
                                                 Thomas Ortmann | Nina Spalek | Maximilian Wageneder
 
