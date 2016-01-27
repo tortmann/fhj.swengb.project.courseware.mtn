@@ -23,7 +23,7 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 
 
 
-•	At the first three Tables you are able to CREATE, EDIT, DELETE the DB-Entries
+•	At the first three Tables you are able to CREATE, EDIT, DELETE the DB-Entries <br>
 •	At the last two Tables you are only able to READ the DB-Entries <br>
 
 ###
