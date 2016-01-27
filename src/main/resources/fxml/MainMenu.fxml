@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="667.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuAppController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="673.0" prefWidth="667.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuAppController">
    <bottom>
       <GridPane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -90,7 +90,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Teacher" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#subMenuTeacher" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Teacher" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
@@ -101,7 +101,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#subMenuLectureEvent" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Commisional Exams" GridPane.rowIndex="3">
+            <Button mnemonicParsing="false" onAction="#subMenuCommissionalExam" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Commissional Exams" GridPane.rowIndex="3">
                <font>
                   <Font size="14.0" />
                </font>
@@ -115,7 +115,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#subMenuLectureEvent" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Classroom" GridPane.rowIndex="4">
+            <Button mnemonicParsing="false" onAction="#subMenuClassroom" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Classroom" GridPane.rowIndex="4">
                <font>
                   <Font size="14.0" />
                </font>
