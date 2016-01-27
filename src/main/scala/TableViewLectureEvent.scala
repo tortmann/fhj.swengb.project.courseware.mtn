@@ -117,9 +117,9 @@ object JfxUtilsle {
 }
 
 object DataSourceLectureEvent {
-  val con = Db.Con
-  var data = LectureEvent.fromDb(LectureEvent.queryAll(con))
-  con.close()
+    val con = Db.Con
+    var data = LectureEvent.fromDb(LectureEvent.queryAll(con))
+    con.close()
 }
 
 class TableViewLectureEventAppController extends Initializable {

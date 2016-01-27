@@ -8,7 +8,7 @@ import javafx.beans.property.{SimpleIntegerProperty, SimpleStringProperty}
 import javafx.beans.value.ObservableValue
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml._
-import javafx.scene.control.{TableColumn, TableView}
+import javafx.scene.control.{Label, TableColumn, TableView}
 import javafx.scene.{Parent, Scene}
 import javafx.util.Callback
 import scala.collection.JavaConversions
@@ -145,6 +145,7 @@ class TableViewStudentAppController extends Initializable {
 
   @FXML var window:BorderPane = _
   @FXML var tableView: TableView[MutableStudent] = _
+  @FXML var errorLabel: Label = _
 
   @FXML var columnId: StudentTC[String] = _
   @FXML var columnTitle: StudentTC[String] = _
@@ -208,4 +209,22 @@ class TableViewStudentAppController extends Initializable {
   def Create(): Unit = {openWindow(loadCreateStudent, cssMain)}
   def Edit(): Unit = {openWindow(loadEditStudent, cssMain )}
 
+  def ButtonClicked(): Unit = {
+    val s: MutableStudent = tableView.getSelectionModel().getSelectedItem();
+    val con = Db.Con
+
+    try {
+      if(s != null) {
+        errorLabel.setText("")
+        Student.delFromDb(con)(s.idProperty.get())
+        con.close()
+        mutableStudents.remove(s)
+        tableView.refresh()
+      }
+    }
+    catch {
+      case e: Exception => errorLabel.setText("Not deleted due to primary key constraint!")
+    }
+
+  }
 }
