@@ -41,6 +41,8 @@ object Student extends Db.DbEntity[Student] {
   def deleteSql: String = "delete from dbo.student where student_id = '"
 
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.student")
+
+  def queryReport(con:Connection): ResultSet = query(con)("select student_id, firstname, lastname from dbo.student")
 }
 
 
