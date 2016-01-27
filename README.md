@@ -23,9 +23,11 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 •	At the last two Tables you are only able to READ the DB-Entries <br>
 
 ![CRUD](https://github.com/NSpalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_CRUD_Lecture_Event.png "CRUD")
+<br> Here you can see the Overview (READ) of one specific Table <br>
 
+----
 ![Create](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_C_Lecture_Event.png "Create")
-
+<br> Here you can see the Create Window 
 ###
 
 
