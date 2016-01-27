@@ -7,7 +7,7 @@
 
 ###_Introduction:_
 This Project was developed during our Bachelor Degree Programme "Informationsmanagement" @FH Joanneum Graz.  
-Our Trainers were DI (FH) Johann Blauensteiner & Dipl.-Ing. Robert Ladstätter
+Our Trainers were DI (FH) Johann Blauensteiner & [Dipl.-Ing. Robert Ladstätter](https://github.com/rladstaetter "github.com/rladstaetter")
 
 ###Goal: 
 Scala Database Application to display our Bachelor Degree Programme <br>
