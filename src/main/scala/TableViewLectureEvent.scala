@@ -232,6 +232,8 @@ class CreateLectureEventAppController extends Initializable {
   @FXML var lecture:TextField = _
   @FXML var group:TextField = _
   @FXML var classroom:TextField = _
+  @FXML var errorlabel:Label = _
+
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
 
@@ -241,10 +243,37 @@ class CreateLectureEventAppController extends Initializable {
 
   def ButtonCreated(): Unit = {
     val con = Db.Con
-    val le = LectureEvent(id.getText(), from.getText(), to.getText(), description.getText(), lecture.getText(),
-                          group.getText(), classroom.getText())
-    LectureEvent.toDb(con)(le)
-    con.close()
-    window.getScene.getWindow.hide()
+    try {
+      val le = LectureEvent(id.getText(), from.getText(), to.getText(), description.getText(), lecture.getText(),
+        group.getText(), classroom.getText())
+
+      LectureEvent.toDb(con)(le)
+      con.close()
+      window.getScene.getWindow.hide()
+
+      openWindow(loadLectureEvent, cssMain)
+    }
+    /*catch {
+      case e: Exception => errorLabel.setText("Lecture Event could not be created!")
+    }*/
+  }
+
+
+  val fxmlLectureEvent = "/fxml/TableViewLectureEvent.fxml"
+  val cssMain = "/css/MainMenu.css"
+  val loadLectureEvent = new FXMLLoader(getClass.getResource(fxmlLectureEvent))
+
+  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
+    try {
+      val stage = new Stage
+      stage.setTitle("Lecture Event")
+      fxmlLoader.load[Parent]()
+      val scene = new Scene(fxmlLoader.getRoot[Parent])
+      stage.setScene(scene)
+      stage.getScene.getStylesheets.add(css)
+      stage.show()
+    } catch {
+      case NonFatal(e) => e.printStackTrace()
+    }
   }
 }

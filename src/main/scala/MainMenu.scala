@@ -45,10 +45,16 @@ class MainMenuAppController extends Initializable {
 
   val cssMain = "/css/MainMenu.css"
   val fxmlStudent = "/fxml/TableViewStudent.fxml"
+  val fxmlTeacher = "/fxml/TableViewTeacher.fxml"
   val fxmlLectureEvent = "/fxml/TableViewLectureEvent.fxml"
+  val fxmlCommissionalExam = "/fxml/TableViewCommissionalExam.fxml"
+  val fxmlClassroom = "/fxml/TableViewClassroom.fxml"
 
   val loadStudent = new FXMLLoader(getClass.getResource(fxmlStudent))
+  val loadTeacher = new FXMLLoader(getClass.getResource(fxmlTeacher))
   val loadLectureEvent = new FXMLLoader(getClass.getResource(fxmlLectureEvent))
+  val loadCommissionalExam = new FXMLLoader(getClass.getResource(fxmlCommissionalExam))
+  val loadClassroom = new FXMLLoader(getClass.getResource(fxmlClassroom))
 
   def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
     try {
@@ -66,7 +72,10 @@ class MainMenuAppController extends Initializable {
 
   def exit(): Unit = sys.exit()
   def subMenuStudent(): Unit = {openWindow(loadStudent, cssMain)}
+  def subMenuTeacher(): Unit = {openWindow(loadTeacher, cssMain)}
   def subMenuLectureEvent(): Unit = {openWindow(loadLectureEvent, cssMain)}
+  def subMenuCommissionalExam(): Unit = {openWindow(loadCommissionalExam, cssMain)}
+  def subMenuClassroom(): Unit = {openWindow(loadClassroom, cssMain)}
 
 }
 
