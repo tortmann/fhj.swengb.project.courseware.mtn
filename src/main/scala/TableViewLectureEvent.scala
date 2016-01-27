@@ -1,4 +1,7 @@
 import java.beans.EventHandler
+import java.io.File
+import java.nio.charset.StandardCharsets
+import java.nio.file.{Paths, Files}
 import javafx.application.Application
 import javafx.fxml.{Initializable, FXMLLoader}
 import javafx.scene.layout.BorderPane
@@ -205,6 +208,53 @@ class TableViewLectureEventAppController extends Initializable {
         mutableLectureEvents.remove(le)
         tableView.refresh()
       }
+    }
+    catch {
+      case e: Exception => errorLabel.setText("Not deleted due to primary key constraint!")
+    }
+  }
+
+
+  def ButtonReport(): Unit = {
+
+    /*
+    val target = new File("/Users/Max/IMA14/3.Semester/SWENGB/workspace/fhj.swengb.project.courseware.mtn/src/main/resources/html/teacherBootReport.html")
+    def main() {
+      val html = Source.fromInputStream(getClass.getResourceAsStream("teacherReport.html")).mkString
+      writeToFile(target, html)
+      println("Created " + target.getAbsolutePath)
+    }
+    */
+
+    def writeToFile(file: File, content: String): File = {
+      Files.write(Paths.get(file.toURI), content.getBytes(StandardCharsets.UTF_8)).toFile
+    }
+
+    def generateTable(data: List[LectureEvent]) = {
+
+      val head = "<!DOCTYPE html><html lang=\"en\"><head>\n"
+      val meta = "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+      val link = "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">"
+      val script = "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>\n<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>\n"
+      val begin = "<body>\n<div class=\"container\">\n<table class=\"table\">\n"
+      val header = "<thead><tr>\n<th>id</th>\n<th>classroom</th>\n<th>from</th>\n<th>to</th>\n</tr>\n</thead><tbody>"
+      val middle = data.map(n => <tr><td>{n.id}</td><td>{n.classroom}</td><td>{n.from}</td><td>{n.to}</td></tr>).mkString(",")
+      val end = "</tbody></table></div></body></html>"
+
+
+      val html = head + meta + link + script + begin + header + middle + end
+      val target = new File("/Users/Max/IMA14/3.Semester/SWENGB/workspace/fhj.swengb.project.courseware.mtn/src/main/resources/html/lectureEventReport.html")
+      writeToFile(target, html)
+      errorLabel.setText("Copied to" + target.getAbsolutePath)
+    }
+
+    val con = Db.Con
+    try {
+
+      val lectureevent = LectureEvent.fromDb(LectureEvent.queryAll(con))
+      con.close()
+
+      generateTable(lectureevent)
     }
     catch {
       case e: Exception => errorLabel.setText("Not deleted due to primary key constraint!")

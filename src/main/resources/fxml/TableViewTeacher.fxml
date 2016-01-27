@@ -31,11 +31,11 @@
                 <Button mnemonicParsing="false" onAction="#Create" styleClass="menu-button" text="Create" />
                   <Button mnemonicParsing="false" onAction="#Edit" styleClass="menu-button" text="Edit" />
                   <Button mnemonicParsing="false" onMouseClicked="#ButtonClicked" styleClass="menu-button" text="Delete" />
-                  <Button mnemonicParsing="false" styleClass="menu-button" text="Report" />
+                  <Button mnemonicParsing="false" onAction="#ButtonReport" styleClass="menu-button" text="Report" />
                   <Button mnemonicParsing="false" onAction="#Exit" styleClass="exit-button" text="Exit" />
               </buttons>
             </ButtonBar>
-            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="414.0" translateX="5.0" GridPane.rowIndex="1">
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="832.0" translateX="5.0" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
