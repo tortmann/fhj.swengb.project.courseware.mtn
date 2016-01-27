@@ -324,7 +324,7 @@ class EditStudentAppController extends Initializable {
     firstname.setText(student.firstnameProperty.get())
     lastname.setText(student.lastnameProperty.get())
     birthdate.setText(student.birthdateProperty.get())
-    gender.setText(student.birthdateProperty.get())
+    gender.setText(student.genderProperty.get())
     address.setText(student.addressProperty.get())
     zip.setText(student.zipProperty.get())
     phone.setText(student.phoneProperty.get())
