@@ -1,6 +1,6 @@
 #SWENGB Project 
 ###Courseware | Team MTN 
-                                    [Thomas Ortmann](https://github.com/tortmann "Thomas") | Nina Spalek | Maximillian Wageneder
+[Thomas Ortmann](https://github.com/tortmann "Thomas") | Nina Spalek | Maximillian Wageneder
 
 
 ###Goal: 
