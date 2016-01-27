@@ -246,26 +246,5 @@ class CreateLectureEventAppController extends Initializable {
     LectureEvent.toDb(con)(le)
     con.close()
     window.getScene.getWindow.hide()
-
-    openWindow(loadLectureEvent, cssMain)
-  }
-
-
-  val fxmlLectureEvent = "/fxml/TableViewLectureEvent.fxml"
-  val cssMain = "/css/MainMenu.css"
-  val loadLectureEvent = new FXMLLoader(getClass.getResource(fxmlLectureEvent))
-
-  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
-    try {
-      val stage = new Stage
-      stage.setTitle("Lecture Event")
-      fxmlLoader.load[Parent]()
-      val scene = new Scene(fxmlLoader.getRoot[Parent])
-      stage.setScene(scene)
-      stage.getScene.getStylesheets.add(css)
-      stage.show()
-    } catch {
-      case NonFatal(e) => e.printStackTrace()
-    }
   }
 }

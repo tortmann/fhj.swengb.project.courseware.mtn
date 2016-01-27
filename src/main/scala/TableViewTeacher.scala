@@ -8,7 +8,7 @@ import javafx.beans.property.{SimpleDoubleProperty, SimpleIntegerProperty, Simpl
 import javafx.beans.value.ObservableValue
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml._
-import javafx.scene.control.{Label, TableColumn, TableView}
+import javafx.scene.control.{TextField, Label, TableColumn, TableView}
 import javafx.scene.{Parent, Scene}
 import javafx.util.Callback
 import scala.collection.JavaConversions
@@ -94,7 +94,7 @@ object MutableTeacher {
     mt.setTitle(t.title)
     mt.setFirstname(t.firstname)
     mt.setLastname(t.lastname)
-    mt.setBirthdate(t.birthdate.toString)
+    mt.setBirthdate(t.birthdate)
     mt.setGender(t.gender)
     mt.setAddress(t.address)
     mt.setZip(t.zip)
@@ -221,5 +221,54 @@ class TableViewTeacherAppController extends Initializable {
     catch {
       case e: Exception => errorLabel.setText("Not deleted due to primary key constraint!")
     }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class CreateTeacherAppController extends Initializable {
+
+  @FXML var window:BorderPane = _
+
+  @FXML var id:TextField = _
+  @FXML var title:TextField = _
+  @FXML var firstname:TextField = _
+  @FXML var lastname:TextField = _
+  @FXML var birthdate:TextField = _
+  @FXML var gender:TextField = _
+  @FXML var address:TextField = _
+  @FXML var zip:TextField = _
+  @FXML var phone:TextField = _
+  @FXML var email:TextField = _
+  @FXML var ttype:TextField = _
+
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+
+  }
+
+  def Exit(): Unit = window.getScene.getWindow.hide()
+
+  def ButtonCreated(): Unit = {
+    val con = Db.Con
+
+    val t = Teacher(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
+                    address.getText(), zip.getText(), phone.getText(), email.getText(), ttype.getText())
+
+    Teacher.toDb(con)(t)
+    con.close()
+    window.getScene.getWindow.hide()
   }
 }
