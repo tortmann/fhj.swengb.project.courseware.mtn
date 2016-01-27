@@ -270,5 +270,7 @@ class CreateTeacherAppController extends Initializable {
     Teacher.toDb(con)(t)
     con.close()
     window.getScene.getWindow.hide()
+
+
   }
 }
