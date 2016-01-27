@@ -1,4 +1,4 @@
-#                                                       SWENGB Project 
+#SWENGB Project 
 ###Courseware | Team MTN 
                                        Thomas Ortmann | Nina Spalek | Maximillian Wageneder
 
@@ -9,12 +9,12 @@ Scala Database Application to display our Bachelor Degree Programme <br>
 Connection to Microsoft SQL Server (imasql @FH Joanneum)
   
 !! **NOTE** !! to get a Database Connectivity you have to install the Microsoft JDBC Driver 4.0 manually  
-!! **NOTE** !! -- Maven Library doesn't contain Maicrosoft JDBC Driver 
+               -- Maven Library doesn't contain Maicrosoft JDBC Driver 
 
 ###Functionalities: <br>
 
 •	From the Main Menu -- select between following Tables: <br>
-    1. Lecture Event<br>
+1. Lecture Event<br>
 2. Student<br>
 3. Teachter<br>
 4. Commissional Exams<br>
@@ -47,16 +47,3 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 <br> The same for the UPDATE Window 
 
 ====
-
-
-
-
-
-
-
-
-
-
-**Main menu** offers the selection between different submenus (users) via several buttons – each submenu offers different functionalities explained in the info box.<br>
-
-Each **submenu** offers different functionalities such as creating and editing tables or displaying summaries and reports with special properties and options, each fitting to the user selected in the main menu. 
