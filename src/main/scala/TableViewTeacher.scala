@@ -1,5 +1,6 @@
 import javafx.application.Application
 import javafx.fxml.{Initializable, FXMLLoader}
+import javafx.scene.layout.BorderPane
 import javafx.stage.Stage
 import java.net.URL
 import java.util.ResourceBundle
@@ -15,7 +16,7 @@ import scala.util.control.NonFatal
 
 object TableViewTeacher {
   def main(args: Array[String]) {
-    Application.launch(classOf[TableViewLectureEventApp], args: _*)
+    Application.launch(classOf[TableViewTeacherApp], args: _*)
   }
 
 }
@@ -36,7 +37,7 @@ class TableViewTeacherApp extends javafx.application.Application {
 
   override def start(stage: Stage): Unit =
     try {
-      stage.setTitle("Teacher Database")
+      stage.setTitle("Teacher")
       loader.load[Parent]() // side effect
       val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
@@ -140,6 +141,7 @@ class TableViewTeacherAppController extends Initializable {
 
   type TeacherTC[T] = TableColumn[MutableTeacher, T]
 
+  @FXML var window:BorderPane = _
   @FXML var tableView: TableView[MutableTeacher] = _
 
   @FXML var columnId: TeacherTC[String] = _
@@ -175,5 +177,32 @@ class TableViewTeacherAppController extends Initializable {
     initTableViewColumn[String](columnEmail, _.emailProperty)
     initTableViewColumn[String](columnTtype, _.ttypeProperty)
   }
+
+  val cssMain = "/css/MainMenu.css"
+  val fxmlCreateTeacher = "/fxml/CreateTeacher.fxml"
+  val fxmlEditTeacher = "/fxml/EditTeacher.fxml"
+
+  val loadCreateTeacher = new FXMLLoader(getClass.getResource(fxmlCreateTeacher))
+  val loadEditTeacher = new FXMLLoader(getClass.getResource(fxmlEditTeacher))
+
+
+  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
+    try {
+      val stage = new Stage
+      stage.setTitle("Teacher")
+      fxmlLoader.load[Parent]()
+      val scene = new Scene(fxmlLoader.getRoot[Parent])
+      stage.setScene(scene)
+      stage.getScene.getStylesheets.add(css)
+      stage.show()
+    } catch {
+      case NonFatal(e) => e.printStackTrace()
+    }
+  }
+
+  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Create(): Unit = {openWindow(loadCreateTeacher, cssMain)}
+  def Edit(): Unit = {openWindow(loadEditTeacher, cssMain )}
+
 
 }

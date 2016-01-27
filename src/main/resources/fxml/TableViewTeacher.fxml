@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewStudentAppController">
+<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1175.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewTeacherAppController">
    <right>
       <Separator orientation="VERTICAL" prefHeight="321.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
    </right>
    <top>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="106.0" text="Student" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="106.0" text="Teacher" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -26,16 +26,16 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-450.0">
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-375.0">
               <buttons>
                 <Button mnemonicParsing="false" onAction="#Create" text="Create" />
                   <Button mnemonicParsing="false" onAction="#Edit" text="Edit" />
-                  <Button mnemonicParsing="false" text="Delete" onMouseClicked="#ButtonClicked" />
+                  <Button mnemonicParsing="false" text="Delete" />
                   <Button mnemonicParsing="false" text="Report" />
                   <Button mnemonicParsing="false" onAction="#Exit" text="Exit" />
               </buttons>
             </ButtonBar>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="414.0" GridPane.rowIndex="1">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="414.0" translateX="5.0" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -56,8 +56,7 @@
                <TableColumn fx:id="columnZipcode" prefWidth="68.0" text="ZIP CODE" />
                <TableColumn fx:id="columnPhone" prefWidth="122.0" text="phone" />
                <TableColumn fx:id="columnEmail" prefWidth="105.0" text="Email" />
-               <TableColumn fx:id="columnGroup" prefWidth="73.0" text="Group" />
-               <TableColumn fx:id="columnStatus" prefWidth="136.0" text="Status" />
+               <TableColumn fx:id="columnGroup" prefWidth="73.0" text="Type" />
            </columns>
        </TableView>
    </center>

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane prefHeight="751.0" prefWidth="399.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -59,12 +59,17 @@
         </rowConstraints>
          <children>
             <Separator prefWidth="200.0" />
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="74.0" text="Create" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="74.0" text="Create" translateX="100.0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
             </Button>
             <Separator prefWidth="200.0" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="74.0" text="Exit" translateX="-100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" />
+               </effect>
+            </Button>
          </children>
       </GridPane>
    </bottom>
