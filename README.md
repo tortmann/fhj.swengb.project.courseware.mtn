@@ -1,6 +1,6 @@
 #SWENGB Project 
 ###Courseware | Team MTN 
-                                       Thomas Ortmann | Nina Spalek | Maximillian Wageneder
+                                    Thomas Ortmann | Nina Spalek | Maximillian Wageneder
 
 
 ###Goal: 
@@ -10,6 +10,12 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
   
 !! **NOTE** !! to get a Database Connectivity you have to install the Microsoft JDBC Driver 4.0 manually  
                -- Maven Library doesn't contain Maicrosoft JDBC Driver 
+
+
+###ER-Model:
+![ER](https://github.com/NSpalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/ER_Model_Courseware.png "ER-Diagram")
+
+
 
 ###Functionalities: <br>
 
