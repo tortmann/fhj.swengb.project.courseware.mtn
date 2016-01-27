@@ -31,7 +31,7 @@
                 <Button mnemonicParsing="false" onAction="#Create" styleClass="menu-button" text="Create" />
                   <Button mnemonicParsing="false" onAction="#Edit" styleClass="menu-button" text="Edit" />
                   <Button mnemonicParsing="false" onMouseClicked="#ButtonClicked" styleClass="menu-button" text="Delete" />
-                  <Button mnemonicParsing="false" styleClass="menu-button" text="Report" />
+                  <Button mnemonicParsing="false" styleClass="menu-button" text="Report" onAction="#ButtonReport"/>
                   <Button mnemonicParsing="false" onAction="#Exit" styleClass="exit-button" text="Exit" />
               </buttons>
             </ButtonBar>

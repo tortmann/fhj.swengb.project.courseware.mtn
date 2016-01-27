@@ -13,7 +13,7 @@ import javafx.scene.{Parent, Scene}
 import javafx.util.Callback
 import scala.collection.JavaConversions
 import scala.util.control.NonFatal
-
+import scala.xml._
 
 object TableViewTeacher {
   def main(args: Array[String]) {
@@ -226,6 +226,40 @@ class TableViewTeacherAppController extends Initializable {
         mutableTeachers.remove(t)
         tableView.refresh()
       }
+    }
+    catch {
+      case e: Exception => errorLabel.setText("Not deleted due to primary key constraint!")
+    }
+  }
+
+  def ButtonReport(): Unit = {
+
+    def generateTable(data: List[Teacher]) = {
+
+      val head = "<!DOCTYPE html><html lang=\"en\"><head>\n"
+      val meta = "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+      val link = "<link rel=\"stylesheet\" href=\"META-INF/resources/webjars/bootstrap/3.3.6/css/bootstrap.min.css\">\n"
+      val script = "<script src=\"META-INF/resources/webjars/jquery/1.11.3/jquery.min.js\"></script>\n<script src=\"META-INF/resources/webjars/bootstrap/3.3.6/js/bootstrap.min.js\"></script>\n</head>\n"
+      val begin = "<body>\n<div class=\"container\">\n<table class=\"table\">\n<thead>\n"
+      val header = "<tr>\n<th><firstname/th>\n<th><lastname/th>\n<th><id/th>\n</tr>\n</thead>\n<tbody>"
+      val middle = data.map(n => <tr><td>{n.firstname}</td><td>{n.lastname}</td><td>{n.id}</td></tr>).toString()
+      val end = "</tbody></table></div></body></html>"
+
+
+      val html = head + meta + link + script + begin + header + middle + end
+
+      println(html)
+
+
+    }
+
+    val con = Db.Con
+    try {
+
+      val teachers = Teacher.fromDb(Teacher.queryAll(con))
+      con.close()
+
+      generateTable(teachers)
     }
     catch {
       case e: Exception => errorLabel.setText("Not deleted due to primary key constraint!")
