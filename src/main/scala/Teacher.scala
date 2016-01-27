@@ -10,7 +10,7 @@ object Teacher extends Db.DbEntity[Teacher] {
     pstmt.setString(2, t.title)
     pstmt.setString(3, t.firstname)
     pstmt.setString(4, t.lastname)
-    pstmt.setDate(5, t.birthdate)
+    pstmt.setString(5, t.birthdate)
     pstmt.setString(6, t.gender)
     pstmt.setString(7, t.address)
     pstmt.setString(8, t.zip)
@@ -29,7 +29,7 @@ object Teacher extends Db.DbEntity[Teacher] {
   def fromDb(rs: ResultSet): List[Teacher] = {
     val lb : ListBuffer[Teacher] = new ListBuffer[Teacher]()
     while (rs.next()) lb.append(Teacher(rs.getString("teacher_id"), rs.getString("title"), rs.getString("firstname"),
-                                        rs.getString("lastname"), rs.getDate("birthdate"), rs.getString("gender"),
+                                        rs.getString("lastname"), rs.getString("birthdate"), rs.getString("gender"),
                                         rs.getString("address"), rs.getString("zip_code"), rs.getString("phone"),
                                         rs.getString("e_mail"), rs.getString("type")))
     lb.toList
@@ -45,7 +45,7 @@ object Teacher extends Db.DbEntity[Teacher] {
 
 
 
-case class Teacher(id:String, title:String, firstname:String, lastname:String, birthdate:Date, gender:String,
+case class Teacher(id:String, title:String, firstname:String, lastname:String, birthdate:String, gender:String,
                    address:String, zip:String, phone:String, email:String, ttype:String) extends Db.DbEntity[Teacher] {
 
   def toDb(c: Connection)(t: Teacher) : Int = 0
