@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewStudentAppController">
+<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewStudentAppController">
    <right>
       <Separator orientation="VERTICAL" prefHeight="321.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
    </right>
    <top>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="106.0" text="Student" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="246.0" styleClass="title" text="Student" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -26,13 +26,13 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-450.0">
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-220.0">
               <buttons>
-                <Button mnemonicParsing="false" onAction="#Create" text="Create" />
-                  <Button mnemonicParsing="false" onAction="#Edit" text="Edit" />
-                  <Button mnemonicParsing="false" text="Delete" onMouseClicked="#ButtonClicked" />
-                  <Button mnemonicParsing="false" text="Report" />
-                  <Button mnemonicParsing="false" onAction="#Exit" text="Exit" />
+                <Button mnemonicParsing="false" onAction="#Create" styleClass="menu-button" text="Create" />
+                  <Button mnemonicParsing="false" onAction="#Edit" styleClass="menu-button" text="Edit" />
+                  <Button mnemonicParsing="false" onMouseClicked="#ButtonClicked" styleClass="menu-button" text="Delete" />
+                  <Button mnemonicParsing="false" styleClass="menu-button" text="Report" />
+                  <Button mnemonicParsing="false" onAction="#Exit" styleClass="exit-button" text="Exit" />
               </buttons>
             </ButtonBar>
             <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="414.0" GridPane.rowIndex="1">
@@ -61,4 +61,7 @@
            </columns>
        </TableView>
    </center>
+   <left>
+      <Separator orientation="VERTICAL" prefHeight="321.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+   </left>
 </BorderPane>
