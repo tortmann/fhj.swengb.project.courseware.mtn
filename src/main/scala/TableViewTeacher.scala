@@ -135,6 +135,17 @@ object DataSourceTeacher {
   var data = Teacher.fromDb(Teacher.queryAll(con))
   con.close()
 
+
+  var teacher = new MutableTeacher
+
+  def getTeacher(): MutableTeacher = {
+    return teacher
+  }
+
+  def setTeacher(t: MutableTeacher) = {
+    teacher = t
+  }
+
 }
 
 class TableViewTeacherAppController extends Initializable {
@@ -203,17 +214,13 @@ class TableViewTeacherAppController extends Initializable {
     }
   }
 
-  def returnTeacher(): MutableTeacher = {
-    val t =  tableView.getSelectionModel().getSelectedItem()
-    t
-  }
-
   def Exit(): Unit = window.getScene.getWindow.hide()
   def Create(): Unit = {openWindow(loadCreateTeacher, cssMain)}
 
   var teacher = new MutableTeacher
 
   def Edit(): Unit = {
+    DataSourceTeacher.setTeacher(tableView.getSelectionModel().getSelectedItem())
     openWindow(loadEditTeacher, cssMain )
   }
 
@@ -303,17 +310,9 @@ class EditTeacherAppController extends Initializable {
   @FXML var email:TextField = _
   @FXML var ttype:TextField = _
 
+  val teacher: MutableTeacher = DataSourceTeacher.getTeacher()
+
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
-
-  }
-
-  def Exit(): Unit = window.getScene.getWindow.hide()
-
-  def ButtonEdited(): Unit = {
-    val con = Db.Con
-
-    val tv = new TableViewTeacherAppController()
-    val teacher = tv.returnTeacher()
 
     id.setText(teacher.idProperty.get())
     title.setText(teacher.titleProperty.get())
@@ -326,6 +325,12 @@ class EditTeacherAppController extends Initializable {
     phone.setText(teacher.phoneProperty.get())
     email.setText(teacher.emailProperty.get())
     ttype.setText(teacher.ttypeProperty.get())
+  }
+
+  def Exit(): Unit = window.getScene.getWindow.hide()
+
+  def ButtonEdited(): Unit = {
+    val con = Db.Con
 
     val t = Teacher(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
                     address.getText(), zip.getText(), phone.getText(), email.getText(), ttype.getText())
