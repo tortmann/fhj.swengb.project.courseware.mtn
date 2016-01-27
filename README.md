@@ -6,7 +6,9 @@
 ###Goal: 
 Scala Database Application to display our Bachelor Degree Programme <br>
 ###Database:
-Connection to Microsoft SQL Server (imasql @FH Joanneum)
+Connection to Microsoft SQL Server (imasql @FH Joanneum)  
+**NOTE** to get a Database Connectivity you have to install the Microsoft JDBC Driver 4.0 
+
 ###Functionalities: <br>
 
 •	From the Main Menu -- select between following Tables: <br>
@@ -17,7 +19,8 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 5. Classroom <br>
 
 ![MainMenu](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_MainMenu.jpg "MainMenu")
-<br>
+
+----
 
 •	At the first three Tables you are able to CREATE, EDIT, DELETE the DB-Entries <br>
 •	At the last two Tables you are only able to READ the DB-Entries <br>
@@ -31,7 +34,14 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 ###
 
 
-Special predefined Queries/Reports with special functionality such as filtered overviews of timetables, marks upcoming events, exam results, etc. <br>
+
+
+
+
+
+
+
+
 
 **Main menu** offers the selection between different submenus (users) via several buttons – each submenu offers different functionalities explained in the info box.<br>
 
