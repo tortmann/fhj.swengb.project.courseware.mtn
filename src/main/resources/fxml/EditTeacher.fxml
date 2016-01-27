@@ -53,7 +53,7 @@
       </GridPane>
    </center>
    <top>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="187.0" text="Edit Teacher" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" styleClass="title" contentDisplay="CENTER" prefHeight="35.0" prefWidth="187.0" text="Edit Teacher" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -72,13 +72,13 @@
         </rowConstraints>
          <children>
             <Separator prefWidth="200.0" />
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="74.0" text="Edit" translateX="100.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" onMouseClicked="#ButtonEdited">
+            <Button mnemonicParsing="false" styleClass="menu-button" prefHeight="35.0" prefWidth="74.0" text="Edit" translateX="100.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" onMouseClicked="#ButtonEdited">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
             </Button>
             <Separator prefWidth="200.0" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" onAction="#Exit" prefHeight="35.0" prefWidth="74.0" text="Exit" translateX="-100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" styleClass="menu-button" onAction="#Exit" prefHeight="35.0" prefWidth="74.0" text="Exit" translateX="-100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>

@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="417.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="CreateLectureEventAppController">
+<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateLectureEventAppController">
   <bottom>
     <GridPane BorderPane.alignment="CENTER">
       <children>
         <Separator prefWidth="200.0" />
-        <Button mnemonicParsing="false" onMouseClicked="#ButtonCreated" prefHeight="35.0" prefWidth="74.0" text="Create" translateX="100.0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+        <Button mnemonicParsing="false" onMouseClicked="#ButtonCreated" prefHeight="35.0" prefWidth="74.0" styleClass="menu-button" text="Create" translateX="100.0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
           <effect>
             <InnerShadow blurType="ONE_PASS_BOX" />
           </effect>
         </Button>
         <Separator prefWidth="200.0" GridPane.rowIndex="3" />
-        <Button mnemonicParsing="false" onAction="#Exit" prefHeight="35.0" prefWidth="74.0" text="Exit" translateX="-100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+        <Button mnemonicParsing="false" onAction="#Exit" prefHeight="35.0" prefWidth="74.0" styleClass="menu-button" text="Exit" translateX="-100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
           <effect>
             <InnerShadow blurType="ONE_PASS_BOX" />
           </effect>
@@ -50,16 +50,16 @@
         <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="75.0" text="To *" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
         <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="75.0" text="From *" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
         <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="75.0" text="ID *" GridPane.halignment="RIGHT" />
-        <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="75.0" text="Description *" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+        <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="92.0" text="Description *" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
         <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="75.0" text="Lecture *" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
         <TextField fx:id="group" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
         <TextField fx:id="classroom" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
         <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="75.0" text="Group *" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="75.0" text="Classroom *" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="92.0" text="Classroom *" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
       </children>
       <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="75.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="300.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="94.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="296.0" minWidth="10.0" prefWidth="281.0" />
       </columnConstraints>
       <rowConstraints>
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -76,7 +76,7 @@
     <ScrollBar orientation="VERTICAL" prefHeight="275.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
   </right>
   <top>
-    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="231.0" text="Create Lecture Event" textAlignment="CENTER" BorderPane.alignment="CENTER">
+    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="425.0" styleClass="title" text="Create Lecture Event" textAlignment="CENTER" BorderPane.alignment="CENTER">
       <font>
         <Font size="24.0" />
       </font>
