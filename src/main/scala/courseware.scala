@@ -124,6 +124,13 @@ object Courseware {
     Teacher.delFromDb(connection)("LE-00011")
     connection.close()
 
+
+    val le = LectureEvent("DAENT_1", "2015-12-21 08:00:00", "2015-12-21 10:30:00", "", "DAENT", "grp_1", "G.AP147.220")
+    LectureEvent.toDb(connection)(le)
+
+
+
+
    */
 
   }
