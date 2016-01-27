@@ -53,7 +53,7 @@ ___
 ![Update](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_U_Lecture_Event.png "Update")
 <br> The same for the UPDATE Window 
 
-
+____
 
 ToDO | Workload
 ------------ | -------------
