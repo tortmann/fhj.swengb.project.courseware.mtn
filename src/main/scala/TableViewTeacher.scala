@@ -1,5 +1,6 @@
 import javafx.application.Application
 import javafx.fxml.{Initializable, FXMLLoader}
+import javafx.scene.layout.BorderPane
 import javafx.stage.Stage
 import java.net.URL
 import java.util.ResourceBundle
@@ -7,15 +8,16 @@ import javafx.beans.property.{SimpleDoubleProperty, SimpleIntegerProperty, Simpl
 import javafx.beans.value.ObservableValue
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml._
-import javafx.scene.control.{TableColumn, TableView}
+import javafx.scene.control.{TextField, Label, TableColumn, TableView}
 import javafx.scene.{Parent, Scene}
 import javafx.util.Callback
 import scala.collection.JavaConversions
 import scala.util.control.NonFatal
 
+
 object TableViewTeacher {
   def main(args: Array[String]) {
-    Application.launch(classOf[TableViewLectureEventApp], args: _*)
+    Application.launch(classOf[TableViewTeacherApp], args: _*)
   }
 
 }
@@ -36,7 +38,7 @@ class TableViewTeacherApp extends javafx.application.Application {
 
   override def start(stage: Stage): Unit =
     try {
-      stage.setTitle("Teacher Database")
+      stage.setTitle("Teacher")
       loader.load[Parent]() // side effect
       val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
@@ -47,6 +49,7 @@ class TableViewTeacherApp extends javafx.application.Application {
     }
 
 }
+
 
 class MutableTeacher {
 
@@ -93,7 +96,7 @@ object MutableTeacher {
     mt.setTitle(t.title)
     mt.setFirstname(t.firstname)
     mt.setLastname(t.lastname)
-    mt.setBirthdate(t.birthdate.toString)
+    mt.setBirthdate(t.birthdate)
     mt.setGender(t.gender)
     mt.setAddress(t.address)
     mt.setZip(t.zip)
@@ -132,6 +135,17 @@ object DataSourceTeacher {
   var data = Teacher.fromDb(Teacher.queryAll(con))
   con.close()
 
+
+  var teacher = new MutableTeacher
+
+  def getTeacher(): MutableTeacher = {
+    return teacher
+  }
+
+  def setTeacher(t: MutableTeacher) = {
+    teacher = t
+  }
+
 }
 
 class TableViewTeacherAppController extends Initializable {
@@ -140,7 +154,9 @@ class TableViewTeacherAppController extends Initializable {
 
   type TeacherTC[T] = TableColumn[MutableTeacher, T]
 
+  @FXML var window:BorderPane = _
   @FXML var tableView: TableView[MutableTeacher] = _
+  @FXML var errorLabel: Label = _
 
   @FXML var columnId: TeacherTC[String] = _
   @FXML var columnTitle: TeacherTC[String] = _
@@ -176,4 +192,151 @@ class TableViewTeacherAppController extends Initializable {
     initTableViewColumn[String](columnTtype, _.ttypeProperty)
   }
 
+  val cssMain = "/css/MainMenu.css"
+  val fxmlCreateTeacher = "/fxml/CreateTeacher.fxml"
+  val fxmlEditTeacher = "/fxml/EditTeacher.fxml"
+
+  val loadCreateTeacher = new FXMLLoader(getClass.getResource(fxmlCreateTeacher))
+  val loadEditTeacher = new FXMLLoader(getClass.getResource(fxmlEditTeacher))
+
+
+  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
+    try {
+      val stage = new Stage
+      stage.setTitle("Teacher")
+      fxmlLoader.load[Parent]()
+      val scene = new Scene(fxmlLoader.getRoot[Parent])
+      stage.setScene(scene)
+      stage.getScene.getStylesheets.add(css)
+      stage.show()
+    } catch {
+      case NonFatal(e) => e.printStackTrace()
+    }
+  }
+
+  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Create(): Unit = {openWindow(loadCreateTeacher, cssMain)}
+
+  var teacher = new MutableTeacher
+
+  def Edit(): Unit = {
+    DataSourceTeacher.setTeacher(tableView.getSelectionModel().getSelectedItem())
+    openWindow(loadEditTeacher, cssMain )
+  }
+
+  def ButtonClicked(): Unit = {
+    val t: MutableTeacher = tableView.getSelectionModel().getSelectedItem();
+    val con = Db.Con
+
+    try {
+      if(t != null) {
+        errorLabel.setText("")
+        Teacher.delFromDb(con)(t.idProperty.get())
+        con.close()
+        mutableTeachers.remove(t)
+        tableView.refresh()
+      }
+    }
+    catch {
+      case e: Exception => errorLabel.setText("Not deleted due to primary key constraint!")
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+class CreateTeacherAppController extends Initializable {
+
+  @FXML var window:BorderPane = _
+
+  @FXML var id:TextField = _
+  @FXML var title:TextField = _
+  @FXML var firstname:TextField = _
+  @FXML var lastname:TextField = _
+  @FXML var birthdate:TextField = _
+  @FXML var gender:TextField = _
+  @FXML var address:TextField = _
+  @FXML var zip:TextField = _
+  @FXML var phone:TextField = _
+  @FXML var email:TextField = _
+  @FXML var ttype:TextField = _
+
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+
+  }
+
+  def Exit(): Unit = window.getScene.getWindow.hide()
+
+  def ButtonCreated(): Unit = {
+    val con = Db.Con
+
+    val t = Teacher(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
+                    address.getText(), zip.getText(), phone.getText(), email.getText(), ttype.getText())
+
+    Teacher.toDb(con)(t)
+    con.close()
+    window.getScene.getWindow.hide()
+  }
+}
+
+
+
+
+
+
+class EditTeacherAppController extends Initializable {
+
+  @FXML var window:BorderPane = _
+
+  @FXML var id:TextField = _
+  @FXML var title:TextField = _
+  @FXML var firstname:TextField = _
+  @FXML var lastname:TextField = _
+  @FXML var birthdate:TextField = _
+  @FXML var gender:TextField = _
+  @FXML var address:TextField = _
+  @FXML var zip:TextField = _
+  @FXML var phone:TextField = _
+  @FXML var email:TextField = _
+  @FXML var ttype:TextField = _
+
+  val teacher: MutableTeacher = DataSourceTeacher.getTeacher()
+
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+
+    id.setText(teacher.idProperty.get())
+    title.setText(teacher.titleProperty.get())
+    firstname.setText(teacher.firstnameProperty.get())
+    lastname.setText(teacher.lastnameProperty.get())
+    birthdate.setText(teacher.birthdateProperty.get())
+    gender.setText(teacher.birthdateProperty.get())
+    address.setText(teacher.addressProperty.get())
+    zip.setText(teacher.zipProperty.get())
+    phone.setText(teacher.phoneProperty.get())
+    email.setText(teacher.emailProperty.get())
+    ttype.setText(teacher.ttypeProperty.get())
+  }
+
+  def Exit(): Unit = window.getScene.getWindow.hide()
+
+  def ButtonEdited(): Unit = {
+    val con = Db.Con
+
+    val t = Teacher(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
+                    address.getText(), zip.getText(), phone.getText(), email.getText(), ttype.getText())
+
+    Teacher.editFromDb(con)(t, teacher.idProperty.get())
+    con.close()
+    window.getScene.getWindow.hide()
+
+
+  }
 }

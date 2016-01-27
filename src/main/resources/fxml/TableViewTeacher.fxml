@@ -5,19 +5,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewLectureEventAppController">
+<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1175.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewTeacherAppController">
    <right>
       <Separator orientation="VERTICAL" prefHeight="321.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
    </right>
    <top>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="150.0" text="Lecture Event" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="106.0" text="Teacher" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </top>
    <bottom>
-      <GridPane prefHeight="51.0" prefWidth="807.0" translateX="50.0" BorderPane.alignment="CENTER">
+      <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -26,16 +26,16 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-250.0">
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-375.0">
               <buttons>
                 <Button mnemonicParsing="false" onAction="#Create" text="Create" />
                   <Button mnemonicParsing="false" onAction="#Edit" text="Edit" />
-                  <Button mnemonicParsing="false" text="Delete" onMouseClicked="#ButtonClicked" />
+                  <Button mnemonicParsing="false" text="Delete" onMouseClicked="#ButtonClicked"  />
                   <Button mnemonicParsing="false" text="Report" />
                   <Button mnemonicParsing="false" onAction="#Exit" text="Exit" />
               </buttons>
             </ButtonBar>
-            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="414.0" translateX="-55.0" GridPane.rowIndex="1">
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="414.0" translateX="5.0" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -47,12 +47,16 @@
        <TableView fx:id="tableView" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
            <columns>
                <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="ID" />
-               <TableColumn fx:id="columnFrom" prefWidth="97.0" text="From" />
-               <TableColumn fx:id="columnTo" prefWidth="94.0" text="To" />
-               <TableColumn fx:id="columnDescription" prefWidth="119.0" text="Description" />
-               <TableColumn fx:id="columnLecture" prefWidth="121.0" text="Lecture" />
-               <TableColumn fx:id="columnGroup" prefWidth="96.0" text="Group" />
-               <TableColumn fx:id="columnClassroom" prefWidth="160.0" text="Classroom" />
+               <TableColumn fx:id="columnTitle" prefWidth="68.0" text="Title" />
+               <TableColumn fx:id="columnFirstName" prefWidth="123.0" text="First Name" />
+               <TableColumn fx:id="columnLastName" prefWidth="119.0" text="Last Name" />
+               <TableColumn fx:id="columnBirthdate" prefWidth="121.0" text="Birthdate" />
+               <TableColumn fx:id="columnGender" prefWidth="55.0" text="Gender" />
+               <TableColumn fx:id="columnAddress" prefWidth="201.0" text="Address" />
+               <TableColumn fx:id="columnZipcode" prefWidth="68.0" text="ZIP CODE" />
+               <TableColumn fx:id="columnPhone" prefWidth="122.0" text="Phone" />
+               <TableColumn fx:id="columnEmail" prefWidth="105.0" text="Email" />
+               <TableColumn fx:id="columnTtype" prefWidth="73.0" text="Type" />
            </columns>
        </TableView>
    </center>

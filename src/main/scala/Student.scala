@@ -10,7 +10,7 @@ object Student extends Db.DbEntity[Student] {
     pstmt.setString(2, s.title)
     pstmt.setString(3, s.firstname)
     pstmt.setString(4, s.lastname)
-    pstmt.setDate(5, s.birthdate)
+    pstmt.setString(5, s.birthdate)
     pstmt.setString(6, s.gender)
     pstmt.setString(7, s.address)
     pstmt.setString(8, s.zip)
@@ -21,10 +21,15 @@ object Student extends Db.DbEntity[Student] {
     pstmt.executeUpdate()
   }
 
+  def delFromDb(c: Connection)(prop: String) : Int = {
+    val pstmt = c.prepareStatement(deleteSql + prop + "'")
+    pstmt.executeUpdate()
+  }
+
   def fromDb(rs: ResultSet): List[Student] = {
     val lb : ListBuffer[Student] = new ListBuffer[Student]()
     while (rs.next()) lb.append(Student(rs.getString("student_id"), rs.getString("title"), rs.getString("firstname"),
-                                        rs.getString("lastname"), rs.getDate("birthdate"), rs.getString("gender"),
+                                        rs.getString("lastname"), rs.getString("birthdate"), rs.getString("gender"),
                                         rs.getString("address"), rs.getString("zip_code"), rs.getString("phone"),
                                         rs.getString("e_mail"), rs.getString("group_nr"), rs.getInt("status")))
     lb.toList
@@ -33,14 +38,14 @@ object Student extends Db.DbEntity[Student] {
   def insertSql: String = "insert into dbo.student (student_id, title, firstname, lastname, birthdate, gender, " +
                           "address, zip_code, phone, e_mail, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
-  def deleteSql(con: Connection)(prop: String): ResultSet = query(con)("delete from dbo.student where student_id = " + prop)
+  def deleteSql: String = "delete from dbo.student where student_id = '"
 
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.student")
 }
 
 
 
-case class Student(id:String, title:String, firstname:String, lastname:String, birthdate:Date, gender:String,
+case class Student(id:String, title:String, firstname:String, lastname:String, birthdate:String, gender:String,
                    address:String, zip:String, phone:String, email:String, group:String,
                    status:Int) extends Db.DbEntity[Student] {
 

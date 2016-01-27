@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -24,17 +23,23 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-500.0">
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-450.0">
               <buttons>
                 <Button mnemonicParsing="false" onAction="#Create" text="Create" />
                   <Button mnemonicParsing="false" onAction="#Edit" text="Edit" />
-                  <Button mnemonicParsing="false" text="Delete" />
+                  <Button mnemonicParsing="false" text="Delete" onMouseClicked="#ButtonClicked" />
                   <Button mnemonicParsing="false" text="Report" />
                   <Button mnemonicParsing="false" onAction="#Exit" text="Exit" />
               </buttons>
             </ButtonBar>
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="414.0" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
    </bottom>
