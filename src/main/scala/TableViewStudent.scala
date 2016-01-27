@@ -135,6 +135,7 @@ object DataSourceStudent {
   var data = Student.fromDb(Student.queryAll(con))
   con.close()
 
+  var student = new MutableStudent
 }
 
 class TableViewStudentAppController extends Initializable {
@@ -207,7 +208,10 @@ class TableViewStudentAppController extends Initializable {
 
   def Exit(): Unit = window.getScene.getWindow.hide()
   def Create(): Unit = {openWindow(loadCreateStudent, cssMain)}
-  def Edit(): Unit = {openWindow(loadEditStudent, cssMain )}
+  def Edit(): Unit = {
+    DataSourceStudent.student = tableView.getSelectionModel().getSelectedItem()
+    openWindow(loadEditStudent, cssMain )
+  }
 
   def ButtonClicked(): Unit = {
     val s: MutableStudent = tableView.getSelectionModel().getSelectedItem();
@@ -250,6 +254,7 @@ class CreateStudentAppController extends Initializable {
   @FXML var email:TextField = _
   @FXML var group:TextField = _
   @FXML var status:TextField = _
+  @FXML var errorLabel:Label = _
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
 
@@ -258,15 +263,91 @@ class CreateStudentAppController extends Initializable {
   def Exit(): Unit = window.getScene.getWindow.hide()
 
   def ButtonCreated(): Unit = {
-    val con = Db.Con
+    try {
+      val con = Db.Con
 
-    val s = Student(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(),
-                    gender.getText(), address.getText(), zip.getText(), phone.getText(), email.getText(), group.getText(),
-                    status.getText().toInt)
+      val s = Student(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(),
+        gender.getText(), address.getText(), zip.getText(), phone.getText(), email.getText(), group.getText(),
+        status.getText().toInt)
 
-    Student.toDb(con)(s)
-    con.close()
-    window.getScene.getWindow.hide()
+      Student.toDb(con)(s)
+      con.close()
+      window.getScene.getWindow.hide()
+    }
+    catch {
+      case e: Exception => errorLabel.setText("Could not be created!")
+    }
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class EditStudetAppController extends Initializable {
+
+  @FXML var window:BorderPane = _
+
+  @FXML var id:TextField = _
+  @FXML var title:TextField = _
+  @FXML var firstname:TextField = _
+  @FXML var lastname:TextField = _
+  @FXML var birthdate:TextField = _
+  @FXML var gender:TextField = _
+  @FXML var address:TextField = _
+  @FXML var zip:TextField = _
+  @FXML var phone:TextField = _
+  @FXML var email:TextField = _
+  @FXML var ttype:TextField = _
+  @FXML var group:TextField = _
+  @FXML var status:TextField = _
+  @FXML var errorLabel:Label = _
+
+  val student: MutableStudent = DataSourceStudent.student
+
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+
+    id.setText(student.idProperty.get())
+    title.setText(student.titleProperty.get())
+    firstname.setText(student.firstnameProperty.get())
+    lastname.setText(student.lastnameProperty.get())
+    birthdate.setText(student.birthdateProperty.get())
+    gender.setText(student.birthdateProperty.get())
+    address.setText(student.addressProperty.get())
+    zip.setText(student.zipProperty.get())
+    phone.setText(student.phoneProperty.get())
+    email.setText(student.emailProperty.get())
+    group.setText(student.groupProperty.get())
+    status.setText(student.statusProperty.get().toString)
+  }
+
+  def Exit(): Unit = window.getScene.getWindow.hide()
+
+  def ButtonEdited(): Unit = {
+    try {
+      val con = Db.Con
+
+      val s = Student(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
+        address.getText(), zip.getText(), phone.getText(), email.getText(), group.getText(), status.getText().toInt)
+
+      Student.editFromDb(con)(s, student.idProperty.get())
+      con.close()
+      window.getScene.getWindow.hide()
+    }
+    catch {
+      case e: Exception => errorLabel.setText("Could not be edited!")
+    }
+  }
+}

@@ -26,7 +26,6 @@ class TableViewTeacherApp extends javafx.application.Application {
 
   val fxmlMain = "/fxml/TableViewTeacher.fxml"
   val cssMain = "/css/MainMenu.css"
-
   val loader = new FXMLLoader(getClass.getResource(fxmlMain))
 
   def setSkin(stage: Stage, fxml: String, css: String): Boolean = {
@@ -138,10 +137,6 @@ object DataSourceTeacher {
 
   var teacher = new MutableTeacher
 
-  def getTeacher(): MutableTeacher = {
-    return teacher
-  }
-
   def setTeacher(t: MutableTeacher) = {
     teacher = t
   }
@@ -217,8 +212,6 @@ class TableViewTeacherAppController extends Initializable {
   def Exit(): Unit = window.getScene.getWindow.hide()
   def Create(): Unit = {openWindow(loadCreateTeacher, cssMain)}
 
-  var teacher = new MutableTeacher
-
   def Edit(): Unit = {
     DataSourceTeacher.setTeacher(tableView.getSelectionModel().getSelectedItem())
     openWindow(loadEditTeacher, cssMain )
@@ -268,6 +261,7 @@ class CreateTeacherAppController extends Initializable {
   @FXML var phone:TextField = _
   @FXML var email:TextField = _
   @FXML var ttype:TextField = _
+  @FXML var errorLabel:Label = _
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
 
@@ -276,14 +270,20 @@ class CreateTeacherAppController extends Initializable {
   def Exit(): Unit = window.getScene.getWindow.hide()
 
   def ButtonCreated(): Unit = {
-    val con = Db.Con
 
-    val t = Teacher(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
-                    address.getText(), zip.getText(), phone.getText(), email.getText(), ttype.getText())
+    try {
+      val con = Db.Con
 
-    Teacher.toDb(con)(t)
-    con.close()
-    window.getScene.getWindow.hide()
+      val t = Teacher(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
+        address.getText(), zip.getText(), phone.getText(), email.getText(), ttype.getText())
+
+      Teacher.toDb(con)(t)
+      con.close()
+      window.getScene.getWindow.hide()
+    }
+    catch {
+      case e: Exception => errorLabel.setText("Could not be created!")
+    }
   }
 }
 
@@ -307,8 +307,9 @@ class EditTeacherAppController extends Initializable {
   @FXML var phone:TextField = _
   @FXML var email:TextField = _
   @FXML var ttype:TextField = _
+  @FXML var errorLabel:Label = _
 
-  val teacher: MutableTeacher = DataSourceTeacher.getTeacher()
+  val teacher: MutableTeacher = DataSourceTeacher.teacher
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
 
@@ -328,15 +329,18 @@ class EditTeacherAppController extends Initializable {
   def Exit(): Unit = window.getScene.getWindow.hide()
 
   def ButtonEdited(): Unit = {
-    val con = Db.Con
+    try {
+      val con = Db.Con
 
-    val t = Teacher(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
-                    address.getText(), zip.getText(), phone.getText(), email.getText(), ttype.getText())
+      val t = Teacher(id.getText(), title.getText(), firstname.getText(), lastname.getText(), birthdate.getText(), gender.getText(),
+        address.getText(), zip.getText(), phone.getText(), email.getText(), ttype.getText())
 
-    Teacher.editFromDb(con)(t, teacher.idProperty.get())
-    con.close()
-    window.getScene.getWindow.hide()
-
-
+      Teacher.editFromDb(con)(t, teacher.idProperty.get())
+      con.close()
+      window.getScene.getWindow.hide()
+    }
+    catch {
+      case e: Exception => errorLabel.setText("Could not be edited!")
+    }
   }
 }
