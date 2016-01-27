@@ -294,8 +294,6 @@ class CreateTeacherAppController extends Initializable {
 
 class EditTeacherAppController extends Initializable {
 
-  import MutableTeacher._
-
   @FXML var window:BorderPane = _
 
   @FXML var id:TextField = _

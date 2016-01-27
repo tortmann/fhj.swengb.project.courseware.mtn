@@ -27,7 +27,12 @@ object Teacher extends Db.DbEntity[Teacher] {
 
 
   def editFromDb(c: Connection)(t: Teacher, id:String) : Int = {
-    val pstmt = c.prepareStatement(updateSql)
+    val sql = "update dbo.teacher set teacher_id = '" + t.id + "' set title = '" + t.title + "' set firstname = '" + t.firstname +
+              "' set lastname = '" + t.lastname + "' set birthdate = '" + t.birthdate + "' set gender = '"  + t.gender
+              "' set address = '" + t.address + "' set zip_code = '" + t.zip + "' set phone = '" + t.phone +
+              "' set e_mail = '" + t.email + "' set type = '" + t.ttype + "'" + "where teacher_id = '" + id +"'"
+    val pstmt = c.prepareStatement(sql)
+    /*
     pstmt.setString(1, t.id)
     pstmt.setString(2, t.title)
     pstmt.setString(3, t.firstname)
@@ -40,6 +45,7 @@ object Teacher extends Db.DbEntity[Teacher] {
     pstmt.setString(10, t.email)
     pstmt.setString(11, t.ttype)
     pstmt.setString(12, id)
+    */
     pstmt.executeUpdate()
   }
 
