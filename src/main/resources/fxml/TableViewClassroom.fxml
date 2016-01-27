@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewClassroomAppController">
+<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewClassroomAppController">
    <right>
       <Separator orientation="VERTICAL" prefHeight="315.0" prefWidth="19.0" BorderPane.alignment="CENTER" />
    </right>
    <top>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="213.0" text="Classroom" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="256.0" styleClass="title" text="Classroom" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </top>
    <bottom>
-      <GridPane prefHeight="46.0" prefWidth="431.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="71.0" prefWidth="487.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#Exit" prefHeight="36.0" prefWidth="72.0" text="Exit" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#Exit" prefHeight="36.0" prefWidth="72.0" styleClass="exit-button" text="Exit" GridPane.rowIndex="1">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
@@ -41,11 +42,14 @@
    <center>
        <TableView fx:id="tableView" prefHeight="321.0" prefWidth="700.0" BorderPane.alignment="CENTER">
            <columns>
-               <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="ID" />
-               <TableColumn fx:id="columnSize" prefWidth="97.0" text="Size" />
-               <TableColumn fx:id="columnCtype" prefWidth="94.0" text="Type" />
-               <TableColumn fx:id="columnDescription" prefWidth="119.0" text="Description" />
+               <TableColumn fx:id="columnId" prefWidth="118.0" text="ID" />
+               <TableColumn fx:id="columnSize" prefWidth="91.0" text="Size" />
+               <TableColumn fx:id="columnCtype" prefWidth="99.0" text="Type" />
+               <TableColumn fx:id="columnDescription" prefWidth="132.0" text="Description" />
            </columns>
        </TableView>
    </center>
+   <left>
+      <Separator orientation="VERTICAL" prefHeight="315.0" prefWidth="19.0" BorderPane.alignment="CENTER" />
+   </left>
 </BorderPane>

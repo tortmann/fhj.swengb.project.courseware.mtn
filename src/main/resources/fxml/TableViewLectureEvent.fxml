@@ -44,7 +44,7 @@
       </GridPane>
    </bottom>
    <center>
-       <TableView fx:id="tableView" styleClass="tableview" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
+       <TableView fx:id="tableView" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
            <columns>
                <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="ID" />
                <TableColumn fx:id="columnFrom" prefWidth="97.0" text="From" />

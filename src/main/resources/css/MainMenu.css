@@ -93,6 +93,7 @@
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
 
-.tableview:up{
-    -fx-background-color: #ff3b3b;
+
+.table-row-cell:selected{
+    -fx-background-color: #6b863b;
 }
