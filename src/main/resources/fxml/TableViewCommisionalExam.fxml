@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewLectureEventAppController">
+   <right>
+      <Separator orientation="VERTICAL" prefHeight="321.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+   </right>
+   <top>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="213.0" text="Commissional Exams" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+   </top>
+   <bottom>
+      <GridPane prefHeight="71.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="72.0" text="Exit" GridPane.rowIndex="1">
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" />
+               </effect>
+            </Button>
+            <Separator prefWidth="200.0" />
+            <Separator prefWidth="200.0" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+   </bottom>
+   <center>
+       <TableView fx:id="tableView" prefHeight="321.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+           <columns>
+               <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="Person 1" />
+               <TableColumn fx:id="columnFrom" prefWidth="97.0" text="Person 2" />
+               <TableColumn fx:id="columnTo" prefWidth="94.0" text="Person 3" />
+               <TableColumn fx:id="columnDescription" prefWidth="119.0" text="Lecture" />
+               <TableColumn fx:id="columnLecture" prefWidth="96.0" text="From" />
+               <TableColumn fx:id="columnGroup" prefWidth="93.0" text="To" />
+               <TableColumn fx:id="columnClassroom" prefWidth="188.0" text="Details" />
+            <TableColumn fx:id="columnClassroom1" prefWidth="94.0" text="Mark" />
+            <TableColumn fx:id="columnClassroom11" prefWidth="179.0" text="Student" />
+           </columns>
+       </TableView>
+   </center>
+</BorderPane>

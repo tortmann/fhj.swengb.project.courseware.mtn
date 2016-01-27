@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuAppController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="667.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuAppController">
    <bottom>
       <GridPane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -24,6 +24,9 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" />
+               </effect>
             </Button>
             <Separator prefWidth="200.0" GridPane.rowIndex="2" />
          </children>
@@ -50,7 +53,7 @@
       </GridPane>
    </top>
    <center>
-      <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="282.0" prefWidth="227.0" BorderPane.alignment="CENTER">
+      <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="665.0" prefWidth="227.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -58,14 +61,16 @@
           <RowConstraints maxHeight="90.0" minHeight="7.0" prefHeight="90.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="90.0" minHeight="3.0" prefHeight="90.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="90.0" minHeight="2.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#subMenuLectureEvent" prefHeight="71.0" prefWidth="227.0" styleClass="menu-button" text="Lecture Event">
+            <Button mnemonicParsing="false" onAction="#subMenuLectureEvent" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Lecture Event">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="14.0" />
                </font>
                <effect>
-                  <InnerShadow blurType="TWO_PASS_BOX" />
+                  <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
                <opaqueInsets>
                   <Insets />
@@ -76,24 +81,52 @@
             </Button>
             <Button mnemonicParsing="false" onAction="#subMenuStudent" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Student" GridPane.rowIndex="1">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="14.0" />
                </font>
                <effect>
-                  <InnerShadow blurType="TWO_PASS_BOX" />
+                  <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
                <GridPane.margin>
                   <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="284.0" styleClass="menu-button" text="Teacher" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Teacher" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="14.0" />
                </font>
                <effect>
-                  <InnerShadow blurType="TWO_PASS_BOX" />
+                  <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
                <GridPane.margin>
-                  <Insets top="20.0" />
+                  <Insets bottom="10.0" top="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#subMenuLectureEvent" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Commisional Exams" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" />
+               </effect>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#subMenuLectureEvent" prefHeight="72.0" prefWidth="236.0" styleClass="menu-button" text="Classroom" GridPane.rowIndex="4">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" />
+               </effect>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
          </children>
