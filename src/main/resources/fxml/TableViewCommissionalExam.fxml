@@ -28,7 +28,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="72.0" text="Exit" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#Exit" prefHeight="36.0" prefWidth="72.0" text="Exit" GridPane.rowIndex="1">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
