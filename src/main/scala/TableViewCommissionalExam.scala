@@ -1,4 +1,3 @@
-/*
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.application.Application
@@ -173,4 +172,3 @@ class TableViewCommissionalExamAppController extends Initializable {
   def Exit(): Unit = window.getScene.getWindow.hide()
 
 }
-*/
