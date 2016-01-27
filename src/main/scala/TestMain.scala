@@ -30,6 +30,7 @@ class TestMainApp extends javafx.application.Application {
     try {
       stage.setTitle("Courseware")
       var loader = new FXMLLoader(getClass.getResource(fxml))
+      loader.setRoot(null)
       loader.load[Parent]()
 
       val scene = new Scene(loader.getRoot[Parent])

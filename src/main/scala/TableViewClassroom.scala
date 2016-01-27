@@ -144,6 +144,10 @@ class TableViewClassroomAppController extends Initializable {
 
   def Exit(): Unit = {
     window.getScene.getWindow.hide()
-    Application.launch(classOf[TestMainApp])
+    val tm = new TestMainApp
+    val stage = new Stage
+    val fxml = "/fxml/MainMenu.fxml"
+    val cssMain = "/css/MainMenu.css"
+    tm.test(stage, fxml, cssMain)
   }
 }
