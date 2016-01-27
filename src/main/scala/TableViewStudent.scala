@@ -228,3 +228,4 @@ class TableViewStudentAppController extends Initializable {
 
   }
 }
+
