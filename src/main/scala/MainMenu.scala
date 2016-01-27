@@ -15,29 +15,28 @@ object MainMenu {
 }
 class MainMenuApp extends javafx.application.Application {
 
-  val fxmlMain = "/fxml/MainMenu.fxml"
-  val cssMain = "/css/MainMenu.css"
+  override def start(stage: Stage): Unit = {
 
-  val loader = new FXMLLoader(getClass.getResource(fxmlMain))
-
-  def setSkin(stage: Stage, fxml: String, css: String): Boolean = {
-    val scene = new Scene(loader.load[Parent]())
-    stage.setScene(scene)
-    stage.getScene.getStylesheets.clear()
-    stage.getScene.getStylesheets.add(css)
+    val fxmlMain = "/fxml/MainMenu.fxml"
+    val cssMain = "/css/MainMenu.css"
+    redir(stage, fxmlMain, cssMain)
   }
 
-  override def start(stage: Stage): Unit =
+  def redir(stage:Stage, fxml: String, css:String): Unit = {
     try {
       stage.setTitle("Courseware")
-      loader.load[Parent]() // side effect
+      var loader = new FXMLLoader(getClass.getResource(fxml))
+      loader.setRoot(null)
+      loader.load[Parent]()
+
       val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
-      stage.getScene.getStylesheets.add(cssMain)
+      stage.getScene.getStylesheets.add(css)
       stage.show()
     } catch {
       case NonFatal(e) => e.printStackTrace()
     }
+  }
 }
 class MainMenuAppController extends Initializable {
 
@@ -50,18 +49,13 @@ class MainMenuAppController extends Initializable {
   val fxmlCommissionalExam = "/fxml/TableViewCommissionalExam.fxml"
   val fxmlClassroom = "/fxml/TableViewClassroom.fxml"
 
-  val loadStudent = new FXMLLoader(getClass.getResource(fxmlStudent))
-  val loadTeacher = new FXMLLoader(getClass.getResource(fxmlTeacher))
-  val loadLectureEvent = new FXMLLoader(getClass.getResource(fxmlLectureEvent))
-  val loadCommissionalExam = new FXMLLoader(getClass.getResource(fxmlCommissionalExam))
-  val loadClassroom = new FXMLLoader(getClass.getResource(fxmlClassroom))
-
-  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
+  def openWindow(fxml: String, css:String):Unit = {
     try {
       val stage = new Stage
       stage.setTitle("Courseware")
-      fxmlLoader.load[Parent]()
-      val scene = new Scene(fxmlLoader.getRoot[Parent])
+      var loader = new FXMLLoader(getClass.getResource(fxml))
+      loader.load[Parent]()
+      val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
       stage.getScene.getStylesheets.add(css)
       stage.show()
@@ -71,11 +65,11 @@ class MainMenuAppController extends Initializable {
   }
 
   def exit(): Unit = sys.exit()
-  def subMenuStudent(): Unit = {openWindow(loadStudent, cssMain)}
-  def subMenuTeacher(): Unit = {openWindow(loadTeacher, cssMain)}
-  def subMenuLectureEvent(): Unit = {openWindow(loadLectureEvent, cssMain)}
-  def subMenuCommissionalExam(): Unit = {openWindow(loadCommissionalExam, cssMain)}
-  def subMenuClassroom(): Unit = {openWindow(loadClassroom, cssMain)}
+  def subMenuStudent(): Unit = {openWindow(fxmlStudent, cssMain)}
+  def subMenuTeacher(): Unit = {openWindow(fxmlTeacher, cssMain)}
+  def subMenuLectureEvent(): Unit = {openWindow(fxmlLectureEvent, cssMain)}
+  def subMenuCommissionalExam(): Unit = {openWindow(fxmlCommissionalExam, cssMain)}
+  def subMenuClassroom(): Unit = {openWindow(fxmlClassroom, cssMain)}
 
 }
 

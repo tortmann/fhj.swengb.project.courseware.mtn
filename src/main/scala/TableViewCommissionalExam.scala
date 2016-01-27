@@ -23,30 +23,28 @@ object TableViewCommissionalExam {
 
 class TableViewCommissionalExamApp extends javafx.application.Application {
 
-  val fxmlMain = "/fxml/TableViewCommissionalExam.fxml"
-  val cssMain = "/css/MainMenu.css"
+  override def start(stage: Stage): Unit = {
 
-  val loader = new FXMLLoader(getClass.getResource(fxmlMain))
-
-  def setSkin(stage: Stage, fxml: String, css: String): Boolean = {
-    val scene = new Scene(loader.load[Parent]())
-    stage.setScene(scene)
-    stage.getScene.getStylesheets.clear()
-    stage.getScene.getStylesheets.add(css)
+    val fxmlMain = "/fxml/TableViewCommissionalExam.fxml"
+    val cssMain = "/css/MainMenu.css"
+    redir(stage, fxmlMain, cssMain)
   }
 
-  override def start(stage: Stage): Unit =
+  def redir(stage:Stage, fxml: String, css:String): Unit = {
     try {
-      stage.setTitle("Commissional Exam Database")
-      loader.load[Parent]() // side effect
+      stage.setTitle("Commissional Exam")
+      var loader = new FXMLLoader(getClass.getResource(fxml))
+      loader.setRoot(null)
+      loader.load[Parent]()
+
       val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
-      stage.getScene.getStylesheets.add(cssMain)
+      stage.getScene.getStylesheets.add(css)
       stage.show()
     } catch {
       case NonFatal(e) => e.printStackTrace()
     }
-
+  }
 }
 
 
@@ -169,6 +167,13 @@ class TableViewCommissionalExamAppController extends Initializable {
 
   }
 
-  def Exit(): Unit = window.getScene.getWindow.hide()
+  def Exit(): Unit = {
+    window.getScene.getWindow.hide()
+    val tm = new MainMenuApp
+    val stage = new Stage
+    val fxml = "/fxml/MainMenu.fxml"
+    val cssMain = "/css/MainMenu.css"
+    tm.redir(stage, fxml, cssMain)
+  }
 
 }
