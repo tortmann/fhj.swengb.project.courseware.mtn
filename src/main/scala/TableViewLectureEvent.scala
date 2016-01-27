@@ -208,7 +208,7 @@ class TableViewLectureEventAppController extends Initializable {
 }
 
 
-
+//ladi
 
 
 
