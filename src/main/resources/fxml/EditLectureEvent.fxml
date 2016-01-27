@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditLectureEventAppController">
+<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditLectureEventAppController">
    <center>
       <GridPane prefHeight="751.0" prefWidth="399.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -41,7 +41,7 @@
       </GridPane>
    </center>
    <top>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="231.0" text="Edit Lecture Event" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="499.0" styleClass="title" text="Edit Lecture Event" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -60,13 +60,13 @@
         </rowConstraints>
          <children>
             <Separator prefWidth="200.0" />
-            <Button mnemonicParsing="false" onMouseClicked="#ButtonEdited" prefHeight="35.0" prefWidth="74.0" text="Edit" translateX="100.0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onMouseClicked="#ButtonEdited" prefHeight="35.0" prefWidth="74.0" styleClass="menu-button" text="Edit" translateX="100.0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
             </Button>
             <Separator prefWidth="200.0" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" onAction="#Exit" prefHeight="35.0" prefWidth="74.0" text="Exit" translateX="-100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#Exit" prefHeight="35.0" prefWidth="74.0" styleClass="menu-button" text="Exit" translateX="-100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>

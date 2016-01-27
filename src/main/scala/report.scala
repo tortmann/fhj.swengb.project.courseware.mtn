@@ -6,12 +6,6 @@ import java.nio.file.{Paths, Files}
 
 import scala.io.Source
 
-
-
-
-
-
-
 object SwengbUtil {
 
   def mkParent(file : File) : Unit = {
@@ -27,17 +21,6 @@ object SwengbUtil {
     Source.fromURL(url).mkString
   }
 
-  /**
-   * function to measure execution time of first function, optionally executing a display function,
-   * returning the time in milliseconds
-   */
-  def time[A](a: => A, display: Long => Unit = s => ()): A = {
-    val now = System.nanoTime
-    val result = a
-    val micros = (System.nanoTime - now) / 1000000
-    display(micros)
-    result
-  }
 }
 
 /**
@@ -48,11 +31,14 @@ object SwengbUtil {
 object Report {
 
 
-  val target = new File("/Users/Max/IMA14/3.Semester/SWENGB/workspace/fhj.swengb.project.courseware.mtn/example.html")
+
+
+  val target = new File("C:\\workspace\\fhj.swengb.project.courseware.mtn\\example.html")
 
   def main(args: Array[String]) {
-    val studentreport = Student.fromDb(Student.queryAll(Db.Con)).toString()
-    val html1 = Source.fromString(studentreport).mkString
+    //val studentreport: String = Student.fromDb(Student.queryAll(Db.Con)).toString
+    val studentlist: String = List(Student("1","Dr","MAX","WAGENEDER","1995-07-29","m","STREET1","8010","","","grp_1",1),Student("1","Mag","THOMAS","ORTMANN","2015-07-29","m","STREET1","8010","","","grp_1",1)).toString()
+    val html1 = Source.fromString(studentlist).mkString
     //val html = Source.fromIterable(studentreport).mkString
     SwengbUtil.writeToFile(target, html1)
     println("Created " + target.getAbsolutePath)

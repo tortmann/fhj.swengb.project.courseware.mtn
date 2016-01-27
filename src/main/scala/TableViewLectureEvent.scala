@@ -258,7 +258,13 @@ class CreateLectureEventAppController extends Initializable {
 
       LectureEvent.toDb(con)(le)
       con.close()
-      Exit()
+      window.getScene.getWindow.hide()
+
+      val tvlea = new TableViewLectureEventApp
+      val stage = new Stage
+      val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
+      val cssMain = "/css/MainMenu.css"
+      tvlea.redir(stage, fxmlMain, cssMain)
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be created!")
@@ -318,7 +324,13 @@ class EditLectureEventAppController extends Initializable {
 
         LectureEvent.editFromDb(con)(le, lectureevent.idProperty.get())
         con.close()
-        Exit()
+        window.getScene.getWindow.hide()
+
+        val tvlea = new TableViewLectureEventApp
+        val stage = new Stage
+        val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
+        val cssMain = "/css/MainMenu.css"
+        tvlea.redir(stage, fxmlMain, cssMain)
       }
     }
      catch {

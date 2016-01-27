@@ -16,14 +16,14 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 4. Commissional Exams
 5. Classroom <br>
 
-![alt text](/path/img.jpg "Title")
+![MainMenu](https://github.com/mwageneder/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/1.png "MainMenu")
 
 
 
 
 
 
-•	At the first three Tables you are able to CREATE, EDIT, DELETE the DB-Entries
+•	At the first three Tables you are able to CREATE, EDIT, DELETE the DB-Entries <br>
 •	At the last two Tables you are only able to READ the DB-Entries <br>
 
 ###

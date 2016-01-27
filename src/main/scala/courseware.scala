@@ -67,19 +67,19 @@ object Courseware {
 
     // parameters for the connection
     val driver = "com.microsoft.jdbc.sqlserver.SQLServerDriver"
-    val url="jdbc:microsoft:sqlserver://10.25.2.143:1433;databaseName=daent_g1;"
+    val url = "jdbc:microsoft:sqlserver://10.25.2.143:1433;databaseName=daent_g1;"
     val username = "wagm"
     val password = "wagenede14"
 
 
 
     // Connection --> NULL setzen
-    var connection:Connection = null
+    var connection: Connection = null
 
     Class.forName(driver)
     connection = DriverManager.getConnection(url, username, password)
 
- /**
+    /**
     //QUERY ALL TABLES
       for (t <- Assessment.fromDb(Assessment.queryAll(connection))) {
         println(t)
@@ -129,13 +129,8 @@ object Courseware {
     LectureEvent.toDb(connection)(le)
 
 
+      */
 
-
-   */
-
-    for (t <- Student.fromDb(Student.queryReport(connection))) {
-      println(t)
-    }
 
 
   }
