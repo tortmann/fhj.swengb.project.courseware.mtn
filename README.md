@@ -22,9 +22,9 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 •	At the first three Tables you are able to CREATE, EDIT, DELETE the DB-Entries <br>
 •	At the last two Tables you are only able to READ the DB-Entries <br>
 
-![CRUD](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_CRUD_Lecture_Event.jpg "CRUD")
+![CRUD](https://github.com/NSpalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_CRUD_Lecture_Event.png "CRUD")
 
-![Create](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_C_Lecture_Event.jpg "Create")
+![Create](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_C_Lecture_Event.png "Create")
 
 ###
 
