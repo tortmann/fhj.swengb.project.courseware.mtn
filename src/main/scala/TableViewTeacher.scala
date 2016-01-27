@@ -317,7 +317,7 @@ class EditTeacherAppController extends Initializable {
     firstname.setText(teacher.firstnameProperty.get())
     lastname.setText(teacher.lastnameProperty.get())
     birthdate.setText(teacher.birthdateProperty.get())
-    gender.setText(teacher.birthdateProperty.get())
+    gender.setText(teacher.genderProperty.get())
     address.setText(teacher.addressProperty.get())
     zip.setText(teacher.zipProperty.get())
     phone.setText(teacher.phoneProperty.get())
