@@ -30,7 +30,7 @@ object Student extends Db.DbEntity[Student] {
     val sql = "update dbo.student set student_id = '" + s.id + "', title = '" + s.title + "', firstname = '" + s.firstname +
       "', lastname = '" + s.lastname + "', birthdate = '" + s.birthdate + "', gender = '"  + s.gender +
       "', address = '" + s.address + "', zip_code = '" + s.zip + "', phone = '" + s.phone +
-      "' , e_mail = '" + s.email + "' , group_nr = '" + s.group + "' , status = '" + s.status + "' where teacher_id = '" + id + "';"
+      "' , e_mail = '" + s.email + "' , group_nr = '" + s.group + "' , status = '" + s.status + "' where student_id = '" + id + "';"
     val pstmt = c.prepareStatement(sql)
     pstmt.executeUpdate()
   }
