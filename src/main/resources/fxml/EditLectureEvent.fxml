@@ -60,7 +60,7 @@
         </rowConstraints>
          <children>
             <Separator prefWidth="200.0" />
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="74.0" text="Edit" translateX="100.0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="74.0" text="Edit" translateX="100.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" onMouseClicked="#ButtonEdited">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>

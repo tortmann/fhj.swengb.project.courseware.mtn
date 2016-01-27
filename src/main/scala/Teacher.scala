@@ -22,7 +22,24 @@ object Teacher extends Db.DbEntity[Teacher] {
 
   def delFromDb(c: Connection)(prop: String) : Int = {
     val pstmt = c.prepareStatement(deleteSql + prop + "'")
+    pstmt.executeUpdate()
+  }
 
+
+  def editFromDb(c: Connection)(t: Teacher, id:String) : Int = {
+    val pstmt = c.prepareStatement(updateSql)
+    pstmt.setString(1, t.id)
+    pstmt.setString(2, t.title)
+    pstmt.setString(3, t.firstname)
+    pstmt.setString(4, t.lastname)
+    pstmt.setString(5, t.birthdate)
+    pstmt.setString(6, t.gender)
+    pstmt.setString(7, t.address)
+    pstmt.setString(8, t.zip)
+    pstmt.setString(9, t.phone)
+    pstmt.setString(10, t.email)
+    pstmt.setString(11, t.ttype)
+    pstmt.setString(12, id)
     pstmt.executeUpdate()
   }
 
@@ -39,6 +56,12 @@ object Teacher extends Db.DbEntity[Teacher] {
                           "address, zip_code, phone, e_mail, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
   def deleteSql: String = "delete from dbo.teacher where teacher_id = '"
+
+  def updateSql: String =
+    "update dbo.teacher " +
+    "set teacher_id = '?' set title = '?' set firstname = '?' set lastname = '?' set birthdate = '?' set gender = '?' set address = '?' " +
+    "set zip_code = '?' set phone = '?' set e_mail = '?' set type = '?'" +
+    "where teacher_id = '?'"
 
   def queryAll(con: Connection): ResultSet = query(con)("select * from dbo.teacher")
 }
