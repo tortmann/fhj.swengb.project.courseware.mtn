@@ -26,7 +26,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-250.0">
+            <ButtonBar prefHeight="25.0" prefWidth="855.0" translateX="-250.0">
               <buttons>
                 <Button mnemonicParsing="false" onAction="#Create" styleClass="menu-button" text="Create" />
                   <Button mnemonicParsing="false" onAction="#Edit" styleClass="menu-button" text="Edit" />
@@ -44,7 +44,7 @@
       </GridPane>
    </bottom>
    <center>
-       <TableView fx:id="tableView" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
+       <TableView fx:id="tableView" styleClass="tableview" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
            <columns>
                <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="ID" />
                <TableColumn fx:id="columnFrom" prefWidth="97.0" text="From" />
