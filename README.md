@@ -89,7 +89,7 @@ TOTAL | 167h
 
 ##Costs for our Programme  
 
-167h = 1 person - 1 month (40h/week)
+167h = 1 person - 1 month (40h/week)  
 netincome 2500 per Month
 
 
