@@ -16,7 +16,7 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 4. Commissional Exams
 5. Classroom <br>
 
-![MainMenu](https://github.com/mwageneder/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/1.png "MainMenu")
+![MainMenu](https://github.com/mwageneder/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/1.jpg "MainMenu")
 
 
 
