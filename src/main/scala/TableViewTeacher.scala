@@ -205,6 +205,7 @@ class TableViewTeacherAppController extends Initializable {
 
   def returnTeacher(): MutableTeacher = {
     val t =  tableView.getSelectionModel().getSelectedItem()
+    t
   }
 
   def Exit(): Unit = window.getScene.getWindow.hide()
