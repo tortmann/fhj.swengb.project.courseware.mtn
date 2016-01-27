@@ -1,4 +1,4 @@
-#SWENGB Project 
+                                        ##SWENGB Project 
 ###Courseware - Team MTN 
                         Thomas Ortmann/ Nina Spalek / Maximillian Wageneder
 
@@ -6,8 +6,10 @@
 ###Goal: 
 Scala Database Application to display our Bachelor Degree Programme <br>
 ###Database:
-Connection to Microsoft SQL Server (imasql @FH Joanneum)  
-!! **NOTE** !! to get a Database Connectivity you have to install the Microsoft JDBC Driver 4.0 
+Connection to Microsoft SQL Server (imasql @FH Joanneum)
+  
+!! **NOTE** !! to get a Database Connectivity you have to install the Microsoft JDBC Driver 4.0 manually  
+!! **NOTE** !! -- Maven Library doesn't contain Maicrosoft JDBC Driver 
 
 ###Functionalities: <br>
 
@@ -44,7 +46,7 @@ Connection to Microsoft SQL Server (imasql @FH Joanneum)
 ![Update](https://github.com/nspalek/fhj.swengb.project.courseware.mtn/blob/master/src/main/resources/Screenshots/Courseware_U_Lecture_Event.png "Update")
 <br> The same for the UPDATE Window 
 
-----
+====
 
 
 
