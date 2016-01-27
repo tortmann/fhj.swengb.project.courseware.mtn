@@ -16,14 +16,14 @@ import scala.util.control.NonFatal
 
 object TableViewCommissionalExam {
   def main(args: Array[String]) {
-    Application.launch(classOf[TableViewLectureEventApp], args: _*)
+    Application.launch(classOf[TableViewCommissionalExamApp], args: _*)
   }
 
 }
 
-class TableViewLectureEventApp extends javafx.application.Application {
+class TableViewCommissionalExamApp extends javafx.application.Application {
 
-  val fxmlMain = "/fxml/TableViewLectureEvent.fxml"
+  val fxmlMain = "/fxml/TableViewCommissionalExam.fxml"
   val cssMain = "/css/MainMenu.css"
 
   val loader = new FXMLLoader(getClass.getResource(fxmlMain))
@@ -37,7 +37,7 @@ class TableViewLectureEventApp extends javafx.application.Application {
 
   override def start(stage: Stage): Unit =
     try {
-      stage.setTitle("LectureEvent Database")
+      stage.setTitle("Commissional Exam Database")
       loader.load[Parent]() // side effect
       val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
