@@ -27,17 +27,17 @@ class TestMainApp extends javafx.application.Application {
   }
 
   def test(stage:Stage, fxml: String, css:String): Unit = {
-    try {
-      stage.setTitle("Courseware")
-      var loader = new FXMLLoader(getClass.getResource(fxml))
-      loader.setRoot(null)
-      loader.load[Parent]()
+      try {
+        stage.setTitle("Courseware")
+        var loader = new FXMLLoader(getClass.getResource(fxml))
+        loader.setRoot(null)
+        loader.load[Parent]()
 
-      val scene = new Scene(loader.getRoot[Parent])
-      stage.setScene(scene)
-      stage.getScene.getStylesheets.add(css)
-      stage.show()
-    } catch {
+        val scene = new Scene(loader.getRoot[Parent])
+        stage.setScene(scene)
+        stage.getScene.getStylesheets.add(css)
+        stage.show()
+      } catch {
       case NonFatal(e) => e.printStackTrace()
     }
   }
