@@ -126,6 +126,9 @@ object Courseware {
 
    */
 
+    val le = LectureEvent(id:String, from:String, to:String, description:String, lecture:String, group:String,
+    classroom:String)
+    LectureEvent.toDb(connection)(le)
   }
 
 }

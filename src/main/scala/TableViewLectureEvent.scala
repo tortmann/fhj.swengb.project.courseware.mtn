@@ -84,8 +84,8 @@ object MutableLectureEvent {
   def apply(le: LectureEvent): MutableLectureEvent = {
     val mle = new MutableLectureEvent
     mle.setId(le.id)
-    mle.setFrom(le.from.toString)
-    mle.setTo(le.to.toString)
+    mle.setFrom(le.from)
+    mle.setTo(le.to)
     mle.setDescription(le.description)
     mle.setLecture(le.lecture)
     mle.setGroup(le.group)
