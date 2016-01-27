@@ -1,8 +1,7 @@
-/*
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.application.Application
-import javafx.beans.property.SimpleStringProperty
+import javafx.beans.property.{SimpleIntegerProperty, SimpleStringProperty}
 import javafx.beans.value.ObservableValue
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml.{FXML, Initializable, FXMLLoader}
@@ -51,48 +50,56 @@ class TableViewCommissionalExamApp extends javafx.application.Application {
 }
 
 
-class MutableLectureEvent {
+class MutableCommissionalExam {
 
-  val idProperty: SimpleStringProperty = new SimpleStringProperty()
+  val pers1Property: SimpleStringProperty = new SimpleStringProperty()
+  val pers2Property: SimpleStringProperty = new SimpleStringProperty()
+  val pers3Property: SimpleStringProperty = new SimpleStringProperty()
+  val lectureProperty: SimpleStringProperty = new SimpleStringProperty()
   val fromProperty: SimpleStringProperty = new SimpleStringProperty()
   val toProperty: SimpleStringProperty = new SimpleStringProperty()
-  val descriptionProperty: SimpleStringProperty = new SimpleStringProperty()
-  val lectureProperty: SimpleStringProperty = new SimpleStringProperty()
-  val groupProperty: SimpleStringProperty = new SimpleStringProperty()
-  val classroomProperty: SimpleStringProperty = new SimpleStringProperty()
+  val detailsProperty: SimpleStringProperty = new SimpleStringProperty()
+  val markProperty: SimpleIntegerProperty = new SimpleIntegerProperty()
+  val studentProperty: SimpleStringProperty = new SimpleStringProperty()
 
-  def setId(id: String) = idProperty.set(id)
+  def setPers1(pers1: String) = pers1Property.set(pers1)
+
+  def setPers2(pers2: String) = pers2Property.set(pers2)
+
+  def setPers3(pers3: String) = pers3Property.set(pers3)
+
+  def setLecture(lecture: String) = lectureProperty.set(lecture)
 
   def setFrom(from: String) = fromProperty.set(from)
 
   def setTo(to: String) = toProperty.set(to)
 
-  def setDescription(description: String) = descriptionProperty.set(description)
+  def setDetails(details: String) = detailsProperty.set(details)
 
-  def setLecture(lecture: String) = lectureProperty.set(lecture)
+  def setMark(mark: Int) = markProperty.set(mark)
 
-  def setGroup(group: String) = groupProperty.set(group)
-
-  def setClassroom(classroom: String) = classroomProperty.set(classroom)
+  def setStudent(student: String) = studentProperty.set(student)
 }
 
 
-object MutableLectureEvent {
+object MutableCommissionalExam {
 
-  def apply(le: LectureEvent): MutableLectureEvent = {
-    val mle = new MutableLectureEvent
-    mle.setId(le.id)
-    mle.setFrom(le.from.toString)
-    mle.setTo(le.to.toString)
-    mle.setDescription(le.description)
-    mle.setLecture(le.lecture)
-    mle.setGroup(le.group)
-    mle.setClassroom(le.classroom)
-    mle
+  def apply(ce: CommissionalExam): MutableCommissionalExam = {
+    val mce= new MutableCommissionalExam
+    mce.setPers1(ce.pers1)
+    mce.setPers2(ce.pers2)
+    mce.setPers3(ce.pers3)
+    mce.setLecture(ce.lecture)
+    mce.setFrom(ce.from.toString)
+    mce.setTo(ce.to.toString)
+    mce.setDetails(ce.details)
+    mce.setMark(ce.mark)
+    mce.setStudent(ce.student)
+    mce
   }
 }
 
-object JfxUtilsle {
+object JfxUtilsce {
 
   type TCDF[S, T] = TableColumn.CellDataFeatures[S, T]
 
@@ -114,77 +121,54 @@ object JfxUtilsle {
 
 }
 
-object DataSourceLectureEvent {
+object DataSourceCommissionalExam {
 
   val con = Db.Con
-  var data = LectureEvent.fromDb(LectureEvent.queryAll(con))
+  var data = CommissionalExam.fromDb(CommissionalExam.queryAll(con))
   con.close()
 
 }
 
-class TableViewLectureEventAppController extends Initializable {
+class TableViewCommissionalExamAppController extends Initializable {
 
-  import JfxUtilsle._
+  import JfxUtilsce._
 
-  type LectureEventTC[T] = TableColumn[MutableLectureEvent, T]
+  type CommissionalExamTC[T] = TableColumn[MutableCommissionalExam, T]
 
   @FXML var window:BorderPane = _
-  @FXML var tableView: TableView[MutableLectureEvent] = _
+  @FXML var tableView: TableView[MutableCommissionalExam] = _
 
-  @FXML var columnId: LectureEventTC[String] = _
-  @FXML var columnFrom: LectureEventTC[String] = _
-  @FXML var columnTo: LectureEventTC[String] = _
-  @FXML var columnDescription: LectureEventTC[String] = _
-  @FXML var columnLecture: LectureEventTC[String] = _
-  @FXML var columnGroup: LectureEventTC[String] = _
-  @FXML var columnClassroom: LectureEventTC[String] = _
+  @FXML var columnPers1: CommissionalExamTC[String] = _
+  @FXML var columnPers2: CommissionalExamTC[String] = _
+  @FXML var columnPers3: CommissionalExamTC[String] = _
+  @FXML var columnFrom: CommissionalExamTC[String] = _
+  @FXML var columnTo: CommissionalExamTC[String] = _
+  @FXML var columnDetails: CommissionalExamTC[String] = _
+  @FXML var columnMark: CommissionalExamTC[String] = _
+  @FXML var columnStudent: CommissionalExamTC[String] = _
 
 
-  val mutableLectureEvents = mkObservableList(DataSourceLectureEvent.data.map(MutableLectureEvent(_)))
 
-  def initTableViewColumn[T]: (LectureEventTC[T], (MutableLectureEvent) => Any) => Unit =
-    initTableViewColumnCellValueFactory[MutableLectureEvent, T]
+  val mutableCommissionalExams = mkObservableList(DataSourceCommissionalExam.data.map(MutableCommissionalExam(_)))
+
+  def initTableViewColumn[T]: (CommissionalExamTC[T], (MutableCommissionalExam) => Any) => Unit =
+    initTableViewColumnCellValueFactory[MutableCommissionalExam, T]
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
 
-    tableView.setItems(mutableLectureEvents)
+    tableView.setItems(mutableCommissionalExams)
 
-    initTableViewColumn[String](columnId, _.idProperty)
+    initTableViewColumn[String](columnPers1, _.pers1Property)
+    initTableViewColumn[String](columnPers2, _.pers2Property)
+    initTableViewColumn[String](columnPers3, _.pers3Property)
     initTableViewColumn[String](columnFrom, _.fromProperty)
     initTableViewColumn[String](columnTo, _.toProperty)
-    initTableViewColumn[String](columnDescription, _.descriptionProperty)
-    initTableViewColumn[String](columnLecture, _.lectureProperty)
-    initTableViewColumn[String](columnGroup, _.groupProperty)
-    initTableViewColumn[String](columnClassroom, _.classroomProperty)
+    initTableViewColumn[String](columnDetails, _.detailsProperty)
+    initTableViewColumn[String](columnMark, _.markProperty)
+    initTableViewColumn[String](columnStudent, _.studentProperty)
 
-  }
-  val cssMain = "/css/MainMenu.css"
-  val fxmlCreateLectureEvent = "/fxml/CreateLectureEvent.fxml"
-  val fxmlEditLectureEvent = "/fxml/EditLectureEvent.fxml"
-
-
-  val loadCreateLectureEvent = new FXMLLoader(getClass.getResource(fxmlCreateLectureEvent))
-  val loadEditLectureEvent = new FXMLLoader(getClass.getResource(fxmlEditLectureEvent))
-
-
-  def openWindow(fxmlLoader: FXMLLoader, css: String):Unit = {
-    try {
-      val stage = new Stage
-      stage.setTitle("Lecture Event")
-      fxmlLoader.load[Parent]()
-      val scene = new Scene(fxmlLoader.getRoot[Parent])
-      stage.setScene(scene)
-      stage.getScene.getStylesheets.add(css)
-      stage.show()
-    } catch {
-      case NonFatal(e) => e.printStackTrace()
-    }
   }
 
   def Exit(): Unit = window.getScene.getWindow.hide()
-  def Create(): Unit = {openWindow(loadCreateLectureEvent, cssMain)}
-  def Edit(): Unit = {openWindow(loadEditLectureEvent, cssMain )}
-
 
 }
-*/
