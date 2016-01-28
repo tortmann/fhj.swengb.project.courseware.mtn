@@ -77,12 +77,20 @@ ____
 
 ToDO | Workload
 ------------ | -------------
+SQL Database | 80h
 Scala Hardcoding | 60h
 GUI  |    20h
 Documentation | 3h
 Wasted Time with GIT | 2h
 Waiting for Response of IMASQL | 2h
  | --------
-TOTAL | 87h
+TOTAL | 167h
 
-## 87h * 80€ = **7.569€**
+
+##Costs for our Programme  
+
+167h = 1 person - 1 month (40h/week)
+netincome 2500 per Month
+
+
+##=> 5.000€

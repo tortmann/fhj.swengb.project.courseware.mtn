@@ -335,11 +335,11 @@ class CreateStudentAppController extends Initializable {
       con.close()
       window.getScene.getWindow.hide()
 
-      val tvsa = new TableViewStudentApp
-      val stage = new Stage
-      val fxmlMain = "/fxml/TableViewStudent.fxml"
-      val cssMain = "/css/MainMenu.css"
-      tvsa.redir(stage, fxmlMain, cssMain)
+      //val tvsa = new TableViewStudentApp
+      //val stage = new Stage
+      //val fxmlMain = "/fxml/TableViewStudent.fxml"
+      //val cssMain = "/css/MainMenu.css"
+      //tvsa.redir(stage, fxmlMain, cssMain)
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be created!")
