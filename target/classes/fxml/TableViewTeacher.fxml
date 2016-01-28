@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableViewTeacherAppController">
+   <right>
+      <Separator orientation="VERTICAL" prefHeight="321.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+   </right>
+   <top>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="258.0" styleClass="title" text="Teacher" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+   </top>
+   <bottom>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" translateX="-200.0">
+              <buttons>
+                <Button mnemonicParsing="false" onAction="#Create" styleClass="menu-button" text="Create" />
+                  <Button mnemonicParsing="false" onAction="#Edit" styleClass="menu-button" text="Edit" />
+                  <Button mnemonicParsing="false" onMouseClicked="#ButtonClicked" styleClass="menu-button" text="Delete" />
+                  <Button mnemonicParsing="false" onAction="#ButtonReport" styleClass="menu-button" text="Report" />
+                  <Button mnemonicParsing="false" onAction="#Exit" styleClass="exit-button" text="Exit" />
+              </buttons>
+            </ButtonBar>
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="832.0" translateX="5.0" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+   </bottom>
+   <center>
+       <TableView fx:id="tableView" prefHeight="360.0" prefWidth="575.0" BorderPane.alignment="CENTER">
+           <columns>
+               <TableColumn fx:id="columnId" prefWidth="88.99995422363281" text="ID" />
+               <TableColumn fx:id="columnTitle" prefWidth="68.0" text="Title" />
+               <TableColumn fx:id="columnFirstName" prefWidth="123.0" text="First Name" />
+               <TableColumn fx:id="columnLastName" prefWidth="119.0" text="Last Name" />
+               <TableColumn fx:id="columnBirthdate" prefWidth="121.0" text="Birthdate" />
+               <TableColumn fx:id="columnGender" prefWidth="55.0" text="Gender" />
+               <TableColumn fx:id="columnAddress" prefWidth="201.0" text="Address" />
+               <TableColumn fx:id="columnZipcode" prefWidth="68.0" text="ZIP CODE" />
+               <TableColumn fx:id="columnPhone" prefWidth="122.0" text="Phone" />
+               <TableColumn fx:id="columnEmail" prefWidth="105.0" text="Email" />
+               <TableColumn fx:id="columnTtype" prefWidth="73.0" text="Type" />
+           </columns>
+       </TableView>
+   </center>
+   <left>
+      <Separator orientation="VERTICAL" prefHeight="321.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>
