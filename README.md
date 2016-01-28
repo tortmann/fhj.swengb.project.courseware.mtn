@@ -1,6 +1,6 @@
 #SWENGB Project 
 ###Courseware
-**TEAM - [M](https://github.com/mwageneder "github.com/mwageneder") [T](https://github.com/tortmann "github.com/tortmann") [N](https://github.com/tortmann "github.com/nspalek")**
+**TEAM - [M](https://github.com/mwageneder "github.com/mwageneder") [T](https://github.com/tortmann "github.com/tortmann") [N](https://github.com/nspalek "github.com/nspalek")**
 
                                          Thomas Ortmann | Nina Spalek | Maximilian Wageneder
 
@@ -89,7 +89,7 @@ TOTAL | 167h
 
 ##Costs for our Programme  
 
-167h = 1 person - 1 month (40h/week)  
+167h = 1 person - 1 month (40h/week)
 netincome 2500 per Month
 
 

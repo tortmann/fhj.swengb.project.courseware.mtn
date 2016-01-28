@@ -334,11 +334,11 @@ class CreateTeacherAppController extends Initializable {
       Teacher.toDb(con)(t)
       con.close()
       window.getScene.getWindow.hide()
-      val tvta = new TableViewTeacherApp
-      val stage = new Stage
-      val fxml = "/fxml/TableViewTeacher.fxml"
-      val cssMain = "/css/MainMenu.css"
-      tvta.redir(stage, fxml, cssMain)
+      //val tvta = new TableViewTeacherApp
+      //val stage = new Stage
+      //val fxml = "/fxml/TableViewTeacher.fxml"
+      //val cssMain = "/css/MainMenu.css"
+      //tvta.redir(stage, fxml, cssMain)
     }
     catch {
       case e: Exception => errorLabel.setText("Could not be created!")
